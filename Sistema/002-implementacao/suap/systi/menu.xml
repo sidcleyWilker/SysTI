@@ -1,0 +1,28 @@
+<menu>
+	<itens>
+		<item>
+			<hierarchy>SysTI::Gerenciar Ativos::Ativos</hierarchy>
+			<url>/admin/systi/ativo/</url>
+			<permissions>
+				<permission>rh.eh_servidor</permission>
+			</permissions>
+		</item>
+
+		<item>
+			<hierarchy>SysTI::Gerenciar Ativos::Categorias Do Ativo</hierarchy>
+			<url>/admin/systi/categoria/</url>
+			<permissions>
+				<permission>rh.eh_servidor</permission>
+			</permissions>
+		</item>
+
+		<item>
+			<hierarchy>SysTI::Fornecedores</hierarchy>
+			<url>/admin/systi/fornecedor/</url>
+			<permissions>
+				<permission>rh.eh_servidor</permission>
+			</permissions>
+		</item>
+
+	</itens>
+</menu>

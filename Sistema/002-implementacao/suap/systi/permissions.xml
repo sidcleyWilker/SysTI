@@ -1,0 +1,49 @@
+<groups>
+    <group>
+        <name>ativo</name>
+        <app>systi</app>
+        <models>
+            <model>
+                <app>systi</app>
+                <name>ativo</name>
+                <permissions>
+                    <permission>add_ativo</permission>
+                    <permission>change_ativo</permission>
+                    <permission>delete_ativo</permission>
+                </permissions>
+            </model>
+        </models>
+    </group>
+
+    <group>
+        <name>categoria</name>
+        <app>systi</app>
+        <models>
+            <model>
+                <app>systi</app>
+                <name>categoria</name>
+                <permissions>
+                    <permission>add_categoria</permission>
+                    <permission>change_categoria</permission>
+                    <permission>delete_categoria</permission>
+                </permissions>
+            </model>
+        </models>
+    </group>
+
+    <group>
+        <name>fornecedor</name>
+        <app>systi</app>
+        <models>
+            <model>
+                <app>systi</app>
+                <name>fornecedor</name>
+                <permissions>
+                    <permission>add_fornecedor</permission>
+                    <permission>change_fornecedor</permission>
+                    <permission>delete_fornecedor</permission>
+                </permissions>
+            </model>
+        </models>
+    </group>
+</groups>
