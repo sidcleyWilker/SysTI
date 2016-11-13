@@ -1,22 +1,14 @@
 # -*- coding: utf-8 -*-
 
 from djtools import forms
-from .models import Ativo
+from .models import *
 
 
-class AtivoForm(forms.ModelFormPlus):
-
-    observacoes = forms.CharFieldPlus(
-        widget=forms.Textarea(),
-        label=u'Observações',
-        required=False)
-
+class AcessoBiometricoForm(forms.ModelFormPlus):
 
     class Meta:
-        model = Ativo
+        model = AcessoBiometrico
         exclude = []
 
-
-
-    #escolha = forms.ModelChoiceFieldPlus2( widget=forms.RadioSelect, choices=CHOICES)
-
+    class Media:
+        js = ('/static/systi/js/acesso_biometrico.js',)

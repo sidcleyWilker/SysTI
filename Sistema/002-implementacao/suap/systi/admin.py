@@ -2,8 +2,8 @@
 
 from django.contrib import admin
 from djtools.adminutils import ModelAdminPlus
-from .models import Ativo, Fornecedor, CategoriaHardware, CategoriaSoftware, CategoriaRede
-from djtools.templatetags.djtools_templatetags import view_object_icon
+from .models import Ativo, Fornecedor, CategoriaHardware, CategoriaSoftware, CategoriaRede, AcessoBiometrico
+from .forms import *
 
 
 class AtivoHardwareStackedInline(admin.StackedInline):
@@ -57,7 +57,15 @@ class FornecedorAdmin(ModelAdminPlus):
         }),
     )
 
+class AcessoBiometricoAdmin(ModelAdminPlus):
+    search_fields = ['id_usuario_fechadura', 'data_registro', 'tipo_do_usuario']
+    list_filter = ['id_usuario_fechadura', 'data_registro','tipo_do_usuario']
+    list_display = ['id_usuario_fechadura', 'data_registro', 'tipo_do_usuario']
+    list_display_icons = True
+
+    form = AcessoBiometricoForm
 
 
 admin.site.register(Ativo, AtivoAdmin)
 admin.site.register(Fornecedor, FornecedorAdmin)
+admin.site.register(AcessoBiometrico ,AcessoBiometricoAdmin)

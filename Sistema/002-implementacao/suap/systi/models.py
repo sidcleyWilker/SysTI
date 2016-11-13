@@ -1,8 +1,18 @@
 # -*- coding: utf-8 -*-
+from pygments.lexer import default
 
 from djtools.db import models
 from djtools.models import ModelPlus
 
+stados_do_usuario = {
+    'Ativo': 'Ativo',
+    'Inativo': 'Inativo'
+}
+
+TIPO_USUARIO = {
+    'Servidor': 'Servidor',
+    'Aluno': 'Aluno'
+}
 
 class Fornecedor(ModelPlus):
     nome = models.CharFieldPlus(verbose_name=u'Nome do Fornecedor', max_length=30)
@@ -98,3 +108,24 @@ class Atributo(ModelPlus):
 class ValorAtt(ModelPlus):
     valor = models.CharFieldPlus(verbose_name=u'Valor', max_length=50)
     id_atributo = models.ForeignKeyPlus(Atributo, verbose_name=u'Atributo')
+
+
+class AcessoBiometrico(ModelPlus):
+    id_usuario_fechadura = models.CharFieldPlus(verbose_name=u'Identificação Usuário Fechadura', max_length=40)
+    data_registro = models.DateFieldPlus(verbose_name=u'Data do Registro')
+    data_des_registro = models.DateFieldPlus(u'Data do des-registro', blank=True, null=True)
+    local_da_fechadura = models.ForeignKeyPlus('comum.Sala', verbose_name=u'Local do Fechadura')
+    tipo_do_usuario = models.CharFieldPlus(verbose_name=u'Tipo do Usuário', max_length=10, choices=TIPO_USUARIO.items(), default=TIPO_USUARIO.get('Aluno'))
+    aluno = models.ForeignKeyPlus('edu.Aluno', verbose_name=u'Aluno', blank=True, null=True)
+    servidor = models.ForeignKeyPlus('rh.Servidor', verbose_name=u'Servidor do IF', blank=True, null=True)
+
+    class Meta:
+        verbose_name = u'Acesso Biometrico'
+        verbose_name_plural = u'Acessos Biometricos'
+
+
+    def get_absolute_url(self):
+        return '/systi/acessobiometrico/{}/'.format(self.id)
+
+    def __str__(self):
+        return self.id_usuario_fechadura

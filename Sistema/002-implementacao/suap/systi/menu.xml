@@ -24,5 +24,13 @@
 			</permissions>
 		</item>
 
+		<item>
+			<hierarchy>SysTI::Acessos Biometricos</hierarchy>
+			<url>/admin/systi/acessobiometrico/</url>
+			<permissions>
+				<permission>rh.eh_servidor</permission>
+			</permissions>
+		</item>
+
 	</itens>
 </menu>

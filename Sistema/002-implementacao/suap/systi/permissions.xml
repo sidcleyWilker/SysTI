@@ -46,4 +46,21 @@
             </model>
         </models>
     </group>
+
+
+     <group>
+        <name>acessobiometrico</name>
+        <app>systi</app>
+        <models>
+            <model>
+                <app>systi</app>
+                <name>acessobiometrico</name>
+                <permissions>
+                    <permission>add_acessobiometrico</permission>
+                    <permission>change_acessobiometrico</permission>
+                    <permission>delete_acessobiometrico</permission>
+                </permissions>
+            </model>
+        </models>
+    </group>
 </groups>
