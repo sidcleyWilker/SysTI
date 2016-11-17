@@ -62,8 +62,8 @@ class AcessoBiometricoAdmin(ModelAdminPlus):
     list_filter = ['id_usuario_fechadura', 'data_registro','tipo_do_usuario']
     list_display = ['id_usuario_fechadura', 'data_registro', 'tipo_do_usuario']
     list_display_icons = True
-
     form = AcessoBiometricoForm
+
 
 
 admin.site.register(Ativo, AtivoAdmin)

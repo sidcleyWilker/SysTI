@@ -1,5 +1,4 @@
 # -*- coding: utf-8 -*-
-from pygments.lexer import default
 
 from djtools.db import models
 from djtools.models import ModelPlus
@@ -10,8 +9,8 @@ stados_do_usuario = {
 }
 
 TIPO_USUARIO = {
-    'Servidor': 'Servidor',
-    'Aluno': 'Aluno'
+    'Aluno': 'Aluno',
+    'Servidor': 'Servidor'
 }
 
 class Fornecedor(ModelPlus):
@@ -112,7 +111,7 @@ class ValorAtt(ModelPlus):
 
 class AcessoBiometrico(ModelPlus):
     id_usuario_fechadura = models.CharFieldPlus(verbose_name=u'Identificação Usuário Fechadura', max_length=40)
-    data_registro = models.DateFieldPlus(verbose_name=u'Data do Registro')
+    data_registro = models.DateFieldPlus(verbose_name=u'Data do Registro', blank=True, null=True)
     data_des_registro = models.DateFieldPlus(u'Data do des-registro', blank=True, null=True)
     local_da_fechadura = models.ForeignKeyPlus('comum.Sala', verbose_name=u'Local do Fechadura')
     tipo_do_usuario = models.CharFieldPlus(verbose_name=u'Tipo do Usuário', max_length=10, choices=TIPO_USUARIO.items(), default=TIPO_USUARIO.get('Aluno'))
