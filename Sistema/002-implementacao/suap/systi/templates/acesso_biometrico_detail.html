@@ -1,0 +1,75 @@
+{% extends super_template %}
+{% load filters %}
+
+
+{% block content %}
+
+<div>
+    <h2>
+         Acesso Biometrico nº  {{ acesso.id }}
+    </h2>
+</div>
+
+<div>
+    <ul class="action-bar">
+        {% if acesso.data_des_registro == None or acesso.data_des_registro == ''%}
+            <li>
+                <a class="btn primary" href="/admin/systi/acessobiometrico/{{ acesso.pk }}">Editar</a>
+            </li>
+
+            <li>
+                <a class="btn warning" href="/systi/acessobiometrico/desregistra/{{ acesso.pk }}">Des-Registra</a>
+            </li>
+        {% endif %}
+    </ul>
+</div>
+
+
+{% box 'Dados do Acesso Biometrico' %}
+    <table class="info">
+        <tbody>
+            <tr>
+                <td>Identificação Usuário Fechadura</td>
+                <td> {{ acesso.id_usuario_fechadura }} </td>
+            </tr>
+            <tr>
+                <td>Data do Registro</td>
+                <td> {{ acesso.data_registro }} </td>
+            </tr>
+            <tr>
+                <td>Data do des-registro</td>
+
+                <td>
+                    {% if acesso.data_des_registro == None or acesso.data_des_registro == ''%}
+                        <span class="status status-alert">
+                        Aguardando
+                        </span>
+                    {% else %}
+                        {{ acesso.data_des_registro }}
+                    {% endif %}
+                </td>
+            </tr>
+            <tr>
+                <td>Local do Fechadura</td>
+                <td> {{ acesso.local_da_fechadura }} </td>
+            </tr>
+            <tr>
+                <td>Usuário</td>
+                <td> {{ acesso.tipo_do_usuario }} </td>
+            </tr>
+            <tr>
+                <td>Nome do Usuário</td>
+                <td>
+                    {% if acesso.tipo_do_usuario == 'Aluno' %}
+                        {{ acesso.aluno }}
+                    {% else %}
+                        {{ acesso.servidor }}
+                    {% endif %}
+                </td>
+            </tr>
+        </tbody>
+    </table>
+{% endbox %}
+
+
+{% endblock %}

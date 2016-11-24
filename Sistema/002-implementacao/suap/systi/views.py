@@ -2,8 +2,10 @@
 
 
 from django.http import Http404
-from .models import Fornecedor, Ativo, AcessoBiometrico
-from djtools.utils import rtr
+from .models import Fornecedor, Ativo, AcessoBiometrico, Atributo, Categoria, \
+    CategoriaHardware, CategoriaRede, CategoriaSoftware
+from djtools.utils import rtr, httprr
+from django.utils import timezone
 
 
 @rtr()
@@ -21,19 +23,44 @@ def fornecedor_detail(request, id):
 def ativo_detail(request, id):
     try:
         ativo = Ativo.objects.get(pk=id)
+        atributos = Atributo.objects.filter(instancia_id=ativo.id)
+
+        try:
+            categoria = Categoria.objects.get(instancia_id=ativo.id)
+        except:
+            pass
+
+        try:
+            hardware = CategoriaHardware.objects.get(categoria_ptr_id=categoria.id)
+        except:
+            pass
+        try:
+            software = CategoriaSoftware.objects.get(categoria_ptr_id=categoria.id)
+        except:
+            pass
+        try:
+            rede = CategoriaRede.objects.get(categoria_ptr_id=categoria.id)
+        except:
+            pass
+
+
     except Ativo.DoesNotExist:
         raise Http404(u"Ativo não existe.")
 
     return locals()
 
 
-@rtr
-def acessobiometrico_detail(request, id):
+@rtr()
+def acesso_biometrico_detail(request, id):
     try:
-        print '############ ############## ##################'
         acesso = AcessoBiometrico.objects.get(pk=id)
-        print '############       '+ acesso.id_usuario_fechadura+ '##################'
     except AcessoBiometrico.DoesNoExist:
         raise Http404(u"Acesso Não existe")
-
     return locals()
+
+
+def acesso_biometrico_desregistra(request, id):
+    acesso = AcessoBiometrico.objects.get(pk=id)
+    acesso.data_des_registro = timezone.now()
+    acesso.save()
+    return httprr('/systi/acesso_biometrico/' + id + '/', u'Acesso Biometrico Concluido.', 'success')

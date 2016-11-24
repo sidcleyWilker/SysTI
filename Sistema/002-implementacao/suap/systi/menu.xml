@@ -9,8 +9,8 @@
 		</item>
 
 		<item>
-			<hierarchy>SysTI::Gerenciar Ativos::Categorias Do Ativo</hierarchy>
-			<url>/admin/systi/categoria/</url>
+			<hierarchy>SysTI::Gerenciar Ativos::Adicionar nova Categoria</hierarchy>
+			<url>/admin/systi/outracategoria/</url>
 			<permissions>
 				<permission>rh.eh_servidor</permission>
 			</permissions>
