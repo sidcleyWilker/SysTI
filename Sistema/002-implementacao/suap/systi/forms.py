@@ -5,6 +5,25 @@ from django.utils import timezone
 from .models import *
 
 
+class AtivoForm(forms.ModelFormPlus):
+    class Meta:
+        model = Ativo
+        exclude = []
+
+    class Media:
+        js = ('/static/systi/js/ativo.js',)
+
+
+
+
+
+
+class CategoriaHardwareForm(forms.ModelFormPlus):
+    class Meta:
+        model = CategoriaHardware
+        exclude = []
+
+
 class AcessoBiometricoForm(forms.ModelFormPlus):
 
     class Meta:
@@ -14,8 +33,13 @@ class AcessoBiometricoForm(forms.ModelFormPlus):
     class Media:
         js = ('/static/systi/js/acesso_biometrico.js',)
 
+
     def clean(self):
-        self.cleaned_data['data_registro'] = timezone.now()
+        data_des_registro = self.cleaned_data['data_des_registro']
+
+        if data_des_registro == None or data_des_registro == '':
+            self.cleaned_data['data_registro'] = timezone.now()
+
         return self.cleaned_data
 
     def clean_servidor(self):

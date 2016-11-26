@@ -2,7 +2,7 @@
 $(document).ready(function() {
 
     $("#id_tipo_do_usuario").change(function(){
-        show_hide_horas();
+        show_hide_aluno_servidor();
     });
 
     function dataFormatada() {
@@ -14,12 +14,10 @@ $(document).ready(function() {
     }
 
     $("#id_data_registro").val(dataFormatada);
-
-
     $("#id_data_registro").attr('disabled', 'disabled');
     $("#id_data_des_registro").attr('disabled', 'disabled');
 
-    var show_hide_horas = function() {
+    var show_hide_aluno_servidor = function() {
 
         item = $('#id_tipo_do_usuario option:selected').text();
 
@@ -32,6 +30,6 @@ $(document).ready(function() {
         }
     }
 
-show_hide_horas();
+show_hide_aluno_servidor();
 
 });
