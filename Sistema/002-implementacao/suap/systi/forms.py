@@ -10,19 +10,6 @@ class AtivoForm(forms.ModelFormPlus):
         model = Ativo
         exclude = []
 
-    class Media:
-        js = ('/static/systi/js/ativo.js',)
-
-
-
-
-
-
-class CategoriaHardwareForm(forms.ModelFormPlus):
-    class Meta:
-        model = CategoriaHardware
-        exclude = []
-
 
 class AcessoBiometricoForm(forms.ModelFormPlus):
 

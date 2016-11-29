@@ -23,10 +23,16 @@ $(document).ready(function() {
 
         if(item === "Aluno") {
             $(".field-servidor").hide(100);
+            $(".field-servidor_terceirizado").hide(100);
             $('.field-aluno').show();
-        } else {
+        } else if (item === "Servidor") {
             $(".field-aluno").hide(100);
+            $(".field-servidor_terceirizado").hide(100);
             $(".field-servidor").show(100);
+        }else if (item === "Servidor Terceirizado") {
+            $(".field-aluno").hide(100);
+            $(".field-servidor_terceirizado").show(100);
+            $(".field-servidor").hide(100);
         }
     }
 

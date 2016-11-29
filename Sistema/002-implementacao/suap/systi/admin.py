@@ -7,43 +7,6 @@ from .models import *
 from .forms import *
 from djtools.templatetags.djtools_templatetags import view_object_icon
 
-class AtivoFormSet(forms.models.BaseInlineFormSet):
-
-    def clean(self):
-        for form in self.forms:
-            cleaned_data = form.cleaned_data
-            categoria = cleaned_data.get('categoria_do_ativo')
-
-            if categoria == 'Hardware':
-                fabricante = self.cleaned_data.get('fabricante', None)
-                versao = self.cleaned_data.get('versao', None)
-                if fabricante == '' or fabricante == None:
-                    raise forms.ValidationError('Preencha com o nome do fabricante')
-                if versao == '' or versao == None:
-                    raise forms.ValidationError(u'Preencha com a versão do Hardware')
-
-
-class AtivoHardwareStackedInline(admin.StackedInline):
-    model = CategoriaHardware
-    form = CategoriaHardwareForm
-    formset = AtivoFormSet
-    fields = ('fabricante', 'versao')
-    extra = 1
-
-class AtivoSoftwareStackedInline(admin.StackedInline):
-    model = CategoriaSoftware
-    fields = ('nome_software', 'versao_software', 'pago')
-    extra = 1
-
-class AtivoRedeStackedInline(admin.StackedInline):
-    model = CategoriaRede
-    fields = ('fabricante', 'versao', 'numero_portas')
-    extra = 1
-
-class AtributoStackedInline(admin.StackedInline):
-    model = Atributo
-    fields = ('nome_campo', 'tipo_campo', ('obrigatorio', 'unico'), 'valor')
-    extra = 1
 
 class AtivoAdmin(ModelAdminPlus):
     search_fields = ['nome', 'tombamento', 'numero_etiqueta']
@@ -51,7 +14,7 @@ class AtivoAdmin(ModelAdminPlus):
     list_filter = ['nome', 'tombamento', 'numero_etiqueta', 'fornecedor']
     list_display_icons = True
     form = AtivoForm
-    inlines = [AtributoStackedInline, AtivoHardwareStackedInline, AtivoRedeStackedInline, AtivoSoftwareStackedInline]
+
 
     fieldsets = (
         (u'Dados do Ativo', {
@@ -103,6 +66,20 @@ class AcessoBiometricoAdmin(ModelAdminPlus):
 
 
 
+class AtributoInline(admin.StackedInline):
+    model = Atributo
+    extra = 1
+
+
+class CategoriaAdmin(ModelAdminPlus):
+    search_fields = ['nome']
+    list_filter = ['nome', 'descricao']
+    list_display = ['nome', 'descricao']
+    list_display_icons = True
+    inlines = [AtributoInline]
+
+
+admin.site.register(Categoria, CategoriaAdmin)
 admin.site.register(Ativo, AtivoAdmin)
 admin.site.register(Fornecedor, FornecedorAdmin)
 admin.site.register(AcessoBiometrico ,AcessoBiometricoAdmin)

@@ -2,11 +2,11 @@
 
 
 from django.http import Http404
-from .models import Fornecedor, Ativo, AcessoBiometrico, Atributo, Categoria, \
-    CategoriaHardware, CategoriaRede, CategoriaSoftware
+from .models import Fornecedor, Ativo, AcessoBiometrico, Atributo, Categoria
 from djtools.utils import rtr, httprr
 from django.utils import timezone
-
+from django.shortcuts import render
+from .forms import AtivoForm
 
 @rtr()
 def fornecedor_detail(request, id):
@@ -19,35 +19,6 @@ def fornecedor_detail(request, id):
 
     return locals()
 
-@rtr()
-def ativo_detail(request, id):
-    try:
-        ativo = Ativo.objects.get(pk=id)
-        atributos = Atributo.objects.filter(instancia_id=ativo.id)
-
-        try:
-            categoria = Categoria.objects.get(instancia_id=ativo.id)
-        except:
-            pass
-
-        try:
-            hardware = CategoriaHardware.objects.get(categoria_ptr_id=categoria.id)
-        except:
-            pass
-        try:
-            software = CategoriaSoftware.objects.get(categoria_ptr_id=categoria.id)
-        except:
-            pass
-        try:
-            rede = CategoriaRede.objects.get(categoria_ptr_id=categoria.id)
-        except:
-            pass
-
-
-    except Ativo.DoesNotExist:
-        raise Http404(u"Ativo não existe.")
-
-    return locals()
 
 
 @rtr()
@@ -64,3 +35,18 @@ def acesso_biometrico_desregistra(request, id):
     acesso.data_des_registro = timezone.now()
     acesso.save()
     return httprr('/systi/acesso_biometrico/' + id + '/', u'Acesso Biometrico Concluido.', 'success')
+
+
+
+def AtivoAdd(request):
+
+    if request.method == 'POST':
+        ativoForm = AtivoForm(request.POST)
+    else:
+        ativoForm = AtivoForm()
+
+    context = {
+        'ativoForm': ativoForm
+    }
+    template_name = 'AtivoAdd.html'
+    return render(request, template_name, context)
