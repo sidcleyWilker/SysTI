@@ -20,7 +20,7 @@ class AtivoAdmin(ModelAdminPlus):
         (u'Dados do Ativo', {
             'fields': ('nome', 'tombamento', 'numero_etiqueta', 'numero_serie',
                        'numero_produto', 'categoria_do_ativo','fornecedor',
-                       'local_do_ativo','mais_atributo')
+                       'local_do_ativo')
         }),
     )
 
@@ -79,6 +79,41 @@ class CategoriaAdmin(ModelAdminPlus):
     inlines = [AtributoInline]
 
 
+class TransferenciaAdmin(ModelAdminPlus):
+    search_fields = ['motivo_transferencia']
+    list_filter = ['motivo_transferencia', 'data_solicitacao', 'data_transferencia', 'altorizada', 'transferida']
+    list_display = ['motivo_transferencia', 'data_solicitacao', 'altorizada', 'transferida']
+    list_display_icons = True
+    form = TransferenciaForm
+
+    fieldsets = (
+        (u'Motivos da Transferencia', {
+            'fields': ('motivo_transferencia', 'anexo_motivo', 'descricao',)
+        }),
+        (u'Ativos a serem transferidos', {
+            'fields': ('ativos_transferidos', 'setor_destino',)
+        }),
+        (u'Dados da Transferencia', {
+            'fields': ('termo_recebimento', 'data_solicitacao', ('altorizada', 'data_altorizada'), ('transferida', 'data_transferencia'))
+        }),
+    )
+
+    def show_list_display_icons(self, obj):
+        out = [u'<ul class="list-display-icons">']
+        icons_html = [view_object_icon(obj)]
+        # Não exibe botão de editar
+        # if self.has_change_permission(self.request, obj):
+        #    icons_html.append(edit_object_icon(obj))
+        for icon_html in icons_html:
+            if icon_html:
+                out.append(u'<li>%s</li>' % icon_html)
+        out.append(u'</ul>')
+        return u''.join(out)
+
+    show_list_display_icons.allow_tags = True
+    show_list_display_icons.short_description = u'#'
+
+admin.site.register(Transferencia, TransferenciaAdmin)
 admin.site.register(Categoria, CategoriaAdmin)
 admin.site.register(Ativo, AtivoAdmin)
 admin.site.register(Fornecedor, FornecedorAdmin)

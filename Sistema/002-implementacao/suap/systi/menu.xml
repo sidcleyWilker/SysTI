@@ -32,5 +32,12 @@
 			</permissions>
 		</item>
 
+		<item>
+			<hierarchy>SysTI::Transferencias</hierarchy>
+			<url>/admin/systi/transferencia/</url>
+			<permissions>
+				<permission>rh.eh_servidor</permission>
+			</permissions>
+		</item>
 	</itens>
 </menu>

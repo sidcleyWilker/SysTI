@@ -42,3 +42,41 @@ class AcessoBiometricoForm(forms.ModelFormPlus):
         if ((usuario == 'Aluno') and ((aluno == '' or aluno == None))):
             raise forms.ValidationError('Selecione um Aluno')
         return aluno
+
+
+class TransferenciaForm(forms.ModelFormPlus):
+
+    class Meta:
+        model = Transferencia
+        exclude = []
+
+    class Media:
+        js = ('/static/systi/js/transferencia.js',)
+
+
+    # def clean(self):
+    #     data = self.cleaned_data.get('data_solicitacao')
+    #     if data == None:
+    #         data = timezone.now()
+
+    def clean_anexo_motivo(self):
+        anexo = self.cleaned_data.get('anexo_motivo')
+
+        if anexo == None:
+            raise ValidationError("Selecione algum Arquivo!")
+
+        if anexo.size >= 3090000:
+            raise ValidationError("Arquivo exedeu o tamnaho permitido!")
+
+        return anexo
+
+    def clean_termo_recebimento(self):
+        anexo = self.cleaned_data.get('termo_recebimento')
+
+        if anexo == None:
+            raise ValidationError("Selecione algum Arquivo!")
+
+        if anexo.size >= 3090000:
+            raise ValidationError("Arquivo exedeu o tamnaho permitido!")
+
+        return anexo

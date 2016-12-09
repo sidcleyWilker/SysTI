@@ -1,7 +1,13 @@
 # -*- coding: utf-8 -*-
 
+import os
 from djtools.db import models
 from djtools.models import ModelPlus
+from .choices import SysTIChoices
+from django.core.exceptions import ValidationError
+
+DOCUMENT_EXTENSIONS = ['pdf', 'txt', 'doc', 'dot', 'docx', 'odt']
+IMAGE_EXTENSIONS = ['bmp', 'jpeg', 'jpg', 'png']
 
 stados_do_usuario = {
     'Ativo': 'Ativo',
@@ -93,10 +99,10 @@ class Atributo(ModelPlus):
         verbose_name_plural = u'Campos Adicionais'
 
 
-class ValorAtt(models.Model):
-    att = models.ForeignKey(Atributo)
-    modelo = models.ForeignKey(Ativo)
-    valor = models.CharField(max_length=30)
+# class ValorAtt(models.Model):
+#     att = models.ForeignKey(Atributo)
+#     modelo = models.ForeignKey(Ativo)
+#     valor = models.CharField(max_length=30)
 
 
 class Categoria(ModelPlus):
@@ -132,3 +138,55 @@ class AcessoBiometrico(ModelPlus):
 
     def __str__(self):
         return self.id_usuario_fechadura
+
+
+
+
+class Transferencia(ModelPlus):
+    motivo_transferencia = models.CharFieldPlus(
+        verbose_name=u'Motivo da Transferencia',
+        max_length=30,
+        choices=SysTIChoices.TIPOS_SOLICITACAO.items(),
+        default=SysTIChoices.CHAMADO
+    )
+    anexo_motivo = models.FileField(upload_to='systi/anexosMotivos/', verbose_name=u'Anexo do Motivo')
+    descricao = models.TextField(verbose_name=u'Descrição', max_length=225)
+    setor_origem = models.ForeignKeyPlus('comum.Sala', verbose_name=u'Setor de Origem', related_name='sala_origem', blank=True, null=True)
+    setor_destino = models.ForeignKeyPlus('comum.Sala', verbose_name=u'Setor de Destino', related_name='sala_destino')
+    ativos_transferidos = models.ManyToManyFieldPlus(Ativo, verbose_name=u'Ativos a Serem Transferidos')
+    termo_recebimento = models.FileField(upload_to='systi/anexosTermosRecebimentos/', verbose_name=u'Anexo do Termo de Recebimento')
+    data_solicitacao = models.DateFieldPlus(verbose_name=u'Data da Solicitação')
+    altorizada = models.CharFieldPlus(
+        verbose_name=u'Altorizada',
+        max_length=30,
+        null=True,
+        blank=True,
+        choices=SysTIChoices.TRANSFERENCIA_ALTORIZACAO.items(),
+        default=SysTIChoices.AGUARDANDO_ALTORIZACAO
+    )
+    transferida = models.CharFieldPlus(
+        verbose_name=u'Transferida',
+        max_length=30,
+        null=True,
+        blank=True,
+        choices=SysTIChoices.TRANSFERENCIAS.items(),
+        default=SysTIChoices.AGUARDANDO_ALTORIZACAO
+    )
+    data_altorizada = models.DateFieldPlus(verbose_name=u'Data que foi Altorizada', null=True, blank=True)
+    data_transferencia = models.DateFieldPlus(verbose_name=u'Data da Transferencia', null=True, blank=True)
+
+
+    anexo_motivo.help_text = help_text = HELP_TEXT = u'Será aceito arquivo com tamanho máximo 3MB e que seja do tipo: ' + \
+                                                     u', '.join(DOCUMENT_EXTENSIONS + IMAGE_EXTENSIONS[0:-1]) + ' ou ' + \
+                                                     IMAGE_EXTENSIONS[-1] + '.'
+    termo_recebimento.help_text = help_text = HELP_TEXT = u'Será aceito arquivo com tamanho máximo 3MB e que seja do tipo: ' + \
+                                                     u', '.join(DOCUMENT_EXTENSIONS + IMAGE_EXTENSIONS[0:-1]) + ' ou ' + \
+                                                     IMAGE_EXTENSIONS[-1] + '.'
+
+    class Meta:
+        verbose_name = u'Transferencia'
+        verbose_name_plural = u'Transferencias'
+
+    def get_absolute_url(self):
+        return '/systi/transferencia/{}/'.format(self.id)
+

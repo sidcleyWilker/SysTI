@@ -63,4 +63,20 @@
             </model>
         </models>
     </group>
+
+    <group>
+        <name>transferencia</name>
+        <app>systi</app>
+        <models>
+            <model>
+                <app>systi</app>
+                <name>transferencia</name>
+                <permissions>
+                    <permission>add_transferencia</permission>
+                    <permission>change_transferencia</permission>
+                    <permission>delete_transferencia</permission>
+                </permissions>
+            </model>
+        </models>
+    </group>
 </groups>
