@@ -80,3 +80,10 @@ class TransferenciaForm(forms.ModelFormPlus):
             raise ValidationError("Arquivo exedeu o tamnaho permitido!")
 
         return anexo
+
+class MaterialForm(forms.ModelFormPlus):
+
+    class Meta:
+        model = Material
+#        exclude = []
+

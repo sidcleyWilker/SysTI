@@ -1,0 +1,57 @@
+{% extends super_template %}
+{% load filters %}
+
+
+{% block content %}
+
+<div>
+    <h2>
+         Material {{material.nome_material}}
+    </h2>
+</div>
+
+{% box 'Dados do Material' %}
+
+<table class="info">
+    <tbody>
+        <tr>
+            <td>Nome</td>
+            <td> {{material.nome_material}}</td>
+        </tr>
+
+        <tr>
+            <td>Descrição</td>
+            <td>{{material.descricao}}</td>
+        </tr>
+
+        <tr>
+            <td>Tipo do Material</td>
+            <td>{{material.tipo_material}}</td>
+        </tr>
+
+        <tr>
+            <td>Unidade de Medida</td>
+            <td>{{material.unidade_de_medida}}</td>
+        </tr>
+
+        <tr>
+            <td>Quantidade</td>
+            <td>{{material.quantidade}}</td>
+        </tr>
+
+        <tr>
+            <td>Guardado em </td>
+            <td>{{material.local_guardado}}</td>
+        </tr>
+
+        <tr>
+            <td>Fornecido por </td>
+            <td>{{material.fornecedor}}</td>
+        </tr>
+
+    </tbody>
+</table>
+
+{% endbox %}
+
+{% endblock %}

@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head profile="http://selenium-ide.openqa.org/profiles/test-case">
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<link rel="selenium.base" href="http://127.0.0.1:8000/" />
+<title>Visualizar Fornecedores com filtro</title>
+</head>
+<body>
+<table cellpadding="1" cellspacing="1" border="1">
+<thead>
+<tr><td rowspan="1" colspan="3">Visualizar Fornecedores com filtro</td></tr>
+</thead><tbody>
+<tr>
+	<td>open</td>
+	<td>/accounts/login/</td>
+	<td></td>
+</tr>
+<tr>
+	<td>clickAndWait</td>
+	<td>css=input[type=&quot;submit&quot;]</td>
+	<td></td>
+</tr>
+<tr>
+	<td>click</td>
+	<td>link=SysTI</td>
+	<td></td>
+</tr>
+<tr>
+	<td>clickAndWait</td>
+	<td>link=Fornecedores</td>
+	<td></td>
+</tr>
+<tr>
+	<td>type</td>
+	<td>id=searchbar</td>
+	<td>Fulano</td>
+</tr>
+<tr>
+	<td>selectAndWait</td>
+	<td>css=select</td>
+	<td>label=Fulano de Tal</td>
+</tr>
+<tr>
+	<td>selectAndWait</td>
+	<td>//div[@id='changelist']/div/div[3]/select</td>
+	<td>label=joana@gmail.com</td>
+</tr>
+<tr>
+	<td>selectAndWait</td>
+	<td>//div[@id='changelist']/div/div[3]/select</td>
+	<td>label=fsdge@gmail.com</td>
+</tr>
+
+</tbody></table>
+</body>
+</html>

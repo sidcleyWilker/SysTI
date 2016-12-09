@@ -90,3 +90,21 @@ def transferencia_transferir(request, id):
         return httprr('/systi/transferencia/' + id + '/', u'Transferencia Alterada.', 'success')
     except Transferencia.DoesNoExist:
         raise Http404(u"Transferencia Não existe")
+
+def material_detail(request, id):
+    try:
+        material = Material.objects.get(pk=id)
+
+    except Material.DoesNotExist:
+        raise Http404(u"Material não existe.")
+    return locals()
+
+@rtr()
+def compartimento_detail(request, id):
+    try:
+        compartimento = Compartimento.objects.get(pk=id)
+
+    except Material.DoesNotExist:
+        raise Http404(u"Compartimento não existe.")
+    return locals()
+
