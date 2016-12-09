@@ -146,8 +146,8 @@ class AcessoBiometrico(ModelPlus):
 class Material(ModelPlus):
     nome_material = models.CharFieldPlus(verbose_name=u'Nome do Material', max_length=30)
     tipo_material = models.CharFieldPlus(verbose_name=u'Tipo do Material', max_length=20)
-    #local_guardado = models.ForeignKeyPlus('systi.Compartimento', verbose_name='Local Guardado')
-    local_guardado = models.CharFieldPlus(verbose_name=u'Local Guardado', max_length=30)
+    local_guardado = models.ForeignKeyPlus('systi.Compartimento', verbose_name='Local Guardado')
+    #local_guardado = models.CharFieldPlus(verbose_name=u'Local Guardado', max_length=30)
     descricao = models.TextField(verbose_name=u'Descrição', max_length=30)
     unidade_de_medida = models.CharFieldPlus(verbose_name=u'Unidade de Medida', max_length=25, choices=UNIDADE_MEDIDA.items(), default=UNIDADE_MEDIDA.get('Und'))
     quantidade = models.CharFieldPlus(verbose_name=u'Quantidade', max_length=30)
@@ -164,11 +164,11 @@ class Material(ModelPlus):
         return self.nome_material
 
 class Compartimento(ModelPlus):
-    nome = models.CharFieldPlus(verbose_name=u'Nome do Material', max_length=30)
-    descricao = models.TextField(verbose_name=u'Descrição', max_length=30)
+    nome = models.CharFieldPlus(verbose_name=u'Nome do Compartimento', max_length=30)
+    descricao = models.CharFieldPlus(verbose_name=u'Descrição', max_length=30)
     class Meta:
         verbose_name = u'Compartimento'
         verbose_name_plural = u'Compartimentos'
 
     def get_absolute_url(self):
-        return '/systi/compartimento/{}/'.format(self.id)
+        return '/systi/compartimentos/{}/'.format(self.id)

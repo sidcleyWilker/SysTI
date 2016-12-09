@@ -93,9 +93,21 @@ class MaterialAdmin(ModelAdminPlus):
     )
     #form = MaterialForm
 
+class CompartimentoAdmin(ModelAdminPlus):
+    search_fields = ['nome', 'descricao',]
+    list_filter = ['nome','descricao',]
+    list_display = ['nome', 'descricao',]
+    list_display_icons = True
+
+    fieldsets = (
+        (None, {
+            'fields': ('nome', 'descricao')
+        }),
+    )
 
 admin.site.register(Categoria, CategoriaAdmin)
 admin.site.register(Ativo, AtivoAdmin)
 admin.site.register(Fornecedor, FornecedorAdmin)
 admin.site.register(AcessoBiometrico ,AcessoBiometricoAdmin)
 admin.site.register(Material, MaterialAdmin)
+admin.site.register(Compartimento, CompartimentoAdmin)
