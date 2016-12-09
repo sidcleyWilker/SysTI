@@ -42,3 +42,9 @@ class AcessoBiometricoForm(forms.ModelFormPlus):
         if ((usuario == 'Aluno') and ((aluno == '' or aluno == None))):
             raise forms.ValidationError('Selecione um Aluno')
         return aluno
+
+class MaterialForm(forms.ModelFormPlus):
+
+    class Meta:
+        model = Material
+#        exclude = []

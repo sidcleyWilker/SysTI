@@ -50,3 +50,22 @@ def AtivoAdd(request):
     }
     template_name = 'AtivoAdd.html'
     return render(request, template_name, context)
+
+
+@rtr()
+def material_detail(request, id):
+    try:
+        material = Material.objects.get(pk=id)
+
+    except Material.DoesNotExist:
+        raise Http404(u"Material não existe.")
+    return locals()
+
+@rtr()
+def compartimento_detail(request, id):
+    try:
+        compartimento = Compartimento.objects.get(pk=id)
+
+    except Material.DoesNotExist:
+        raise Http404(u"Compartimento não existe.")
+    return locals()

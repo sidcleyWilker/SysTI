@@ -63,4 +63,38 @@
             </model>
         </models>
     </group>
+
+    
+    <group>
+        <name>material</name>
+        <app>systi</app>
+        <models>
+            <model>
+                <app>systi</app>
+                <name>material</name>
+                <permissions>
+                    <permission>add_material</permission>
+                    <permission>change_material</permission>
+                    <permission>delete_material</permission>
+                </permissions>
+            </model>
+        </models>
+    </group>
+
+    <group>
+        <name>compartimento</name>
+        <app>systi</app>
+        <models>
+            <model>
+                <app>systi</app>
+                <name>compartimento</name>
+                <permissions>
+                    <permission>add_compartimento</permission>
+                    <permission>change_compartimento</permission>
+                    <permission>delete_compartimento</permission>
+                </permissions>
+            </model>
+        </models>
+    </group>
+
 </groups>

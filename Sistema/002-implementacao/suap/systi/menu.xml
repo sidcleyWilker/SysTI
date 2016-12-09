@@ -32,5 +32,21 @@
 			</permissions>
 		</item>
 
+		<item>
+			<hierarchy>SysTI::Materiais</hierarchy>
+			<url>/admin/systi/material/</url>
+			<permissions>
+				<permission>rh.eh_servidor</permission>
+			</permissions>
+		</item>
+
+		<item>
+			<hierarchy>SysTI::Materiais::Compartimentos</hierarchy>
+			<url>/admin/systi/compartimentos/</url>
+			<permissions>
+				<permission>rh.eh_servidor</permission>
+			</permissions>
+		</item>
+
 	</itens>
 </menu>

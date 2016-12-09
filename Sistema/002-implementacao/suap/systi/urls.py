@@ -7,11 +7,12 @@ urlpatterns = patterns('systi.views',
     #(r'^ativo/(?P<id>\d+)/$', 'ativo_detail'),
     (r'^fornecedor/(?P<id>\d+)/$', 'fornecedor_detail'),
 
+    (r'^material/(?P<id>\d+)/$', 'material_detail'),
+
     (r'^acesso_biometrico/(?P<id>\d+)/$', 'acesso_biometrico_detail'),
 
     (r'^acessobiometrico/desregistra/(?P<id>\d+)/$', 'acesso_biometrico_desregistra'),
 
-    (r'^teste$', 'AtivoAdd'),
-
+    (r'^teste$', 'AtivoAdd'), (r'^compartimentos/(?P<id>\d+)/$', 'compartimento_detail'),
 
 )

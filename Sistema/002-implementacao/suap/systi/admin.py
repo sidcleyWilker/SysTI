@@ -78,8 +78,24 @@ class CategoriaAdmin(ModelAdminPlus):
     list_display_icons = True
     inlines = [AtributoInline]
 
+class MaterialAdmin(ModelAdminPlus):
+    search_fields = ['nome_material', 'tipo_material',]
+    list_filter = ['nome_material','tipo_material',]
+    list_display = ['nome_material','tipo_material','local_guardado']
+    list_display_icons = True
+
+    fieldsets = (
+        (None, {
+            'fields': ('nome_material', 'tipo_material','local_guardado',
+                       'descricao', 'unidade_de_medida', 'quantidade',
+                       'fornecedor',)
+        }),
+    )
+    #form = MaterialForm
+
 
 admin.site.register(Categoria, CategoriaAdmin)
 admin.site.register(Ativo, AtivoAdmin)
 admin.site.register(Fornecedor, FornecedorAdmin)
 admin.site.register(AcessoBiometrico ,AcessoBiometricoAdmin)
+admin.site.register(Material, MaterialAdmin)

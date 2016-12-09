@@ -33,6 +33,16 @@ sim_nao = {
     u'Não': u'Não'
 }
 
+
+UNIDADE_MEDIDA = {
+    'Cm' : 'Centimetro',
+    'Mt' : 'Metro',
+    'Lt' : 'Litro',
+    'Und' : 'Unidade',
+    'Cx' : 'Caixa',
+    'Pc' : 'Pacote',
+}
+
 class Fornecedor(ModelPlus):
     nome = models.CharFieldPlus(verbose_name=u'Nome do Fornecedor', max_length=30)
     cpf = models.BrCpfField(verbose_name=u'CPF', blank=True, null=True)
@@ -132,3 +142,33 @@ class AcessoBiometrico(ModelPlus):
 
     def __str__(self):
         return self.id_usuario_fechadura
+
+class Material(ModelPlus):
+    nome_material = models.CharFieldPlus(verbose_name=u'Nome do Material', max_length=30)
+    tipo_material = models.CharFieldPlus(verbose_name=u'Tipo do Material', max_length=20)
+    #local_guardado = models.ForeignKeyPlus('systi.Compartimento', verbose_name='Local Guardado')
+    local_guardado = models.CharFieldPlus(verbose_name=u'Local Guardado', max_length=30)
+    descricao = models.TextField(verbose_name=u'Descrição', max_length=30)
+    unidade_de_medida = models.CharFieldPlus(verbose_name=u'Unidade de Medida', max_length=25, choices=UNIDADE_MEDIDA.items(), default=UNIDADE_MEDIDA.get('Und'))
+    quantidade = models.CharFieldPlus(verbose_name=u'Quantidade', max_length=30)
+    fornecedor = models.ForeignKeyPlus('systi.Fornecedor', verbose_name='Fornecedor')
+
+    class Meta:
+        verbose_name = u'Material'
+        verbose_name_plural = u'Materiais'
+
+    def get_absolute_url(self):
+        return '/systi/material/{}/'.format(self.id)
+
+    def __str__(self):
+        return self.nome_material
+
+class Compartimento(ModelPlus):
+    nome = models.CharFieldPlus(verbose_name=u'Nome do Material', max_length=30)
+    descricao = models.TextField(verbose_name=u'Descrição', max_length=30)
+    class Meta:
+        verbose_name = u'Compartimento'
+        verbose_name_plural = u'Compartimentos'
+
+    def get_absolute_url(self):
+        return '/systi/compartimento/{}/'.format(self.id)
