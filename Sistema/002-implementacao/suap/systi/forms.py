@@ -89,9 +89,14 @@ class MaterialForm(forms.ModelFormPlus):
 
     def clean(self):
         nome_material = self.cleaned_data.get("nome_material")
-        if nome_material == None:
-            raise forms.ValidationError('O campo nome deve ser preenchido')
         tipo_material = self.cleaned_data.get("tipo_material")
-        if tipo_material == None:
-            raise forms.ValidationError('O campo nome deve ser preenchido')
+        local_guardado = self.cleaned_data.get("local_guardado")
+        descricao = self.cleaned_data.get("descricao")
+        unidade_de_medida = self.cleaned_data.get("unidade_de_medida")
+        quantidade = self.cleaned_data.get("quantidade")
+        fornecedor = self.cleaned_data.get("fornecedor")
+
+        if nome_material == None or tipo_material == None or local_guardado == None or descricao == None or unidade_de_medida == None or quantidade == None or fornecedor == None:
+            raise forms.ValidationError('Os Campos Devem ser Preenchidos Corretamente')
+
         return self.cleaned_data
