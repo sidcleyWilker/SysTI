@@ -49,6 +49,12 @@ UNIDADE_MEDIDA = {
     'Pc' : 'Pacote',
 }
 
+ESTADO_EMPRESTIMOS = {
+    'Aberto' : 'Aberto',
+    'Cancelado' : 'Cancelado',
+
+}
+
 class Fornecedor(ModelPlus):
     nome = models.CharFieldPlus(verbose_name=u'Nome do Fornecedor', max_length=30)
     cpf = models.BrCpfField(verbose_name=u'CPF', blank=True, null=True)
@@ -223,10 +229,32 @@ class Material(ModelPlus):
 class Compartimento(ModelPlus):
     nome = models.CharFieldPlus(verbose_name=u'Nome do Compartimento', max_length=30)
     descricao = models.CharFieldPlus(verbose_name=u'Descrição', max_length=30)
+
     class Meta:
         verbose_name = u'Compartimento'
         verbose_name_plural = u'Compartimentos'
 
     def get_absolute_url(self):
-        return '/systi/compartimentos/{}/'.format(self.id)
+        return '/systi/compartimento/{}/'.format(self.id)
 
+    def __str__(self):
+        return self.nome
+
+class Emprestimo(ModelPlus):
+    ativo = models.ForeignKeyPlus('systi.Ativo', verbose_name='Ativos')
+    motivo = models.TextField(verbose_name=u'Justificativa', max_length=40)
+    data_emprestimo = models.DateFieldPlus(u'Data do Emprestimo', blank=True, null=True)
+    data_devolucao = models.DateFieldPlus(u'Data de Devolução', blank=True, null=True)
+    estado = models.CharFieldPlus(verbose_name=u'Estado do Emprestimo', max_length=25, choices=ESTADO_EMPRESTIMOS.items(), default=ESTADO_EMPRESTIMOS.get('Ativo'))
+    setor_origem = models.ForeignKeyPlus('comum.Sala', verbose_name='Setor de Origem', related_name='setor_origem')
+    setor_destino = models.ForeignKeyPlus('comum.Sala', verbose_name='Setor de Destino', related_name='setor_destino')
+
+    class Meta:
+        verbose_name = u'Emprestimo'
+        verbose_name_plural = u'Emprestimos'
+
+    def get_absolute_url(self):
+        return '/systi/emprestimo/{}/'.format(self.id)
+
+    def __str__(self):
+        return self.data_emprestimo

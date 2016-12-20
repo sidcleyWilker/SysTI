@@ -91,7 +91,7 @@ class MaterialAdmin(ModelAdminPlus):
                        'fornecedor',)
         }),
     )
-    #form = MaterialForm
+    form = MaterialForm
 
 class CompartimentoAdmin(ModelAdminPlus):
     search_fields = ['nome', 'descricao',]
@@ -101,7 +101,7 @@ class CompartimentoAdmin(ModelAdminPlus):
 
     fieldsets = (
         (None, {
-            'fields': ('nome', 'descricao')
+            'fields': ('nome', 'descricao',)
         }),
     )
 
@@ -139,6 +139,23 @@ class TransferenciaAdmin(ModelAdminPlus):
     show_list_display_icons.allow_tags = True
     show_list_display_icons.short_description = u'#'
 
+class EmprestimoAdmin(ModelAdminPlus):
+    search_fields = ['ativo', 'motivo', 'data_emprestimo',
+                       'data_devolucao', 'estado', 'setor_origem',
+                       'setor_destino',]
+    list_filter = ['data_emprestimo', 'data_devolucao', 'estado',]
+    list_display = ['motivo', 'data_emprestimo',
+                       'data_devolucao', 'estado',]
+    list_display_icons = True
+
+    fieldsets = (
+        (None, {
+            'fields': ('ativo', 'motivo', 'data_emprestimo',
+                       'data_devolucao', 'estado', 'setor_origem',
+                       'setor_destino',)
+        }),
+    )
+
 admin.site.register(Transferencia, TransferenciaAdmin)
 admin.site.register(Categoria, CategoriaAdmin)
 admin.site.register(Ativo, AtivoAdmin)
@@ -146,3 +163,4 @@ admin.site.register(Fornecedor, FornecedorAdmin)
 admin.site.register(AcessoBiometrico ,AcessoBiometricoAdmin)
 admin.site.register(Material, MaterialAdmin)
 admin.site.register(Compartimento, CompartimentoAdmin)
+admin.site.register(Emprestimo, EmprestimoAdmin)

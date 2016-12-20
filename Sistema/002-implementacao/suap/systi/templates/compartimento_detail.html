@@ -1,12 +1,29 @@
 {% extends super_template %}
-
 {% load filters %}
-
 
 {% block content %}
 
 <div>
     <h2>
-         Compartimento {{compartimento.nome}}
+         Compartimento {{compartimento.id}}
     </h2>
 </div>
+
+{% box 'Dados do Compartimento' %}
+
+<table class="info">
+    <tbody>
+        <tr>
+            <td>Nome</td>
+            <td> {{compartimento.nome}}</td>
+        </tr>
+        <tr>
+            <td>Descrição</td>
+            <td> {{compartimento.descricao}}</td>
+        </tr>
+    </tbody>
+
+</table>
+
+{% endbox %}
+{% endblock %}

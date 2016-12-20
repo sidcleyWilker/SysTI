@@ -85,5 +85,13 @@ class MaterialForm(forms.ModelFormPlus):
 
     class Meta:
         model = Material
-#        exclude = []
+        exclude = []
 
+    def clean(self):
+        nome_material = self.cleaned_data.get("nome_material")
+        if nome_material == None:
+            raise forms.ValidationError('O campo nome deve ser preenchido')
+        tipo_material = self.cleaned_data.get("tipo_material")
+        if tipo_material == None:
+            raise forms.ValidationError('O campo nome deve ser preenchido')
+        return self.cleaned_data

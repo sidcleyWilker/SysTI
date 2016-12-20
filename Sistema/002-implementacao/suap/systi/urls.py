@@ -20,7 +20,9 @@ urlpatterns = patterns('systi.views',
     (r'^transferencia/transferir/(?P<id>\d+)/$', 'transferencia_transferir'),
 
     (r'^teste$', 'AtivoAdd'),
-    (r'^compartimentos/(?P<id>\d+)/$', 'compartimento_detail'),
 
+    (r'^compartimento/(?P<id>\d+)/$', 'compartimento_detail'),
+
+    (r'^emprestimo/(?P<id>\d+)/$', 'emprestimo_detail'),
 
 )

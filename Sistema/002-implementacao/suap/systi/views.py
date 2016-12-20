@@ -2,11 +2,11 @@
 
 
 from django.http import Http404
-from .models import Fornecedor, Ativo, AcessoBiometrico, Atributo, Categoria, Transferencia
+from .models import Fornecedor, Ativo, AcessoBiometrico, Atributo, Categoria, Transferencia, Emprestimo, Compartimento, Material
 from djtools.utils import rtr, httprr
 from django.utils import timezone
 from django.shortcuts import render
-from .forms import AtivoForm
+from .forms import AtivoForm, MaterialForm
 from .choices import SysTIChoices
 
 @rtr()
@@ -19,7 +19,6 @@ def fornecedor_detail(request, id):
         raise Http404(u"Fornecedor não existe.")
 
     return locals()
-
 
 
 @rtr()
@@ -91,20 +90,30 @@ def transferencia_transferir(request, id):
     except Transferencia.DoesNoExist:
         raise Http404(u"Transferencia Não existe")
 
+@rtr()
 def material_detail(request, id):
-    try:
-        material = Material.objects.get(pk=id)
 
-    except Material.DoesNotExist:
-        raise Http404(u"Material não existe.")
+    try:
+        fornecedor = Fornecedor.objects.filter(material=id)
+        material = Material.objects.get(pk=id)
+    except material.DoesNoExist:
+        raise Http404(u"Material Não existe")
+
     return locals()
 
-@rtr()
+@rtr
 def compartimento_detail(request, id):
     try:
         compartimento = Compartimento.objects.get(pk=id)
 
-    except Material.DoesNotExist:
+    except Compartimento.DoesNotExist:
         raise Http404(u"Compartimento não existe.")
     return locals()
 
+@rtr
+def emprestimo_detail(request, id):
+    try:
+        emprestimo = Emprestimo.objects.get(pk=id)
+    except Emprestimo.DoesNotExist:
+        raise Http404(u'Emprestimo não existe')
+    return locals()

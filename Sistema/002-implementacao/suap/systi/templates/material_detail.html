@@ -41,17 +41,29 @@
 
         <tr>
             <td>Guardado em </td>
-            <td>{{material.local_guardado}}</td>
+            <td>{{material.local_guardado.nome}}</td>
         </tr>
 
         <tr>
             <td>Fornecido por </td>
-            <td>{{material.fornecedor}}</td>
+            <td>{{material.fornecedor.nome}}</td>
         </tr>
 
     </tbody>
 </table>
 
+{% box 'Dados do Fornecedor' %}
+
+<table class="info">
+    <tbody>
+        <tr>
+            <td>Nome</td>
+            <td>{{fornecedor.nome}}</td>
+        </tr>
+    </tbody>
+</table>
+
 {% endbox %}
 
+{% endbox %}
 {% endblock %}

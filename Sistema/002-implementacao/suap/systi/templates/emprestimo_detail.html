@@ -1,0 +1,40 @@
+{% extends super_template %}
+{% load filters %}
+
+{% block content %}
+
+<div>
+    <h2>
+         Emprestimo Nº {{ emprestimo.id }}
+    </h2>
+</div>
+
+{% box 'Dados do Emprestimo' %}
+
+<table class="info">
+    <tbody>
+        <tr>
+            <td>Motivo</td>
+            <td> {{emprestimo.motivo}}</td>
+        </tr>
+
+        <tr>
+            <td>Data do Emprestimo</td>
+            <td> {{emprestimo.data_emprestimo}}</td>
+        </tr>
+
+        <tr>
+            <td>Data Prevista de Devolução</td>
+            <td> {{emprestimo.devolucao}}</td>
+        </tr>
+
+        <tr>
+            <td>Estado do Emprestimo</td>
+            <td>{{emprestimo.estado}}</td>
+        </tr>
+    </tbody>
+
+</table>
+
+{% endbox %}
+{% endblock %}

@@ -114,5 +114,20 @@
         </models>
     </group>
 
-</groups>
+    <group>
+        <name>emprestimo</name>
+        <app>systi</app>
+        <models>
+            <model>
+                <app>systi</app>
+                <name>emprestimo</name>
+                <permissions>
+                    <permission>add_compartimento</permission>
+                    <permission>change_compartimento</permission>
+                    <permission>delete_compartimento</permission>
+                </permissions>
+            </model>
+        </models>
+    </group>
 
+</groups>

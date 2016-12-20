@@ -108,4 +108,3 @@ class SysTiTestCase(unittest.TestCase):
     #Teste de cadastro de Categoria de Software
     def ativoTest(self):
         self.assertEquals(self.atributo.nome, 'Computador')
-

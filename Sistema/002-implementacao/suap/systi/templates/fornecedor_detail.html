@@ -42,23 +42,23 @@
     </tbody>
 </table>
 
+
 {% box 'Ativos Fornecidos' %}
 <table class="info">
     <tbody>
-        {% for ativo in ativos%}
-            <tr>
-                <td>Nome</td>
-                <td> {{ ativo.nome }}</td>
-            </tr>
-            <tr>
-                <td>Local onde Esta</td>
-                <td> {{ ativo.local_do_ativo }}</td>
-            </tr>
-        {% endfor %}
+    {% for ativo in ativos%}
+    <tr>
+        <td>Nome</td>
+        <td> {{ ativo.nome }}</td>
+    </tr>
+    <tr>
+        <td>Local onde Esta</td>
+        <td> {{ ativo.local_do_ativo }}</td>
+    </tr>
+    {% endfor %}
     </tbody>
 </table>
 {% endbox %}
-
 
 {% box 'Materiais Fornecidos' %}
 {% endbox %}
