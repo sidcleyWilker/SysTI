@@ -155,6 +155,7 @@ class EmprestimoAdmin(ModelAdminPlus):
                        'setor_destino',)
         }),
     )
+    form = EmprestimoForm
 
 admin.site.register(Transferencia, TransferenciaAdmin)
 admin.site.register(Categoria, CategoriaAdmin)

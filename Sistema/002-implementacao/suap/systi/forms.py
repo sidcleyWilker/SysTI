@@ -89,9 +89,45 @@ class MaterialForm(forms.ModelFormPlus):
 
     def clean(self):
         nome_material = self.cleaned_data.get("nome_material")
-        if nome_material == None:
-            raise forms.ValidationError('O campo nome deve ser preenchido')
         tipo_material = self.cleaned_data.get("tipo_material")
-        if tipo_material == None:
-            raise forms.ValidationError('O campo nome deve ser preenchido')
+        local_guardado = self.cleaned_data.get("local_guardado")
+        descricao = self.cleaned_data.get("descricao")
+        unidade_de_medida = self.cleaned_data.get("unidade_de_medida")
+        quantidade = self.cleaned_data.get("quantidade")
+        fornecedor = self.cleaned_data.get("fornecedor")
+
+        if nome_material==None or tipo_material==None or local_guardado==None or descricao==None or unidade_de_medida==None or quantidade==None or fornecedor==None:
+            raise forms.ValidationError('Os Campos Devem ser Preenchidos Corretamente')
+
+        return self.cleaned_data
+
+class EmprestimoForm(forms.ModelFormPlus):
+
+    class Meta:
+        model = Emprestimo
+        exclude = []
+
+    def clean(self):
+        ativo = self.cleaned_data.get("ativo")
+        motivo = self.cleaned_data.get("motivo")
+        data_emprestimo = self.cleaned_data.get("data_emprestimo")
+        data_devolucao = self.cleaned_data.get("data_devolucao")
+        estado = self.cleaned_data.get("estado")
+        setor_origem = self.cleaned_data.get("setor_origem")
+        setor_destino = self.cleaned_data.get("setor_destino")
+
+        if ativo==None or motivo==None or data_emprestimo==None or data_devolucao==None or estado==None or setor_origem==None or setor_destino==None:
+            raise forms.ValidationError('Os Campos Devem ser Preenchidos Corretamente')
+
+        #Valida a data das operações de empréstimos
+        data_emprestimo = self.cleaned_data.get("data_emprestimo")
+        data_devolucao = self.cleaned_data.get("data_devolucao")
+
+        if data_emprestimo > data_devolucao:
+            raise forms.ValidationError('A data de empréstimo deve ser inferior a data de devolução')
+
+        #Valida a origem e o destino do ativo/material
+        if setor_origem == setor_destino:
+            raise forms.ValidationError('Um ativo/material não pode ser emprestado para o mesmo local')
+
         return self.cleaned_data

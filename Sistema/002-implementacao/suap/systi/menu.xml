@@ -57,7 +57,7 @@
 		</item>
 
         <item>
-			<hierarchy>SysTI::Emprestimos</hierarchy>
+			<hierarchy>SysTI::Empréstimos</hierarchy>
 			<url>/admin/systi/emprestimo/</url>
 			<permissions>
 				<permission>rh.eh_servidor</permission>
