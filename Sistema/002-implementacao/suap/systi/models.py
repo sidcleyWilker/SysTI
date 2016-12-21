@@ -243,9 +243,9 @@ class Compartimento(ModelPlus):
 class Emprestimo(ModelPlus):
     ativo = models.ForeignKeyPlus('systi.Ativo', verbose_name='Ativos')
     motivo = models.TextField(verbose_name=u'Justificativa', max_length=40)
-    data_emprestimo = models.DateFieldPlus(u'Data do Emprestimo', blank=True, null=True)
-    data_devolucao = models.DateFieldPlus(u'Data de Devolução', blank=True, null=True)
-    estado = models.CharFieldPlus(verbose_name=u'Estado do Emprestimo', max_length=25, choices=ESTADO_EMPRESTIMOS.items(), default=ESTADO_EMPRESTIMOS.get('Ativo'))
+    data_emprestimo = models.DateFieldPlus(u'Data do Empréstimo')
+    data_devolucao = models.DateFieldPlus(u'Data de Devolução')
+    estado = models.CharFieldPlus(verbose_name=u'Estado do Empréstimo', max_length=25, choices=ESTADO_EMPRESTIMOS.items(), default=ESTADO_EMPRESTIMOS.get('Ativo'))
     setor_origem = models.ForeignKeyPlus('comum.Sala', verbose_name='Setor de Origem', related_name='setor_origem')
     setor_destino = models.ForeignKeyPlus('comum.Sala', verbose_name='Setor de Destino', related_name='setor_destino')
 
