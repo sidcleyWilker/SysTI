@@ -4,7 +4,10 @@
     <list default="true" id="c953181a-9d98-427d-a91a-405f4e12cd0c" name="Default" comment="">
       <change type="DELETED" beforePath="$PROJECT_DIR$/systi/static/systi/js/transferencia.js" afterPath="" />
       <change type="DELETED" beforePath="$PROJECT_DIR$/systi/templates/transferencia_detail.html" afterPath="" />
+<<<<<<< Updated upstream
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
+=======
+>>>>>>> Stashed changes
     </list>
     <ignored path="suap.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -28,7 +31,11 @@
       <file leaf-file-name="models.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/systi/models.py">
           <provider selected="true" editor-type-id="text-editor">
+<<<<<<< Updated upstream
             <state vertical-scroll-proportion="-23.88889">
+=======
+            <state vertical-scroll-proportion="-45.88889">
+>>>>>>> Stashed changes
               <caret line="259" column="35" selection-start-line="259" selection-start-column="35" selection-end-line="259" selection-end-column="35" />
               <folding>
                 <element signature="e#25#34#0" expanded="true" />
@@ -40,8 +47,13 @@
       <file leaf-file-name="forms.py" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/systi/forms.py">
           <provider selected="true" editor-type-id="text-editor">
+<<<<<<< Updated upstream
             <state vertical-scroll-proportion="0.3306773">
               <caret line="75" column="6" selection-start-line="75" selection-start-column="6" selection-end-line="75" selection-end-column="6" />
+=======
+            <state vertical-scroll-proportion="0.25896415">
+              <caret line="108" column="0" selection-start-line="108" selection-start-column="0" selection-end-line="108" selection-end-column="0" />
+>>>>>>> Stashed changes
               <folding />
             </state>
           </provider>
@@ -50,8 +62,13 @@
       <file leaf-file-name="admin.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/systi/admin.py">
           <provider selected="true" editor-type-id="text-editor">
+<<<<<<< Updated upstream
             <state vertical-scroll-proportion="-19.222221">
               <caret line="159" column="11" selection-start-line="159" selection-start-column="11" selection-end-line="159" selection-end-column="11" />
+=======
+            <state vertical-scroll-proportion="0.0">
+              <caret line="160" column="11" selection-start-line="160" selection-start-column="11" selection-end-line="160" selection-end-column="11" />
+>>>>>>> Stashed changes
               <folding />
             </state>
           </provider>
@@ -60,7 +77,7 @@
       <file leaf-file-name="menu.xml" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/systi/menu.xml">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="-19.222221">
+            <state vertical-scroll-proportion="0.0">
               <caret line="61" column="25" selection-start-line="61" selection-start-column="25" selection-end-line="61" selection-end-column="25" />
               <folding />
             </state>
@@ -128,7 +145,7 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
-      <pane id="Scratches" />
+      <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
           <PATH>
@@ -199,7 +216,7 @@
           </PATH>
         </subPane>
       </pane>
-      <pane id="Scope" />
+      <pane id="Scratches" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -725,7 +742,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/systi/menu.xml">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-19.222221">
+        <state vertical-scroll-proportion="0.0">
           <caret line="61" column="25" selection-start-line="61" selection-start-column="25" selection-end-line="61" selection-end-column="25" />
           <folding />
         </state>
@@ -733,15 +750,24 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/systi/admin.py">
       <provider selected="true" editor-type-id="text-editor">
+<<<<<<< Updated upstream
         <state vertical-scroll-proportion="-19.222221">
           <caret line="159" column="11" selection-start-line="159" selection-start-column="11" selection-end-line="159" selection-end-column="11" />
+=======
+        <state vertical-scroll-proportion="0.0">
+          <caret line="160" column="11" selection-start-line="160" selection-start-column="11" selection-end-line="160" selection-end-column="11" />
+>>>>>>> Stashed changes
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/systi/models.py">
       <provider selected="true" editor-type-id="text-editor">
+<<<<<<< Updated upstream
         <state vertical-scroll-proportion="-23.88889">
+=======
+        <state vertical-scroll-proportion="-45.88889">
+>>>>>>> Stashed changes
           <caret line="259" column="35" selection-start-line="259" selection-start-column="35" selection-end-line="259" selection-end-column="35" />
           <folding>
             <element signature="e#25#34#0" expanded="true" />
@@ -751,8 +777,13 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/systi/forms.py">
       <provider selected="true" editor-type-id="text-editor">
+<<<<<<< Updated upstream
         <state vertical-scroll-proportion="0.3306773">
           <caret line="75" column="6" selection-start-line="75" selection-start-column="6" selection-end-line="75" selection-end-column="6" />
+=======
+        <state vertical-scroll-proportion="0.25896415">
+          <caret line="108" column="0" selection-start-line="108" selection-start-column="0" selection-end-line="108" selection-end-column="0" />
+>>>>>>> Stashed changes
           <folding />
         </state>
       </provider>
