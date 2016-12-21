@@ -26,16 +26,62 @@
 
         <tr>
             <td>Data Prevista de Devolução</td>
-            <td> {{emprestimo.devolucao}}</td>
+            <td> {{emprestimo.data_devolucao}}</td>
         </tr>
 
         <tr>
             <td>Estado do Emprestimo</td>
             <td>{{emprestimo.estado}}</td>
         </tr>
+
+        <tr>
+            <td>Setor Origem</td>
+            <td>{{emprestimo.setor_origem}}</td>
+        </tr>
+
+        <tr>
+            <td>Setor Destino</td>
+            <td>{{emprestimo.setor_destino}}</td>
+        </tr>
+
     </tbody>
 
 </table>
+
+{% box 'Dados do Ativo' %}
+
+<table class="info">
+    <tbody>
+        <tr>
+            <td>Nome</td>
+            <td>{{ativo.nome}}</td>
+        </tr>
+    </tbody>
+
+    <tbody>
+        <tr>
+            <td>Número de Tombamento</td>
+            <td>{{ativo.tombamento}}</td>
+        </tr>
+    </tbody>
+
+    <tbody>
+        <tr>
+            <td>Categoria do Ativo</td>
+            <td>{{ativo.categoria_do_ativo}}</td>
+        </tr>
+    </tbody>
+
+    <tbody>
+        <tr>
+            <td>Fornecido Por</td>
+            <td>{{ativo.fornecedor.nome}}</td>
+        </tr>
+    </tbody>
+
+</table>
+
+{% endbox %}
 
 {% endbox %}
 {% endblock %}

@@ -94,14 +94,14 @@ def transferencia_transferir(request, id):
 def material_detail(request, id):
 
     try:
-        fornecedor = Fornecedor.objects.filter(material=id)
         material = Material.objects.get(pk=id)
+        fornecedor = material.fornecedor
     except material.DoesNoExist:
         raise Http404(u"Material Não existe")
 
     return locals()
 
-@rtr
+@rtr()
 def compartimento_detail(request, id):
     try:
         compartimento = Compartimento.objects.get(pk=id)
@@ -110,10 +110,11 @@ def compartimento_detail(request, id):
         raise Http404(u"Compartimento não existe.")
     return locals()
 
-@rtr
+@rtr()
 def emprestimo_detail(request, id):
     try:
         emprestimo = Emprestimo.objects.get(pk=id)
+        ativo = emprestimo.ativo
     except emprestimo.DoesNotExist:
         raise Http404(u'Empréstimo não existe')
 

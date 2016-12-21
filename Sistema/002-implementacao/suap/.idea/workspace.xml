@@ -2,8 +2,8 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="c953181a-9d98-427d-a91a-405f4e12cd0c" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/systi/templates/emprestimo_detail.html" afterPath="$PROJECT_DIR$/systi/templates/emprestimo_detail.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/systi/templates/material_detail.html" afterPath="$PROJECT_DIR$/systi/templates/material_detail.html" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/systi/urls.py" afterPath="$PROJECT_DIR$/systi/urls.py" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/systi/views.py" afterPath="$PROJECT_DIR$/systi/views.py" />
     </list>
@@ -26,11 +26,11 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="models.py" pinned="false" current-in-tab="true">
+      <file leaf-file-name="models.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/systi/models.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.77868855">
-              <caret line="256" column="50" selection-start-line="256" selection-start-column="50" selection-end-line="256" selection-end-column="50" />
+            <state vertical-scroll-proportion="-19.11111">
+              <caret line="61" column="13" selection-start-line="61" selection-start-column="4" selection-end-line="61" selection-end-column="13" />
               <folding>
                 <element signature="e#25#34#0" expanded="true" />
               </folding>
@@ -41,8 +41,18 @@
       <file leaf-file-name="emprestimo_detail.html" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/systi/templates/emprestimo_detail.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="-14.0">
-              <caret line="21" column="12" selection-start-line="21" selection-start-column="12" selection-end-line="21" selection-end-column="12" />
+            <state vertical-scroll-proportion="-13.777778">
+              <caret line="72" column="12" selection-start-line="72" selection-start-column="12" selection-end-line="72" selection-end-column="12" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="material_detail.html" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/systi/templates/material_detail.html">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="0.77868855">
+              <caret line="76" column="12" selection-start-line="76" selection-start-column="12" selection-end-line="76" selection-end-column="12" />
               <folding />
             </state>
           </provider>
@@ -71,16 +81,10 @@
       <file leaf-file-name="views.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/systi/views.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="-19.11111">
-              <caret line="113" column="35" selection-start-line="113" selection-start-column="35" selection-end-line="113" selection-end-column="35" />
+            <state vertical-scroll-proportion="-13.777778">
+              <caret line="103" column="6" selection-start-line="103" selection-start-column="6" selection-end-line="103" selection-end-column="6" />
               <folding>
-                <element signature="e#420#629#0" expanded="false" />
-                <element signature="e#686#848#0" expanded="false" />
-                <element signature="e#903#1113#0" expanded="false" />
-                <element signature="e#1145#1400#0" expanded="false" />
                 <element signature="e#1721#2185#0" expanded="false" />
-                <element signature="e#2235#2807#0" expanded="false" />
-                <element signature="e#3116#3289#0" expanded="false" />
               </folding>
             </state>
           </provider>
@@ -104,7 +108,6 @@
         <option value="$PROJECT_DIR$/systi/tests.py" />
         <option value="$PROJECT_DIR$/systi/templates/acessobiometrico_detail.html" />
         <option value="$PROJECT_DIR$/systi/templates/materiais_detail.html" />
-        <option value="$PROJECT_DIR$/systi/templates/material_detail.html" />
         <option value="$PROJECT_DIR$/systi/templates/compartimento_detail.html" />
         <option value="$PROJECT_DIR$/systi/permissions.xml" />
         <option value="$PROJECT_DIR$/systi/menu.xml" />
@@ -112,8 +115,9 @@
         <option value="$PROJECT_DIR$/systi/admin.py" />
         <option value="$PROJECT_DIR$/systi/forms.py" />
         <option value="$PROJECT_DIR$/systi/urls.py" />
-        <option value="$PROJECT_DIR$/systi/templates/emprestimo_detail.html" />
         <option value="$PROJECT_DIR$/systi/views.py" />
+        <option value="$PROJECT_DIR$/systi/templates/emprestimo_detail.html" />
+        <option value="$PROJECT_DIR$/systi/templates/material_detail.html" />
       </list>
     </option>
   </component>
@@ -434,7 +438,9 @@
     <option name="FILE_HISTORY_SPLITTER_PROPORTION" value="0.654321" />
   </component>
   <component name="XDebuggerManager">
-    <breakpoint-manager />
+    <breakpoint-manager>
+      <option name="time" value="2" />
+    </breakpoint-manager>
     <watches-manager />
   </component>
   <component name="editorHistoryManager">
@@ -725,14 +731,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/systi/templates/material_detail.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-0.72131145">
-          <caret line="4" column="19" selection-start-line="0" selection-start-column="0" selection-end-line="12" selection-end-column="29" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/systi/menu.xml">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.60655737">
@@ -765,14 +763,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/systi/admin.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-18.444445">
-          <caret line="160" column="11" selection-start-line="160" selection-start-column="11" selection-end-line="160" selection-end-column="11" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/systi/urls.py">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="-15.333333">
@@ -781,37 +771,47 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/systi/admin.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-18.444445">
+          <caret line="160" column="11" selection-start-line="160" selection-start-column="11" selection-end-line="160" selection-end-column="11" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/systi/views.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-19.11111">
-          <caret line="113" column="35" selection-start-line="113" selection-start-column="35" selection-end-line="113" selection-end-column="35" />
+        <state vertical-scroll-proportion="-13.777778">
+          <caret line="103" column="6" selection-start-line="103" selection-start-column="6" selection-end-line="103" selection-end-column="6" />
           <folding>
-            <element signature="e#420#629#0" expanded="false" />
-            <element signature="e#686#848#0" expanded="false" />
-            <element signature="e#903#1113#0" expanded="false" />
-            <element signature="e#1145#1400#0" expanded="false" />
             <element signature="e#1721#2185#0" expanded="false" />
-            <element signature="e#2235#2807#0" expanded="false" />
-            <element signature="e#3116#3289#0" expanded="false" />
           </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/systi/templates/emprestimo_detail.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-14.0">
-          <caret line="21" column="12" selection-start-line="21" selection-start-column="12" selection-end-line="21" selection-end-column="12" />
+        <state vertical-scroll-proportion="-13.777778">
+          <caret line="72" column="12" selection-start-line="72" selection-start-column="12" selection-end-line="72" selection-end-column="12" />
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/systi/models.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.77868855">
-          <caret line="256" column="50" selection-start-line="256" selection-start-column="50" selection-end-line="256" selection-end-column="50" />
+        <state vertical-scroll-proportion="-19.11111">
+          <caret line="61" column="13" selection-start-line="61" selection-start-column="4" selection-end-line="61" selection-end-column="13" />
           <folding>
             <element signature="e#25#34#0" expanded="true" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/systi/templates/material_detail.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.77868855">
+          <caret line="76" column="12" selection-start-line="76" selection-start-column="12" selection-end-line="76" selection-end-column="12" />
+          <folding />
         </state>
       </provider>
     </entry>

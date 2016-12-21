@@ -9,6 +9,8 @@ urlpatterns = patterns('systi.views',
 
     (r'^material/(?P<id>\d+)/$', 'material_detail'),
 
+    (r'^emprestimo/(?P<id>\d+)/$', 'emprestimo_detail'),
+
     (r'^acesso_biometrico/(?P<id>\d+)/$', 'acesso_biometrico_detail'),
     (r'^acessobiometrico/desregistra/(?P<id>\d+)/$', 'acesso_biometrico_desregistra'),
 
@@ -23,6 +25,6 @@ urlpatterns = patterns('systi.views',
 
     (r'^compartimento/(?P<id>\d+)/$', 'compartimento_detail'),
 
-    (r'^emprestimo/(?P<id>\d+)/$', 'emprestimo_detail'),
+
 
 )
