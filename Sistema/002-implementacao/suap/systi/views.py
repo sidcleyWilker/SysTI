@@ -114,6 +114,7 @@ def compartimento_detail(request, id):
 def emprestimo_detail(request, id):
     try:
         emprestimo = Emprestimo.objects.get(pk=id)
-    except Emprestimo.DoesNotExist:
-        raise Http404(u'Emprestimo não existe')
+    except emprestimo.DoesNotExist:
+        raise Http404(u'Empréstimo não existe')
+
     return locals()
