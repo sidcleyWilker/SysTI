@@ -2,7 +2,9 @@
 
 
 from django.http import Http404
-from .models import Fornecedor, Ativo, AcessoBiometrico, Atributo, Categoria, Transferencia, Emprestimo, Compartimento, Material
+
+from systi.models import ServicoExterno
+from .models import Fornecedor, Ativo, AcessoBiometrico, Atributo, Categoria, Transferencia, Emprestimo, Compartimento, Material, ServicoInterno
 from djtools.utils import rtr, httprr
 from django.utils import timezone
 from django.shortcuts import render
@@ -117,5 +119,23 @@ def emprestimo_detail(request, id):
         ativo = emprestimo.ativo
     except emprestimo.DoesNotExist:
         raise Http404(u'Empréstimo não existe')
+
+    return locals()
+
+@rtr()
+def servicosinternos_detail(request, id):
+    try:
+        servicos_interno = ServicoInterno.objects.get(pk=id)
+    except servicos_interno.DoesNotExist:
+        raise Http404(u'Serviço Interno não Existe')
+
+    return locals()
+
+@rtr()
+def servicosexternos_detail(request, id):
+    try:
+        servico_externo = ServicoExterno.object.get(pk=id)
+    except servico_externo.DoesNotExist:
+        raise Http404(u'Serviço Externo não Existe')
 
     return locals()

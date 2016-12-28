@@ -157,6 +157,25 @@ class EmprestimoAdmin(ModelAdminPlus):
     )
     form = EmprestimoForm
 
+class ServicosInternosAdmin(ModelAdminPlus):
+    search_fields = ['ordem_servico', 'estado_servico',]
+    list_filter = ['tipo_servico','estado_servico',]
+    list_display = ['diagnostico', 'tipo_servico', 'estado_servico',]
+    list_display_icons = True
+
+    #fieldsets = (
+     #   (None, {
+      #      'estado_servico',
+#
+ #       }))
+
+class ServicosExternosAdmin(ModelAdminPlus):
+    search_fields = ['ordem_servico', 'estado_servico',]
+    list_filter = ['tipo_servico','estado_servico',]
+    list_display = ['diagnostico', 'tipo_servico', 'estado_servico',]
+    list_display_icons = True
+
+
 admin.site.register(Transferencia, TransferenciaAdmin)
 admin.site.register(Categoria, CategoriaAdmin)
 admin.site.register(Ativo, AtivoAdmin)
@@ -165,3 +184,5 @@ admin.site.register(AcessoBiometrico ,AcessoBiometricoAdmin)
 admin.site.register(Material, MaterialAdmin)
 admin.site.register(Compartimento, CompartimentoAdmin)
 admin.site.register(Emprestimo, EmprestimoAdmin)
+admin.site.register(ServicoInterno, ServicosInternosAdmin)
+admin.site.register(ServicoExterno, ServicosExternosAdmin)

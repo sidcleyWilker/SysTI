@@ -41,7 +41,7 @@
 		</item>
 
 		<item>
-			<hierarchy>SysTI::Materiais</hierarchy>
+			<hierarchy>SysTI::Materiais::Material</hierarchy>
 			<url>/admin/systi/material/</url>
 			<permissions>
 				<permission>rh.eh_servidor</permission>
@@ -63,6 +63,23 @@
 				<permission>rh.eh_servidor</permission>
 			</permissions>
 		</item>
+
+		<item>
+			<hierarchy>SysTI::Serviços::Interno</hierarchy>
+			<url>/admin/systi/servicointerno</url>
+			<permissions>
+				<permission>rh.eh_servidor</permission>
+			</permissions>
+		</item>
+
+		<item>
+			<hierarchy>SysTI::Serviços::Externo</hierarchy>
+			<url>/admin/systi/servicoexterno</url>
+			<permissions>
+				<permission>rh.eh_servidor</permission>
+			</permissions>
+		</item>
+
 
 	</itens>
 </menu>

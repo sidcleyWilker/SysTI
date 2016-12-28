@@ -25,6 +25,10 @@ urlpatterns = patterns('systi.views',
 
     (r'^compartimento/(?P<id>\d+)/$', 'compartimento_detail'),
 
+    (r'^servicointerno/(?P<id>\d+)/$', 'servicosinternos_detail'),
+
+    (r'^servicoexterno/(?P<id>\d+)/$', 'servicosexternos_detail'),
+
 
 
 )

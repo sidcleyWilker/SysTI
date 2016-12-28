@@ -55,6 +55,13 @@ ESTADO_EMPRESTIMOS = {
 
 }
 
+TIPO_SERVICO = {
+    'Suporte' : 'Suporte',
+    'Manutenção' : 'Manutenção'
+}
+
+
+
 class Fornecedor(ModelPlus):
     nome = models.CharFieldPlus(verbose_name=u'Nome do Fornecedor', max_length=30)
     cpf = models.BrCpfField(verbose_name=u'CPF', blank=True, null=True)
@@ -258,3 +265,53 @@ class Emprestimo(ModelPlus):
 
     def __str__(self):
         return self.data_emprestimo
+
+class Servico(ModelPlus):
+
+    class Meta:
+        abstract = True
+
+    data_diagnostico = models.DateFieldPlus(u'Data do Diagnóstico')
+    diagnostico = models.TextField(verbose_name=u'Diagnóstico', max_length=300)
+    defeitos_apresentados = models.TextField(verbose_name='Defeitos Apresentados', max_length=300)
+    tipo_servico = models.CharFieldPlus(verbose_name=u'Tipo do Serviço', max_length=25, choices=TIPO_SERVICO.items())
+    estado_servico = models.CharFieldPlus(verbose_name=u'Estado', max_length=25, choices=ESTADO_EMPRESTIMOS.items())
+    ordem_servico = models.CharFieldPlus(verbose_name='Número da Ordem do Serviço', max_length=25)
+    #Materiais e chamado
+    materiais_utilizados = models.ManyToManyFieldPlus('systi.Material', verbose_name='Materiais Utilizados',blank=True, null=True)
+    anexar_registro_servico = models.FileField(verbose_name='Anexar Registro do Serviço')
+
+
+class ServicoInterno(Servico):
+    data_realizacao = models.DateFieldPlus(u'Data da Realização')
+    data_prevista_conclusao = models.DateFieldPlus(u'Data Prevista da Conclusão')
+    data_conclusao = models.DateFieldPlus(u'Data da Conclusão', blank=True, null=True)
+
+    class Meta:
+        verbose_name = u'Serviço Interno'
+        verbose_name_plural = u'Serviços Internos'
+
+    def get_absolute_url(self):
+        return '/systi/servicointerno/{}/'.format(self.id)
+
+    def __str__(self):
+        return self.ordem_servico
+
+class ServicoExterno(Servico):
+    data_do_envio = models.DateFieldPlus(u'Data do Envio', blank=True, null=True)
+    data_prevista_devolucao = models.DateFieldPlus(u'Data Prevista da Devolução', blank=True, null=True)
+    equipamentos_enviados = models.ManyToManyFieldPlus('systi.Ativo', verbose_name='Equipamentos Enviados', blank=True, null=True)
+    anexo_nota_fiscal_recibo = models.FileField(verbose_name='Anexar Nota Fiscal ou Recibo', blank=True, null=True)
+    anexo_termo = models.FileField(verbose_name='Anexar Termo', blank=True, null=True)
+    prestador = models.ForeignKeyPlus('systi.Fornecedor', verbose_name='Selecionar Prestador', blank=True, null=True)
+    parecer = models.CharFieldPlus(verbose_name='Parecer', blank=True, null=True)
+
+    class Meta:
+        verbose_name = u'Serviço Externo'
+        verbose_name_plural = u'Serviços Externos'
+
+    def get_absolute_url(self):
+        return '/systi/servicoexterno/{}/'.format(self.id)
+
+    def __str__(self):
+        return self.ordem_servico
