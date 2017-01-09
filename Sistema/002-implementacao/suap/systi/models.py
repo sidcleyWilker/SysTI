@@ -166,7 +166,7 @@ class AcessoBiometrico(ModelPlus):
 
 class Transferencia(ModelPlus):
     motivo_transferencia = models.CharFieldPlus(
-        verbose_name=u'Motivo da Transferencia',
+        verbose_name=u'Motivo da Transferência',
         max_length=30,
         choices=SysTIChoices.TIPOS_SOLICITACAO.items(),
         default=SysTIChoices.CHAMADO
@@ -206,8 +206,8 @@ class Transferencia(ModelPlus):
                                                      IMAGE_EXTENSIONS[-1] + '.'
 
     class Meta:
-        verbose_name = u'Transferencia'
-        verbose_name_plural = u'Transferencias'
+        verbose_name = u'Transferência'
+        verbose_name_plural = u'Transferências'
 
     def get_absolute_url(self):
         return '/systi/transferencia/{}/'.format(self.id)
@@ -257,8 +257,8 @@ class Emprestimo(ModelPlus):
     setor_destino = models.ForeignKeyPlus('comum.Sala', verbose_name='Setor de Destino', related_name='setor_destino')
 
     class Meta:
-        verbose_name = u'Emprestimo'
-        verbose_name_plural = u'Emprestimos'
+        verbose_name = u'Empréstimo'
+        verbose_name_plural = u'Empréstimos'
 
     def get_absolute_url(self):
         return '/systi/emprestimo/{}/'.format(self.id)

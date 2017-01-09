@@ -17,30 +17,6 @@
 		</item>
 
 		<item>
-			<hierarchy>SysTI::Fornecedores</hierarchy>
-			<url>/admin/systi/fornecedor/</url>
-			<permissions>
-				<permission>rh.eh_servidor</permission>
-			</permissions>
-		</item>
-
-		<item>
-			<hierarchy>SysTI::Acessos Biometricos</hierarchy>
-			<url>/admin/systi/acessobiometrico/</url>
-			<permissions>
-				<permission>rh.eh_servidor</permission>
-			</permissions>
-		</item>
-
-		<item>
-			<hierarchy>SysTI::Transferencias</hierarchy>
-			<url>/admin/systi/transferencia/</url>
-			<permissions>
-				<permission>rh.eh_servidor</permission>
-			</permissions>
-		</item>
-
-		<item>
 			<hierarchy>SysTI::Materiais::Material</hierarchy>
 			<url>/admin/systi/material/</url>
 			<permissions>
@@ -51,14 +27,6 @@
         <item>
 			<hierarchy>SysTI::Materiais::Compartimentos</hierarchy>
 			<url>/admin/systi/compartimento/</url>
-			<permissions>
-				<permission>rh.eh_servidor</permission>
-			</permissions>
-		</item>
-
-        <item>
-			<hierarchy>SysTI::Empréstimos</hierarchy>
-			<url>/admin/systi/emprestimo/</url>
 			<permissions>
 				<permission>rh.eh_servidor</permission>
 			</permissions>
@@ -80,6 +48,37 @@
 			</permissions>
 		</item>
 
+		<item>
+			<hierarchy>SysTI::Acessos Biometricos</hierarchy>
+			<url>/admin/systi/acessobiometrico/</url>
+			<permissions>
+				<permission>rh.eh_servidor</permission>
+			</permissions>
+		</item>
+
+		<item>
+			<hierarchy>SysTI::Empréstimos</hierarchy>
+			<url>/admin/systi/emprestimo/</url>
+			<permissions>
+				<permission>rh.eh_servidor</permission>
+			</permissions>
+		</item>
+
+		<item>
+			<hierarchy>SysTI::Fornecedores</hierarchy>
+			<url>/admin/systi/fornecedor/</url>
+			<permissions>
+				<permission>rh.eh_servidor</permission>
+			</permissions>
+		</item>
+
+		<item>
+			<hierarchy>SysTI::Transferências</hierarchy>
+			<url>/admin/systi/transferencia/</url>
+			<permissions>
+				<permission>rh.eh_servidor</permission>
+			</permissions>
+		</item>
 
 	</itens>
 </menu>
