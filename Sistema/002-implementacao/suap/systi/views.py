@@ -134,7 +134,7 @@ def servicosinternos_detail(request, id):
 @rtr()
 def servicosexternos_detail(request, id):
     try:
-        servico_externo = ServicoExterno.object.get(pk=id)
+        servico_externo = ServicoExterno.objects.get(pk=id)
     except servico_externo.DoesNotExist:
         raise Http404(u'Serviço Externo não Existe')
 

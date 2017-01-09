@@ -2,12 +2,9 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="c953181a-9d98-427d-a91a-405f4e12cd0c" name="Default" comment="">
-      <change type="DELETED" beforePath="$PROJECT_DIR$/systi/migrations/0001_initial.py" afterPath="" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/misc.xml" afterPath="$PROJECT_DIR$/.idea/misc.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/suap.iml" afterPath="$PROJECT_DIR$/.idea/suap.iml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/systi/menu.xml" afterPath="$PROJECT_DIR$/systi/menu.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/systi/models.py" afterPath="$PROJECT_DIR$/systi/models.py" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/systi/templates/servicosexternos_detail.html" afterPath="$PROJECT_DIR$/systi/templates/servicosexternos_detail.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/systi/views.py" afterPath="$PROJECT_DIR$/systi/views.py" />
     </list>
     <ignored path="suap.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -28,51 +25,11 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="models.py" pinned="false" current-in-tab="true">
+      <file leaf-file-name="models.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/systi/models.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="2.5889328">
-              <caret line="168" column="42" selection-start-line="168" selection-start-column="42" selection-end-line="168" selection-end-column="42" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="forms.py" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/systi/forms.py">
-          <provider selected="true" editor-type-id="text-editor">
             <state vertical-scroll-proportion="0.0">
-              <caret line="92" column="56" selection-start-line="92" selection-start-column="56" selection-end-line="92" selection-end-column="56" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="menu.xml" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/systi/menu.xml">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="-48.666668">
-              <caret line="73" column="0" selection-start-line="73" selection-start-column="0" selection-end-line="73" selection-end-column="0" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="servicosexternos_detail.html" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/systi/templates/servicosexternos_detail.html">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="-0.0">
-              <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="servicosinternos_detail.html" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/systi/templates/servicosinternos_detail.html">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="-11.333333">
-              <caret line="17" column="40" selection-start-line="17" selection-start-column="40" selection-end-line="17" selection-end-column="40" />
+              <caret line="301" column="27" selection-start-line="301" selection-start-column="4" selection-end-line="301" selection-end-column="27" />
               <folding />
             </state>
           </provider>
@@ -82,11 +39,32 @@
         <entry file="file://$PROJECT_DIR$/systi/views.py">
           <provider selected="true" editor-type-id="text-editor">
             <state vertical-scroll-proportion="0.0">
-              <caret line="8" column="0" selection-start-line="8" selection-start-column="0" selection-end-line="8" selection-end-column="0" />
+              <caret line="132" column="0" selection-start-line="132" selection-start-column="0" selection-end-line="132" selection-end-column="0" />
               <folding>
-                <marker date="1483982394622" expanded="true" signature="26:58" placeholder="import ..." />
-                <marker date="1483982394622" expanded="true" signature="4012:4040" placeholder="..." />
+                <element signature="e#26#57#0" expanded="true" />
+                <marker date="1483994128894" expanded="true" signature="26:58" placeholder="import ..." />
+                <marker date="1483994128894" expanded="true" signature="4013:4041" placeholder="..." />
               </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="servicosexternos_detail.html" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/systi/templates/servicosexternos_detail.html">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="0.09836066">
+              <caret line="4" column="19" selection-start-line="4" selection-start-column="19" selection-end-line="4" selection-end-column="19" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="urls.py" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/systi/urls.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="0.0">
+              <caret line="27" column="66" selection-start-line="27" selection-start-column="66" selection-end-line="27" selection-end-column="66" />
+              <folding />
             </state>
           </provider>
         </entry>
@@ -116,10 +94,11 @@
         <option value="$PROJECT_DIR$/systi/templates/material_detail.html" />
         <option value="$PROJECT_DIR$/systi/templates/servicosinternos_detail.html" />
         <option value="$PROJECT_DIR$/systi/admin.py" />
-        <option value="$PROJECT_DIR$/systi/views.py" />
         <option value="$PROJECT_DIR$/systi/urls.py" />
         <option value="$PROJECT_DIR$/systi/models.py" />
         <option value="$PROJECT_DIR$/systi/menu.xml" />
+        <option value="$PROJECT_DIR$/systi/templates/servicosexternos_detail.html" />
+        <option value="$PROJECT_DIR$/systi/views.py" />
       </list>
     </option>
   </component>
@@ -202,24 +181,6 @@
             </PATH_ELEMENT>
             <PATH_ELEMENT>
               <option name="myItemId" value="templates" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="suap" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="suap" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="systi" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="migrations" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -451,8 +412,9 @@
         <state vertical-scroll-proportion="0.0">
           <caret line="8" column="0" selection-start-line="8" selection-start-column="0" selection-end-line="8" selection-end-column="0" />
           <folding>
-            <marker date="1483982394622" expanded="true" signature="26:58" placeholder="import ..." />
-            <marker date="1483982394622" expanded="true" signature="4012:4040" placeholder="..." />
+            <element signature="e#26#57#0" expanded="true" />
+            <marker date="1483994128894" expanded="true" signature="26:58" placeholder="import ..." />
+            <marker date="1483994128894" expanded="true" signature="4013:4041" placeholder="..." />
           </folding>
         </state>
       </provider>
@@ -462,8 +424,9 @@
         <state vertical-scroll-proportion="0.0">
           <caret line="6" column="0" selection-start-line="6" selection-start-column="0" selection-end-line="6" selection-end-column="0" />
           <folding>
-            <marker date="1483982394622" expanded="true" signature="26:58" placeholder="import ..." />
-            <marker date="1483982394622" expanded="true" signature="4012:4040" placeholder="..." />
+            <element signature="e#26#57#0" expanded="true" />
+            <marker date="1483994128894" expanded="true" signature="26:58" placeholder="import ..." />
+            <marker date="1483994128894" expanded="true" signature="4013:4041" placeholder="..." />
           </folding>
         </state>
       </provider>
@@ -749,13 +712,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/systi/urls.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="27" column="66" selection-start-line="27" selection-start-column="66" selection-end-line="27" selection-end-column="66" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/suap/urls.py">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="-0.80237156">
@@ -772,7 +728,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/systi/forms.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
+        <state vertical-scroll-proportion="0.023715414">
           <caret line="92" column="56" selection-start-line="92" selection-start-column="56" selection-end-line="92" selection-end-column="56" />
           <folding />
         </state>
@@ -780,8 +736,32 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/systi/menu.xml">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-48.666668">
+        <state vertical-scroll-proportion="1.795082">
           <caret line="73" column="0" selection-start-line="73" selection-start-column="0" selection-end-line="73" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/systi/models.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="301" column="27" selection-start-line="301" selection-start-column="4" selection-end-line="301" selection-end-column="27" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/systi/templates/servicosinternos_detail.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="2.0163934">
+          <caret line="82" column="11" selection-start-line="82" selection-start-column="11" selection-end-line="82" selection-end-column="11" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/systi/urls.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="27" column="66" selection-start-line="27" selection-start-column="66" selection-end-line="27" selection-end-column="66" />
           <folding />
         </state>
       </provider>
@@ -789,34 +769,19 @@
     <entry file="file://$PROJECT_DIR$/systi/views.py">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
-          <caret line="8" column="0" selection-start-line="8" selection-start-column="0" selection-end-line="8" selection-end-column="0" />
+          <caret line="132" column="0" selection-start-line="132" selection-start-column="0" selection-end-line="132" selection-end-column="0" />
           <folding>
-            <marker date="1483982394622" expanded="true" signature="26:58" placeholder="import ..." />
-            <marker date="1483982394622" expanded="true" signature="4012:4040" placeholder="..." />
+            <element signature="e#26#57#0" expanded="true" />
+            <marker date="1483994128894" expanded="true" signature="26:58" placeholder="import ..." />
+            <marker date="1483994128894" expanded="true" signature="4013:4041" placeholder="..." />
           </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/systi/templates/servicosinternos_detail.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-11.333333">
-          <caret line="17" column="40" selection-start-line="17" selection-start-column="40" selection-end-line="17" selection-end-column="40" />
-          <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/systi/templates/servicosexternos_detail.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/systi/models.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="2.5889328">
-          <caret line="168" column="42" selection-start-line="168" selection-start-column="42" selection-end-line="168" selection-end-column="42" />
+        <state vertical-scroll-proportion="0.09836066">
+          <caret line="4" column="19" selection-start-line="4" selection-start-column="19" selection-end-line="4" selection-end-column="19" />
           <folding />
         </state>
       </provider>

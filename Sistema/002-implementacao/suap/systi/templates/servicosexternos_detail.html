@@ -1,0 +1,94 @@
+{% extends super_template %}
+{% load filters %}
+
+
+{% block content %}
+
+<div>
+    <h2>
+         Serviço Nº {{servico_externo.id}}
+    </h2>
+</div>
+
+{% box 'Dados do Serviço' %}
+
+<table class="info">
+    <tbody>
+        <tr>
+            <td>Data do Diagnóstico</td>
+            <td> {{servico_externo.data_diagnostico}}</td>
+        </tr>
+    </tbody>
+
+    <tbody>
+        <tr>
+            <td>Diagnóstico</td>
+            <td> {{servico_externo.diagnostico}}</td>
+        </tr>
+    </tbody>
+
+    <tbody>
+        <tr>
+            <td>Defeitos Apresentados</td>
+            <td> {{servico_externo.defeitos_apresentados}}</td>
+        </tr>
+    </tbody>
+
+    <tbody>
+        <tr>
+            <td>Tipo Serviço</td>
+            <td> {{servico_externo.tipo_servico}}</td>
+        </tr>
+    </tbody>
+
+    <tbody>
+        <tr>
+            <td>Estado do Serviço</td>
+            <td> {{servico_externo.estado_servico}}</td>
+        </tr>
+    </tbody>
+
+    <tbody>
+        <tr>
+            <td>Ordem do Serviço</td>
+            <td> {{servico_externo.ordem_servico}}</td>
+        </tr>
+    </tbody>
+
+</table>
+
+{% box 'Materiais e Chamado' %}
+
+<table class="info">
+    <tbody>
+        <tr>
+            <td>Materiais a Serem Utilizados</td>
+        </tr>
+    </tbody>
+
+</table>
+
+{% endbox %}
+
+{% box 'Dados Adicionais' %}
+
+<table class="info">
+    <tbody>
+        <tr>
+            <td>Data do Envio</td>
+            <td> {{servico_externo.data_do_envio}}</td>
+        </tr>
+    </tbody>
+
+    <tbody>
+        <tr>
+            <td>Data Prevista de Devolução</td>
+            <td> {{servico_externo.data_prevista_devolucao}}</td>
+        </tr>
+    </tbody>
+
+</table>
+
+{% endbox %}
+{% endbox %}
+{% endblock %}
