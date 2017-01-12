@@ -163,17 +163,15 @@ class ServicosInternosAdmin(ModelAdminPlus):
     list_display = ['diagnostico', 'tipo_servico', 'estado_servico',]
     list_display_icons = True
 
-    #fieldsets = (
-     #   (None, {
-      #      'estado_servico',
-#
- #       }))
+    form = ServicoInternoForm
 
 class ServicosExternosAdmin(ModelAdminPlus):
     search_fields = ['ordem_servico', 'estado_servico',]
     list_filter = ['tipo_servico','estado_servico',]
     list_display = ['diagnostico', 'tipo_servico', 'estado_servico',]
     list_display_icons = True
+
+    form = ServicoExternoForm
 
 
 admin.site.register(Transferencia, TransferenciaAdmin)

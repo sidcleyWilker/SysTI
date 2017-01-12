@@ -57,7 +57,7 @@ ESTADO_EMPRESTIMOS = {
 
 TIPO_SERVICO = {
     'Suporte' : 'Suporte',
-    'Manutenção' : 'Manutenção'
+    'Manutencao' : 'Manutenção',
 }
 
 
@@ -274,12 +274,12 @@ class Servico(ModelPlus):
     data_diagnostico = models.DateFieldPlus(u'Data do Diagnóstico')
     diagnostico = models.TextField(verbose_name=u'Diagnóstico', max_length=300)
     defeitos_apresentados = models.TextField(verbose_name='Defeitos Apresentados', max_length=300)
-    tipo_servico = models.CharFieldPlus(verbose_name=u'Tipo do Serviço', max_length=25, choices=TIPO_SERVICO.items())
+    tipo_servico = models.CharFieldPlus(verbose_name=u'Tipo do Serviço', max_length=25, choices=TIPO_SERVICO.items(), default=TIPO_SERVICO.get('Manutenção'))
     estado_servico = models.CharFieldPlus(verbose_name=u'Estado', max_length=25, choices=ESTADO_EMPRESTIMOS.items())
     ordem_servico = models.CharFieldPlus(verbose_name='Número da Ordem do Serviço', max_length=25)
     #Materiais e chamado
-    materiais_utilizados = models.ManyToManyFieldPlus('systi.Material', verbose_name='Materiais Utilizados',blank=True, null=True)
-    anexar_registro_servico = models.FileField(verbose_name='Anexar Registro do Serviço')
+    materiais_utilizados = models.ManyToManyFieldPlus('systi.Material', verbose_name='Materiais Utilizados', blank=True, null=True)
+    anexar_registro_servico = models.FileField(verbose_name='Anexar Registro do Serviço', blank=True, null=True)
 
 
 class ServicoInterno(Servico):
