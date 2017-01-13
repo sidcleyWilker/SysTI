@@ -217,7 +217,6 @@ class Material(ModelPlus):
     nome_material = models.CharFieldPlus(verbose_name=u'Nome do Material', max_length=30)
     tipo_material = models.CharFieldPlus(verbose_name=u'Tipo do Material', max_length=20)
     local_guardado = models.ForeignKeyPlus('systi.Compartimento', verbose_name='Local Guardado')
-    #local_guardado = models.CharFieldPlus(verbose_name=u'Local Guardado', max_length=30)
     descricao = models.TextField(verbose_name=u'Descrição', max_length=30)
     unidade_de_medida = models.CharFieldPlus(verbose_name=u'Unidade de Medida', max_length=25, choices=UNIDADE_MEDIDA.items(), default=UNIDADE_MEDIDA.get('Und'))
     quantidade = models.CharFieldPlus(verbose_name=u'Quantidade', max_length=30)
@@ -234,8 +233,9 @@ class Material(ModelPlus):
         return self.nome_material
 
 class Compartimento(ModelPlus):
+    codigo_compartimento = models.CharFieldPlus(verbose_name=u'Código do Compartimento', max_length=30)
     nome = models.CharFieldPlus(verbose_name=u'Nome do Compartimento', max_length=30)
-    descricao = models.CharFieldPlus(verbose_name=u'Descrição', max_length=30)
+    pai = models.ForeignKeyPlus('systi.Compartimento', verbose_name='Compartimento Pai', help_text='Ex.: Este compartimento está dentro que qual outro compartimento?')
 
     class Meta:
         verbose_name = u'Compartimento'
@@ -272,17 +272,17 @@ class Servico(ModelPlus):
         abstract = True
 
     data_diagnostico = models.DateFieldPlus(u'Data do Diagnóstico')
-    diagnostico = models.TextField(verbose_name=u'Diagnóstico', max_length=300)
-    defeitos_apresentados = models.TextField(verbose_name='Defeitos Apresentados', max_length=300)
+    diagnostico = models.TextField(verbose_name=u'Defeitos Apresentados', max_length=300)
+    procedimentos_realizados = models.TextField(verbose_name='Procedimentos a Serem Realizados', max_length=300)
     tipo_servico = models.CharFieldPlus(verbose_name=u'Tipo do Serviço', max_length=25, choices=TIPO_SERVICO.items(), default=TIPO_SERVICO.get('Manutenção'))
-    estado_servico = models.CharFieldPlus(verbose_name=u'Estado', max_length=25, choices=ESTADO_EMPRESTIMOS.items())
+    estado_servico = models.CharFieldPlus(verbose_name=u'Estado', max_length=25, choices=SysTIChoices.ESTADOS_SERVICO.items())
     ordem_servico = models.CharFieldPlus(verbose_name='Número da Ordem do Serviço', max_length=25)
-    #Materiais e chamado
-    materiais_utilizados = models.ManyToManyFieldPlus('systi.Material', verbose_name='Materiais Utilizados', blank=True, null=True)
+
     anexar_registro_servico = models.FileField(verbose_name='Anexar Registro do Serviço', blank=True, null=True)
 
 
 class ServicoInterno(Servico):
+    materiais_utilizados = models.ManyToManyFieldPlus('systi.Material', verbose_name='Materiais Utilizados', blank=True, null=True)
     data_realizacao = models.DateFieldPlus(u'Data da Realização')
     data_prevista_conclusao = models.DateFieldPlus(u'Data Prevista da Conclusão')
     data_conclusao = models.DateFieldPlus(u'Data da Conclusão', blank=True, null=True)

@@ -41,3 +41,21 @@ class SysTIChoices:
         AGUARDANDO_TRANSFERENCIA: u'Aguardando Transferencia',
         TRANSFERIDA: u'Transferida(o)'
     }
+
+
+    AGUARDANDO_DIAGNOSTICO = u'Aguardando Diagnóstico',
+    RECOLHIDO = u'Recolhido',
+    DEVOLVIDO = u'Devolvido',
+    CANCELADO = u'Cacelado',
+    EM_EXECUCAO = u'Em Execução',
+    SUSPENSO = u'Suspenso',
+
+    ESTADOS_SERVICO = {
+        AGUARDANDO_DIAGNOSTICO: u'Aguardando Diagnóstico',
+        RECOLHIDO: u'Recolhido',
+        DEVOLVIDO: u'Devolvido',
+        CANCELADO: u'Cacelado',
+        EM_EXECUCAO: u'Em Execução',
+        SUSPENSO: u'Suspenso',
+    }
+
