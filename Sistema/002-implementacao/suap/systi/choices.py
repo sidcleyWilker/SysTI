@@ -54,7 +54,7 @@ class SysTIChoices:
         AGUARDANDO_DIAGNOSTICO: u'Aguardando Diagnóstico',
         RECOLHIDO: u'Recolhido',
         DEVOLVIDO: u'Devolvido',
-        CANCELADO: u'Cacelado',
+        CANCELADO: u'Cancelado',
         EM_EXECUCAO: u'Em Execução',
         SUSPENSO: u'Suspenso',
     }

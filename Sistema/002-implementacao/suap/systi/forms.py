@@ -138,40 +138,43 @@ class ServicoInternoForm(forms.ModelFormPlus):
         model = ServicoInterno
         exclude = []
 
-    def clean(self):
+    class Media:
+        js = ('/static/systi/js/servico.js',)
 
-        data_diagnostico = self.cleaned_data.get("data_diagnostico")
-        diagnostico = self.cleaned_data.get("diagnostico")
-        defeitos_apresentados = self.cleaned_data.get("defeitos_apresentados")
-        tipo_servico = self.cleaned_data.get("tipo_servico")
-        estado = self.cleaned_data.get("estado_servico")
-        ordem_servico = self.cleaned_data.get("ordem_servico")
-        data_prevista = self.cleaned_data.get("data_prevista_conclusao")
+   # def clean(self):
+
+  #      data_diagnostico = self.cleaned_data.get("data_diagnostico")
+   #     diagnostico = self.cleaned_data.get("diagnostico")
+   #     defeitos_apresentados = self.cleaned_data.get("defeitos_apresentados")
+   #     tipo_servico = self.cleaned_data.get("tipo_servico")
+   #     estado = self.cleaned_data.get("estado_servico")
+   #     ordem_servico = self.cleaned_data.get("ordem_servico")
+   #     data_prevista = self.cleaned_data.get("data_prevista_conclusao")
+
+
+    #    if diagnostico==None or defeitos_apresentados==None or ordem_servico==None:
+    #        raise forms.ValidationError("As informações relativas ao Serviço devem ser informadas corretamente.")
+    #    if data_diagnostico == None:
+    #        raise forms.ValidationError("A data do diagnóstico deve ser informada.")
+    #    if tipo_servico == None:
+    #        raise forms.ValidationError("O tipo de serviço deve ser informado.")
+    #    if estado==None:
+    #        raise forms.ValidationError("O estado do serviço deve ser informado.")
+
+
+    #    data_realizacao = self.cleaned_data.get("data_realizacao")
+    #    data_conclusao = self.cleaned_data.get("data_conclusao")
 
         #
-        if diagnostico==None or defeitos_apresentados==None or ordem_servico==None:
-            raise forms.ValidationError("As informações relativas ao Serviço devem ser informadas corretamente.")
-        if data_diagnostico == None:
-            raise forms.ValidationError("A data do diagnóstico deve ser informada.")
-        if tipo_servico == None:
-            raise forms.ValidationError("O tipo de serviço deve ser informado.")
-        if estado==None:
-            raise forms.ValidationError("O estado do serviço deve ser informado.")
+    #    if data_realizacao==None or data_prevista == None:
+    #        raise ValidationError("As datas relativas aos prazos do serviço devem ser informadas.")
 
+     #   if data_conclusao != None and data_conclusao < data_realizacao:
+     #       raise ValidationError("A data de conclusão não deve ser maior que a data de realização.")
+     #   if data_prevista < data_realizacao:
+     #       raise ValidationError("")
 
-        data_realizacao = self.cleaned_data.get("data_realizacao")
-        data_conclusao = self.cleaned_data.get("data_conclusao")
-
-        #
-        if data_realizacao==None or data_prevista == None:
-            raise ValidationError("As datas relativas aos prazos do serviço devem ser informadas.")
-
-        if data_conclusao != None and data_conclusao < data_realizacao:
-            raise ValidationError("A data de conclusão não deve ser maior que a data de realização.")
-        if data_prevista < data_realizacao:
-            raise ValidationError("")
-
-        return self.cleaned_data
+      #  return self.cleaned_data
 
 
 class ServicoExternoForm(forms.ModelFormPlus):
@@ -179,6 +182,9 @@ class ServicoExternoForm(forms.ModelFormPlus):
     class Meta:
         model = ServicoExterno
         exclude = []
+
+    class Media:
+        js = ('/static/systi/js/servico.js',)
 
     def clean(self):
 

@@ -233,9 +233,9 @@ class Material(ModelPlus):
         return self.nome_material
 
 class Compartimento(ModelPlus):
-    codigo_compartimento = models.CharFieldPlus(verbose_name=u'Código do Compartimento', max_length=30)
-    nome = models.CharFieldPlus(verbose_name=u'Nome do Compartimento', max_length=30)
-    pai = models.ForeignKeyPlus('systi.Compartimento', verbose_name='Compartimento Pai', help_text='Ex.: Este compartimento está dentro que qual outro compartimento?')
+    codigo_compartimento = models.CharFieldPlus(verbose_name=u'Código', max_length=30)
+    nome = models.CharFieldPlus(verbose_name=u'Nome', max_length=30)
+    pai = models.ForeignKeyPlus('systi.Compartimento', verbose_name='Compartimento Pai', help_text='Ex.: Este compartimento está dentro que qual outro compartimento?', blank=True, null=True)
 
     class Meta:
         verbose_name = u'Compartimento'
@@ -273,19 +273,21 @@ class Servico(ModelPlus):
 
     data_diagnostico = models.DateFieldPlus(u'Data do Diagnóstico')
     diagnostico = models.TextField(verbose_name=u'Defeitos Apresentados', max_length=300)
-    procedimentos_realizados = models.TextField(verbose_name='Procedimentos a Serem Realizados', max_length=300)
     tipo_servico = models.CharFieldPlus(verbose_name=u'Tipo do Serviço', max_length=25, choices=TIPO_SERVICO.items(), default=TIPO_SERVICO.get('Manutenção'))
     estado_servico = models.CharFieldPlus(verbose_name=u'Estado', max_length=25, choices=SysTIChoices.ESTADOS_SERVICO.items())
     ordem_servico = models.CharFieldPlus(verbose_name='Número da Ordem do Serviço', max_length=25)
-
     anexar_registro_servico = models.FileField(verbose_name='Anexar Registro do Serviço', blank=True, null=True)
+
+    motivo_cancel_ou_suspen = models.TextField(verbose_name='Motivo da Suspenção ou Cacelamento', blank=True, null=True)
 
 
 class ServicoInterno(Servico):
+    procedimentos_realizados = models.TextField(verbose_name='Procedimentos a Serem Realizados', max_length=300)
     materiais_utilizados = models.ManyToManyFieldPlus('systi.Material', verbose_name='Materiais Utilizados', blank=True, null=True)
     data_realizacao = models.DateFieldPlus(u'Data da Realização')
     data_prevista_conclusao = models.DateFieldPlus(u'Data Prevista da Conclusão')
     data_conclusao = models.DateFieldPlus(u'Data da Conclusão', blank=True, null=True)
+
 
     class Meta:
         verbose_name = u'Serviço Interno'
@@ -301,8 +303,8 @@ class ServicoExterno(Servico):
     data_do_envio = models.DateFieldPlus(u'Data do Envio', blank=True, null=True)
     data_prevista_devolucao = models.DateFieldPlus(u'Data Prevista da Devolução', blank=True, null=True)
     equipamentos_enviados = models.ManyToManyFieldPlus('systi.Ativo', verbose_name='Equipamentos Enviados', blank=True, null=True)
-    anexo_nota_fiscal_recibo = models.FileField(verbose_name='Anexar Nota Fiscal ou Recibo', blank=True, null=True)
-    anexo_termo = models.FileField(verbose_name='Anexar Termo', blank=True, null=True)
+    anexo_nota_fiscal_recibo = models.FileField(upload_to='systi/anexoNotasFiscaisOuRecibos/', verbose_name='Anexar Nota Fiscal ou Recibo', blank=True, null=True)
+    anexo_termo = models.FileField(upload_to='systi/anexoTermosServico/', verbose_name='Anexar Termo', blank=True, null=True)
     prestador = models.ForeignKeyPlus('systi.Fornecedor', verbose_name='Selecionar Prestador', blank=True, null=True)
     parecer = models.CharFieldPlus(verbose_name='Parecer', blank=True, null=True)
 
