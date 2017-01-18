@@ -131,3 +131,13 @@ class EmprestimoForm(forms.ModelFormPlus):
             raise forms.ValidationError('Um ativo/material não pode ser emprestado para o mesmo local')
 
         return self.cleaned_data
+
+class ServicoInternoForm(forms.ModelFormPlus):
+
+    class Meta:
+        model = ServicoInterno
+        exclude = []
+
+    class Media:
+        js = ('/static/systi/js/servico_interno_externo.js',)
+

@@ -1,0 +1,159 @@
+{% extends super_template %}
+{% load filters %}
+
+
+{% block content %}
+<div>
+    <h2>
+         Serviço Interno nº  {{ servico_interno.id }}
+    </h2>
+</div>
+
+<div>
+    <ul class="action-bar">
+
+        {% if servico_interno.data_devolucao == None %}
+            <li>
+                <a class="btn primary" href="/admin/systi/servicointerno/{{ servico_interno.pk }}">Editar</a>
+            </li>
+
+            {% if servico_interno.data_realizacao == None %}
+                <li>
+                    <a class="btn warning" href="/systi/servicointerno/iniciarservico/{{ servico_interno.pk }}">Iniciar Serviço</a>
+                </li>
+
+            {% else %}
+                <li>
+                    <a class="btn success" href="/systi/servicointerno/registrardevolucao/{{ servico_interno.pk }}">Registrar Devolução</a>
+                </li>
+            {% endif %}
+        {% endif %}
+    </ul>
+</div>
+
+
+{% box 'Dados do Serviço Interno' %}
+
+    <table class="info">
+        <tbody>
+            <tr>
+                <td>Motivo do Serviço</td>
+                <td> {{ servico_interno.motivo_servico }} </td>
+            </tr>
+
+            <tr>
+                {% if servico_interno.motivo_servico == 'Chamado' %}
+                    <td>Chamado</td>
+                    <td> {{ servico_interno.chamado }}</td>
+
+                {% else %}
+                    <td>
+                        <a title="Visualizar" href="{{ MEDIA_URL }}{{ servico_interno.anexo_motivo }}"
+                       class="icon icon-search" target="_blank"></a>
+                    </td>
+                    <td>Anexo do Motivo</td>
+                {% endif %}
+            </tr>
+
+            <tr>
+                <td>Data do Diagnostico</td>
+                <td>{{ servico_interno.data_diagnostico }}</td>
+            </tr>
+
+            <tr>
+                <td>Diagnostico</td>
+                <td>{{ servico_interno.diagnostico }}</td>
+            </tr>
+
+            <tr>
+                <td>Defeitos Apresentado</td>
+                <td> {{ servico_interno.defeitos }}</td>
+            </tr>
+
+            <tr>
+                <td>Tipo do Serviço</td>
+                <td> {{ servico_interno.tipo_servico }}</td>
+            </tr>
+
+            <tr>
+                <td>Estado do Serviço</td>
+                <td> {{ servico_interno.estado_servico }}</td>
+            </tr>
+
+            <tr>
+                <td>Oredem do Serviço</td>
+                <td> {{ servico_interno.ordem_servico }}</td>
+            </tr>
+            <tr>
+                <td>Data de inicio da realização </td>
+                <td>
+                    {% if servico_interno.data_realizacao == None %}
+                        <span class="msg info">Aguardando</span>
+                    {% else %}
+                        {{ servico_interno.data_realizacao }}
+                    {% endif %}
+
+                </td>
+            </tr>
+
+             <tr>
+                <td>Data Prevista para Devolução</td>
+                <td>{{ servico_interno.data_prevista_devolucao }}</td>
+            </tr>
+
+            <tr>
+                <td>Data de Devolução</td>
+                <td>
+                    {% if servico_interno.data_devolucao == None %}
+                        <span class="msg info">Aguardando</span>
+                    {% else %}
+                        {{ servico_interno.data_devolucao }}
+                    {% endif %}
+                </td>
+            </tr>
+    </table>
+{% endbox %}
+
+{% box 'Equipamentos' %}
+    {% for equipamento in equipamentos%}
+        <table>
+            <thead>
+                <tr>
+                    <th>Nome do Equipamento</th>
+                     <th>Numero do Tombamento</th>
+                    <th>Local de Origem</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>{{ equipamento.nome }}</td>
+                    <td>{{ equipamento.tombamento }}</td>
+                    <td>{{ equipamento.local_do_ativo }}</td>
+                </tr>
+            </tbody>
+        </table>
+    {% endfor %}
+{% endbox %}
+
+{% box 'Materiais' %}
+    {% for material in materiais %}
+        <table>
+            <thead>
+                <tr>
+                    <th>Nome do Material</th>
+                     <th>Tipo do Material</th>
+                    <th>Local Guardado</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>{{ material.nome_material }}</td>
+                    <td>{{ material.tipo_material }}</td>
+                    <td>{{ material.local_guardado }}</td>
+                </tr>
+            </tbody>
+        </table>
+    {% endfor %}
+{% endbox %}
+
+{% endblock %}

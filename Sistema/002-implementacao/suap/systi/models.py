@@ -49,15 +49,9 @@ UNIDADE_MEDIDA = {
     'Pc' : 'Pacote',
 }
 
-ESTADO_EMPRESTIMOS = {
-    'Aberto' : 'Aberto',
-    'Cancelado' : 'Cancelado',
-
-}
-
 TIPO_SERVICO = {
     'Suporte' : 'Suporte',
-    'Manutenção' : 'Manutenção'
+    'Manutencao' : 'Manutenção',
 }
 
 
@@ -166,7 +160,7 @@ class AcessoBiometrico(ModelPlus):
 
 class Transferencia(ModelPlus):
     motivo_transferencia = models.CharFieldPlus(
-        verbose_name=u'Motivo da Transferencia',
+        verbose_name=u'Motivo da Transferência',
         max_length=30,
         choices=SysTIChoices.TIPOS_SOLICITACAO.items(),
         default=SysTIChoices.CHAMADO
@@ -206,8 +200,8 @@ class Transferencia(ModelPlus):
                                                      IMAGE_EXTENSIONS[-1] + '.'
 
     class Meta:
-        verbose_name = u'Transferencia'
-        verbose_name_plural = u'Transferencias'
+        verbose_name = u'Transferência'
+        verbose_name_plural = u'Transferências'
 
     def get_absolute_url(self):
         return '/systi/transferencia/{}/'.format(self.id)
@@ -217,7 +211,6 @@ class Material(ModelPlus):
     nome_material = models.CharFieldPlus(verbose_name=u'Nome do Material', max_length=30)
     tipo_material = models.CharFieldPlus(verbose_name=u'Tipo do Material', max_length=20)
     local_guardado = models.ForeignKeyPlus('systi.Compartimento', verbose_name='Local Guardado')
-    #local_guardado = models.CharFieldPlus(verbose_name=u'Local Guardado', max_length=30)
     descricao = models.TextField(verbose_name=u'Descrição', max_length=30)
     unidade_de_medida = models.CharFieldPlus(verbose_name=u'Unidade de Medida', max_length=25, choices=UNIDADE_MEDIDA.items(), default=UNIDADE_MEDIDA.get('Und'))
     quantidade = models.CharFieldPlus(verbose_name=u'Quantidade', max_length=30)
@@ -234,8 +227,9 @@ class Material(ModelPlus):
         return self.nome_material
 
 class Compartimento(ModelPlus):
-    nome = models.CharFieldPlus(verbose_name=u'Nome do Compartimento', max_length=30)
-    descricao = models.CharFieldPlus(verbose_name=u'Descrição', max_length=30)
+    codigo_compartimento = models.CharFieldPlus(verbose_name=u'Código', max_length=30)
+    nome = models.CharFieldPlus(verbose_name=u'Nome', max_length=30)
+    pai = models.ForeignKeyPlus('systi.Compartimento', verbose_name='Compartimento Pai', help_text='Ex.: Este compartimento está dentro que qual outro compartimento?', blank=True, null=True)
 
     class Meta:
         verbose_name = u'Compartimento'
@@ -252,13 +246,13 @@ class Emprestimo(ModelPlus):
     motivo = models.TextField(verbose_name=u'Justificativa', max_length=40)
     data_emprestimo = models.DateFieldPlus(u'Data do Empréstimo')
     data_devolucao = models.DateFieldPlus(u'Data de Devolução')
-    estado = models.CharFieldPlus(verbose_name=u'Estado do Empréstimo', max_length=25, choices=ESTADO_EMPRESTIMOS.items(), default=ESTADO_EMPRESTIMOS.get('Ativo'))
+    estado = models.CharFieldPlus(verbose_name=u'Estado do Empréstimo', max_length=25, choices=SysTIChoices.ESTADO_EMPRESTIMOS.items(), default=SysTIChoices.EM_ABERTO)
     setor_origem = models.ForeignKeyPlus('comum.Sala', verbose_name='Setor de Origem', related_name='setor_origem')
     setor_destino = models.ForeignKeyPlus('comum.Sala', verbose_name='Setor de Destino', related_name='setor_destino')
 
     class Meta:
-        verbose_name = u'Emprestimo'
-        verbose_name_plural = u'Emprestimos'
+        verbose_name = u'Empréstimo'
+        verbose_name_plural = u'Empréstimos'
 
     def get_absolute_url(self):
         return '/systi/emprestimo/{}/'.format(self.id)
@@ -271,21 +265,30 @@ class Servico(ModelPlus):
     class Meta:
         abstract = True
 
+    motivo_servico= models.CharFieldPlus(
+        verbose_name=u'Motivo do Serviço',
+        max_length=30,
+        choices=SysTIChoices.TIPOS_SOLICITACAO.items(),
+        default=SysTIChoices.CHAMADO
+    )
+    chamado = models.ForeignKeyPlus('centralservicos.Chamado', verbose_name=u'Chamado' ,blank=True, null=True)
+    anexo_motivo = models.FileField(upload_to='systi/anexosMotivos/', verbose_name=u'Anexo do Motivo', blank=True, null=True)
+    equipamentos_enviados = models.ManyToManyFieldPlus(Ativo, verbose_name=u'Equipamentos a serem Consertados')
     data_diagnostico = models.DateFieldPlus(u'Data do Diagnóstico')
-    diagnostico = models.TextField(verbose_name=u'Diagnóstico', max_length=300)
-    defeitos_apresentados = models.TextField(verbose_name='Defeitos Apresentados', max_length=300)
-    tipo_servico = models.CharFieldPlus(verbose_name=u'Tipo do Serviço', max_length=25, choices=TIPO_SERVICO.items())
-    estado_servico = models.CharFieldPlus(verbose_name=u'Estado', max_length=25, choices=ESTADO_EMPRESTIMOS.items())
+    diagnostico = models.TextField(verbose_name=u'Defeitos Apresentados', max_length=300)
+    tipo_servico = models.CharFieldPlus(verbose_name=u'Tipo do Serviço', max_length=25, choices=TIPO_SERVICO.items(), default=TIPO_SERVICO.get('Manutenção'))
+    estado_servico = models.CharFieldPlus(verbose_name=u'Estado', max_length=25, choices=SysTIChoices.ESTADOS_SERVICO.items(), default=SysTIChoices.AGUARDANDO_DIAGNOSTICO, blank=True, null=True)
     ordem_servico = models.CharFieldPlus(verbose_name='Número da Ordem do Serviço', max_length=25)
-    #Materiais e chamado
-    materiais_utilizados = models.ManyToManyFieldPlus('systi.Material', verbose_name='Materiais Utilizados',blank=True, null=True)
-    anexar_registro_servico = models.FileField(verbose_name='Anexar Registro do Serviço')
+    motivo_cancel_ou_suspen = models.TextField(verbose_name='Motivo da Suspenção ou Cacelamento', blank=True, null=True)
 
 
 class ServicoInterno(Servico):
-    data_realizacao = models.DateFieldPlus(u'Data da Realização')
+    procedimentos_realizados = models.TextField(verbose_name='Procedimentos a Serem Realizados', max_length=300,  null=True, blank=True)
+    materiais_utilizados = models.ManyToManyFieldPlus('systi.Material', verbose_name='Materiais Utilizados', blank=True, null=True)
+    data_realizacao = models.DateFieldPlus(u'Data da Realização', null=True, blank=True)
     data_prevista_conclusao = models.DateFieldPlus(u'Data Prevista da Conclusão')
     data_conclusao = models.DateFieldPlus(u'Data da Conclusão', blank=True, null=True)
+
 
     class Meta:
         verbose_name = u'Serviço Interno'
@@ -300,9 +303,8 @@ class ServicoInterno(Servico):
 class ServicoExterno(Servico):
     data_do_envio = models.DateFieldPlus(u'Data do Envio', blank=True, null=True)
     data_prevista_devolucao = models.DateFieldPlus(u'Data Prevista da Devolução', blank=True, null=True)
-    equipamentos_enviados = models.ManyToManyFieldPlus('systi.Ativo', verbose_name='Equipamentos Enviados', blank=True, null=True)
-    anexo_nota_fiscal_recibo = models.FileField(verbose_name='Anexar Nota Fiscal ou Recibo', blank=True, null=True)
-    anexo_termo = models.FileField(verbose_name='Anexar Termo', blank=True, null=True)
+    anexo_nota_fiscal_recibo = models.FileField(upload_to='systi/anexoNotasFiscaisOuRecibos/', verbose_name='Anexar Nota Fiscal ou Recibo', blank=True, null=True)
+    anexo_termo = models.FileField(upload_to='systi/anexoTermosServico/', verbose_name='Anexar Termo', blank=True, null=True)
     prestador = models.ForeignKeyPlus('systi.Fornecedor', verbose_name='Selecionar Prestador', blank=True, null=True)
     parecer = models.CharFieldPlus(verbose_name='Parecer', blank=True, null=True)
 
@@ -315,3 +317,4 @@ class ServicoExterno(Servico):
 
     def __str__(self):
         return self.ordem_servico
+

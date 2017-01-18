@@ -16,11 +16,11 @@ class SysTIChoices:
 
 
     MEMORANDO = u'Memorando'
-    CHAMADO =  u'Chamdo'
+    CHAMADO = u'Chamado'
     EMAIL = u'E-mail'
 
     TIPOS_SOLICITACAO = {
-        CHAMADO: u'Chamdo',
+        CHAMADO: u'Chamado',
         MEMORANDO: u'Memorando',
         EMAIL: u'E-mail',
     }
@@ -40,4 +40,36 @@ class SysTIChoices:
         AGUARDANDO_ALTORIZACAO: u'Aguardando Altorização',
         AGUARDANDO_TRANSFERENCIA: u'Aguardando Transferencia',
         TRANSFERIDA: u'Transferida(o)'
+    }
+
+    AGUARDANDO_DIAGNOSTICO = u'Aguardando Diagnóstico',
+    RECOLHIDO = u'Recolhido',
+    DEVOLVIDO = u'Devolvido',
+    CANCELADO = u'Cacelado',
+    EM_EXECUCAO = u'Em Execução',
+    SUSPENSO = u'Suspenso',
+
+    ESTADOS_SERVICO = {
+        AGUARDANDO_DIAGNOSTICO: u'Aguardando Diagnóstico',
+        RECOLHIDO: u'Recolhido',
+        DEVOLVIDO: u'Devolvido',
+        CANCELADO: u'Cancelado',
+        EM_EXECUCAO: u'Em Execução',
+        SUSPENSO: u'Suspenso',
+    }
+
+    EM_ABERTO = u'Em Aberto',
+    AGUARDANDO_TERMO = u'Aguardando Termo',
+    SOLICITADO = u'Solicitado',
+    DEVOLVIDO = u'Devolvido',
+    VIGENTE = u'Vigente',
+    PENDENTE = u'Pendente',
+
+    ESTADO_EMPRESTIMOS = {
+        EM_ABERTO: u'Em Aberto',
+        AGUARDANDO_TERMO: u'Aguardando Termo',
+        SOLICITADO: u'Solicitado',
+        DEVOLVIDO: u'Devolvido',
+        VIGENTE: u'Vigente',
+        PENDENTE: u'Pendente',
     }

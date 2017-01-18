@@ -94,14 +94,14 @@ class MaterialAdmin(ModelAdminPlus):
     form = MaterialForm
 
 class CompartimentoAdmin(ModelAdminPlus):
-    search_fields = ['nome', 'descricao',]
-    list_filter = ['nome','descricao',]
-    list_display = ['nome', 'descricao',]
+    search_fields = ['codigo_compartimento', 'nome',]
+    list_filter = ['codigo_compartimento','nome',]
+    list_display = ['codigo_compartimento', 'nome', 'pai',]
     list_display_icons = True
 
     fieldsets = (
         (None, {
-            'fields': ('nome', 'descricao',)
+            'fields': ('codigo_compartimento', 'nome', 'pai',)
         }),
     )
 
@@ -155,25 +155,64 @@ class EmprestimoAdmin(ModelAdminPlus):
                        'setor_destino',)
         }),
     )
+
+    def show_list_display_icons(self, obj):
+        out = [u'<ul class="list-display-icons">']
+        icons_html = [view_object_icon(obj)]
+        # Não exibe botão de editar
+        # if self.has_change_permission(self.request, obj):
+        #    icons_html.append(edit_object_icon(obj))
+        for icon_html in icons_html:
+            if icon_html:
+                out.append(u'<li>%s</li>' % icon_html)
+        out.append(u'</ul>')
+        return u''.join(out)
+
+    show_list_display_icons.allow_tags = True
+    show_list_display_icons.short_description = u'#'
+
     form = EmprestimoForm
 
 class ServicosInternosAdmin(ModelAdminPlus):
-    search_fields = ['ordem_servico', 'estado_servico',]
-    list_filter = ['tipo_servico','estado_servico',]
-    list_display = ['diagnostico', 'tipo_servico', 'estado_servico',]
+    search_fields = ['motivo_servico', 'data_diagnostico', 'tipo_servico', 'estado_servico',]
+    list_filter = ['motivo_servico', 'data_diagnostico', 'tipo_servico', 'estado_servico']
+    list_display = ['motivo_servico', 'data_diagnostico', 'tipo_servico', 'estado_servico',]
     list_display_icons = True
 
-    #fieldsets = (
-     #   (None, {
-      #      'estado_servico',
-#
- #       }))
+    fieldsets = (
+        (None, {
+            'fields': ('motivo_servico', 'anexo_motivo', 'chamado',
+                       'data_diagnostico', 'diagnostico', 'procedimentos_realizados',
+                       'tipo_servico', 'estado_servico', 'motivo_cancel_ou_suspen',
+                       'ordem_servico', 'equipamentos_enviados', 'materiais_utilizados',
+                       'data_prevista_conclusao')
+        }),
+    )
+
+
+    def show_list_display_icons(self, obj):
+        out = [u'<ul class="list-display-icons">']
+        icons_html = [view_object_icon(obj)]
+        # Não exibe botão de editar
+        # if self.has_change_permission(self.request, obj):
+        #    icons_html.append(edit_object_icon(obj))
+        for icon_html in icons_html:
+            if icon_html:
+                out.append(u'<li>%s</li>' % icon_html)
+        out.append(u'</ul>')
+        return u''.join(out)
+
+    show_list_display_icons.allow_tags = True
+    show_list_display_icons.short_description = u'#'
+
+    form = ServicoInternoForm
 
 class ServicosExternosAdmin(ModelAdminPlus):
     search_fields = ['ordem_servico', 'estado_servico',]
     list_filter = ['tipo_servico','estado_servico',]
     list_display = ['diagnostico', 'tipo_servico', 'estado_servico',]
     list_display_icons = True
+
 
 
 admin.site.register(Transferencia, TransferenciaAdmin)
