@@ -11,16 +11,12 @@
 
 <div>
     <ul class="action-bar">
-<<<<<<< HEAD
 
         {% if servico_interno.data_devolucao == None %}
-=======
->>>>>>> 4ae7629f01a671806db9573bdd71f2b1834fc0ce
             <li>
                 <a class="btn primary" href="/admin/systi/servicointerno/{{ servico_interno.pk }}">Editar</a>
             </li>
 
-<<<<<<< HEAD
             {% if servico_interno.data_realizacao == None %}
                 <li>
                     <a class="btn warning" href="/systi/servicointerno/iniciarservico/{{ servico_interno.pk }}">Iniciar Serviço</a>
@@ -32,12 +28,6 @@
                 </li>
             {% endif %}
         {% endif %}
-=======
-            <li>
-                <a class="btn warning" href="#">Registrar Devolução</a>
-            </li>
-
->>>>>>> 4ae7629f01a671806db9573bdd71f2b1834fc0ce
     </ul>
 </div>
 
@@ -94,7 +84,6 @@
                 <td>Oredem do Serviço</td>
                 <td> {{ servico_interno.ordem_servico }}</td>
             </tr>
-<<<<<<< HEAD
             <tr>
                 <td>Data de inicio da realização </td>
                 <td>
@@ -106,8 +95,6 @@
 
                 </td>
             </tr>
-=======
->>>>>>> 4ae7629f01a671806db9573bdd71f2b1834fc0ce
 
              <tr>
                 <td>Data Prevista para Devolução</td>
@@ -116,7 +103,6 @@
 
             <tr>
                 <td>Data de Devolução</td>
-<<<<<<< HEAD
                 <td>
                     {% if servico_interno.data_devolucao == None %}
                         <span class="msg info">Aguardando</span>
@@ -124,9 +110,6 @@
                         {{ servico_interno.data_devolucao }}
                     {% endif %}
                 </td>
-=======
-                <td></td>
->>>>>>> 4ae7629f01a671806db9573bdd71f2b1834fc0ce
             </tr>
     </table>
 {% endbox %}
