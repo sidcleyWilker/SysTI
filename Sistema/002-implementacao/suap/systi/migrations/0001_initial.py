@@ -150,12 +150,20 @@ class Migration(migrations.Migration):
             name='ServicoExterno',
             fields=[
                 ('id', models.AutoField(verbose_name='ID', serialize=False, auto_created=True, primary_key=True)),
+<<<<<<< HEAD
                 ('motivo_servico', djtools.dbfields.CharFieldPlus(default='Chamado', max_length=30, verbose_name='Motivo do Servi\xe7o', choices=[('E-mail', 'E-mail'), ('Chamado', 'Chamado'), ('Memorando', 'Memorando')])),
+=======
+                ('motivo_servico', djtools.dbfields.CharFieldPlus(default='Chamdo', max_length=30, verbose_name='Motivo do Servi\xe7o', choices=[('E-mail', 'E-mail'), ('Chamdo', 'Chamdo'), ('Memorando', 'Memorando')])),
+>>>>>>> 4ae7629f01a671806db9573bdd71f2b1834fc0ce
                 ('anexo_motivo', models.FileField(upload_to=b'systi/anexosMotivos/', null=True, verbose_name='Anexo do Motivo', blank=True)),
                 ('data_diagnostico', djtools.dbfields.DateFieldPlus(max_length=255, verbose_name='Data do Diagn\xf3stico')),
                 ('diagnostico', models.TextField(max_length=300, verbose_name='Defeitos Apresentados')),
                 ('tipo_servico', djtools.dbfields.CharFieldPlus(default=None, max_length=25, verbose_name='Tipo do Servi\xe7o', choices=[(b'Manutencao', b'Manuten\xc3\xa7\xc3\xa3o'), (b'Suporte', b'Suporte')])),
+<<<<<<< HEAD
                 ('estado_servico', djtools.dbfields.CharFieldPlus(default=('Aguardando Diagn\xf3stico',), choices=[(('Em Execu\xe7\xe3o',), 'Em Execu\xe7\xe3o'), (('Cacelado',), 'Cancelado'), (('Aguardando Diagn\xf3stico',), 'Aguardando Diagn\xf3stico'), (('Suspenso',), 'Suspenso'), (('Recolhido',), 'Recolhido'), (('Devolvido',), 'Devolvido')], max_length=25, blank=True, null=True, verbose_name='Estado')),
+=======
+                ('estado_servico', djtools.dbfields.CharFieldPlus(max_length=25, verbose_name='Estado', choices=[(('Em Execu\xe7\xe3o',), 'Em Execu\xe7\xe3o'), (('Cacelado',), 'Cancelado'), (('Aguardando Diagn\xf3stico',), 'Aguardando Diagn\xf3stico'), (('Suspenso',), 'Suspenso'), (('Recolhido',), 'Recolhido'), (('Devolvido',), 'Devolvido')])),
+>>>>>>> 4ae7629f01a671806db9573bdd71f2b1834fc0ce
                 ('ordem_servico', djtools.dbfields.CharFieldPlus(max_length=25, verbose_name=b'N\xc3\xbamero da Ordem do Servi\xc3\xa7o')),
                 ('motivo_cancel_ou_suspen', models.TextField(null=True, verbose_name=b'Motivo da Suspen\xc3\xa7\xc3\xa3o ou Cacelamento', blank=True)),
                 ('data_do_envio', djtools.dbfields.DateFieldPlus(max_length=255, null=True, verbose_name='Data do Envio', blank=True)),
@@ -177,16 +185,28 @@ class Migration(migrations.Migration):
             name='ServicoInterno',
             fields=[
                 ('id', models.AutoField(verbose_name='ID', serialize=False, auto_created=True, primary_key=True)),
+<<<<<<< HEAD
                 ('motivo_servico', djtools.dbfields.CharFieldPlus(default='Chamado', max_length=30, verbose_name='Motivo do Servi\xe7o', choices=[('E-mail', 'E-mail'), ('Chamado', 'Chamado'), ('Memorando', 'Memorando')])),
+=======
+                ('motivo_servico', djtools.dbfields.CharFieldPlus(default='Chamdo', max_length=30, verbose_name='Motivo do Servi\xe7o', choices=[('E-mail', 'E-mail'), ('Chamdo', 'Chamdo'), ('Memorando', 'Memorando')])),
+>>>>>>> 4ae7629f01a671806db9573bdd71f2b1834fc0ce
                 ('anexo_motivo', models.FileField(upload_to=b'systi/anexosMotivos/', null=True, verbose_name='Anexo do Motivo', blank=True)),
                 ('data_diagnostico', djtools.dbfields.DateFieldPlus(max_length=255, verbose_name='Data do Diagn\xf3stico')),
                 ('diagnostico', models.TextField(max_length=300, verbose_name='Defeitos Apresentados')),
                 ('tipo_servico', djtools.dbfields.CharFieldPlus(default=None, max_length=25, verbose_name='Tipo do Servi\xe7o', choices=[(b'Manutencao', b'Manuten\xc3\xa7\xc3\xa3o'), (b'Suporte', b'Suporte')])),
+<<<<<<< HEAD
                 ('estado_servico', djtools.dbfields.CharFieldPlus(default=('Aguardando Diagn\xf3stico',), choices=[(('Em Execu\xe7\xe3o',), 'Em Execu\xe7\xe3o'), (('Cacelado',), 'Cancelado'), (('Aguardando Diagn\xf3stico',), 'Aguardando Diagn\xf3stico'), (('Suspenso',), 'Suspenso'), (('Recolhido',), 'Recolhido'), (('Devolvido',), 'Devolvido')], max_length=25, blank=True, null=True, verbose_name='Estado')),
                 ('ordem_servico', djtools.dbfields.CharFieldPlus(max_length=25, verbose_name=b'N\xc3\xbamero da Ordem do Servi\xc3\xa7o')),
                 ('motivo_cancel_ou_suspen', models.TextField(null=True, verbose_name=b'Motivo da Suspen\xc3\xa7\xc3\xa3o ou Cacelamento', blank=True)),
                 ('procedimentos_realizados', models.TextField(max_length=300, null=True, verbose_name=b'Procedimentos a Serem Realizados', blank=True)),
                 ('data_realizacao', djtools.dbfields.DateFieldPlus(max_length=255, null=True, verbose_name='Data da Realiza\xe7\xe3o', blank=True)),
+=======
+                ('estado_servico', djtools.dbfields.CharFieldPlus(max_length=25, verbose_name='Estado', choices=[(('Em Execu\xe7\xe3o',), 'Em Execu\xe7\xe3o'), (('Cacelado',), 'Cancelado'), (('Aguardando Diagn\xf3stico',), 'Aguardando Diagn\xf3stico'), (('Suspenso',), 'Suspenso'), (('Recolhido',), 'Recolhido'), (('Devolvido',), 'Devolvido')])),
+                ('ordem_servico', djtools.dbfields.CharFieldPlus(max_length=25, verbose_name=b'N\xc3\xbamero da Ordem do Servi\xc3\xa7o')),
+                ('motivo_cancel_ou_suspen', models.TextField(null=True, verbose_name=b'Motivo da Suspen\xc3\xa7\xc3\xa3o ou Cacelamento', blank=True)),
+                ('procedimentos_realizados', models.TextField(max_length=300, verbose_name=b'Procedimentos a Serem Realizados')),
+                ('data_realizacao', djtools.dbfields.DateFieldPlus(max_length=255, verbose_name='Data da Realiza\xe7\xe3o')),
+>>>>>>> 4ae7629f01a671806db9573bdd71f2b1834fc0ce
                 ('data_prevista_conclusao', djtools.dbfields.DateFieldPlus(max_length=255, verbose_name='Data Prevista da Conclus\xe3o')),
                 ('data_conclusao', djtools.dbfields.DateFieldPlus(max_length=255, null=True, verbose_name='Data da Conclus\xe3o', blank=True)),
                 ('chamado', djtools.dbfields.ForeignKeyPlus(verbose_name='Chamado', blank=True, to='centralservicos.Chamado', null=True)),
@@ -203,7 +223,11 @@ class Migration(migrations.Migration):
             name='Transferencia',
             fields=[
                 ('id', models.AutoField(verbose_name='ID', serialize=False, auto_created=True, primary_key=True)),
+<<<<<<< HEAD
                 ('motivo_transferencia', djtools.dbfields.CharFieldPlus(default='Chamado', max_length=30, verbose_name='Motivo da Transfer\xeancia', choices=[('E-mail', 'E-mail'), ('Chamado', 'Chamado'), ('Memorando', 'Memorando')])),
+=======
+                ('motivo_transferencia', djtools.dbfields.CharFieldPlus(default='Chamdo', max_length=30, verbose_name='Motivo da Transfer\xeancia', choices=[('E-mail', 'E-mail'), ('Chamdo', 'Chamdo'), ('Memorando', 'Memorando')])),
+>>>>>>> 4ae7629f01a671806db9573bdd71f2b1834fc0ce
                 ('anexo_motivo', models.FileField(help_text='Ser\xe1 aceito arquivo com tamanho m\xe1ximo 3MB e que seja do tipo: pdf, txt, doc, dot, docx, odt, bmp, jpeg, jpg ou png.', upload_to=b'systi/anexosMotivos/', verbose_name='Anexo do Motivo')),
                 ('descricao', models.TextField(max_length=225, verbose_name='Descri\xe7\xe3o')),
                 ('termo_recebimento', models.FileField(help_text='Ser\xe1 aceito arquivo com tamanho m\xe1ximo 3MB e que seja do tipo: pdf, txt, doc, dot, docx, odt, bmp, jpeg, jpg ou png.', upload_to=b'systi/anexosTermosRecebimentos/', verbose_name='Anexo do Termo de Recebimento')),

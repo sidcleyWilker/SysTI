@@ -151,6 +151,7 @@ def emprestimovigente(request, id):
 
         return httprr('/systi/emprestimo/' + id + '/', u'Emprestimo Vigente.', 'success')
     except Transferencia.DoesNoExist:
+<<<<<<< HEAD
         raise Http404(u"Emprestimo Não existe")
 
 def iniciar_servico(request, id):
@@ -170,3 +171,6 @@ def registrar_devolucao(request, id):
         return httprr('/systi/servicointerno/' + id + '/', u'Serviço Interno Alterado.', 'success')
     except ServicoInterno.DoesNotExist:
         raise Http404(u"Servico Interno não existe.")
+=======
+        raise Http404(u"Emprestimo Não existe")
+>>>>>>> 4ae7629f01a671806db9573bdd71f2b1834fc0ce

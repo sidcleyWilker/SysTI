@@ -31,11 +31,14 @@ urlpatterns = patterns('systi.views',
 
     (r'^emprestimo/vigente/(?P<id>\d+)/$', 'emprestimovigente'),
 
+<<<<<<< HEAD
 
     (r'^servicointerno/iniciarservico/(?P<id>\d+)/$', 'iniciar_servico'),
     (r'^servicointerno/registrardevolucao/(?P<id>\d+)/$', 'registrar_devolucao'),
 
 
+=======
+>>>>>>> 4ae7629f01a671806db9573bdd71f2b1834fc0ce
 
 
 )
