@@ -1,0 +1,170 @@
+<groups>
+    <group>
+        <name>ativo</name>
+        <app>systi</app>
+        <models>
+            <model>
+                <app>systi</app>
+                <name>ativo</name>
+                <permissions>
+                    <permission>add_ativo</permission>
+                    <permission>change_ativo</permission>
+                    <permission>delete_ativo</permission>
+                </permissions>
+            </model>
+        </models>
+    </group>
+
+    <group>
+        <name>categoria</name>
+        <app>systi</app>
+        <models>
+            <model>
+                <app>systi</app>
+                <name>categoria</name>
+                <permissions>
+                    <permission>add_categoria</permission>
+                    <permission>change_categoria</permission>
+                    <permission>delete_categoria</permission>
+                </permissions>
+            </model>
+        </models>
+    </group>
+
+    <group>
+        <name>fornecedor</name>
+        <app>systi</app>
+        <models>
+            <model>
+                <app>systi</app>
+                <name>fornecedor</name>
+                <permissions>
+                    <permission>add_fornecedor</permission>
+                    <permission>change_fornecedor</permission>
+                    <permission>delete_fornecedor</permission>
+                </permissions>
+            </model>
+        </models>
+    </group>
+
+
+     <group>
+        <name>acessobiometrico</name>
+        <app>systi</app>
+        <models>
+            <model>
+                <app>systi</app>
+                <name>acessobiometrico</name>
+                <permissions>
+                    <permission>add_acessobiometrico</permission>
+                    <permission>change_acessobiometrico</permission>
+                    <permission>delete_acessobiometrico</permission>
+                </permissions>
+            </model>
+        </models>
+    </group>
+
+
+    <group>
+        <name>transferencia</name>
+	<app>systi</app>
+	<models>
+            <model>
+		<app>systi</app>
+		<name>transferencia</name>
+		<permissions>
+		     <permission>add_transferencia</permission>
+		     <permission>change_transferencia</permission>
+		     <permission>delete_transferencia</permission>
+		</permissions>
+            </model>
+        </models>
+    </group>
+
+    <group>
+        <name>material</name>
+        <app>systi</app>
+        <models>
+            <model>
+		<app>systi</app>
+                <name>material</name>
+                <permissions>
+                    <permission>add_material</permission>
+                    <permission>change_material</permission>
+                    <permission>delete_material</permission>
+                </permissions>
+            </model>
+        </models>
+    </group>
+
+
+    <group>
+        <name>compartimento</name>
+        <app>systi</app>
+        <models>
+            <model>
+                <app>systi</app>
+                <name>compartimento</name>
+                <permissions>
+                    <permission>add_compartimento</permission>
+                    <permission>change_compartimento</permission>
+                    <permission>delete_compartimento</permission>
+                </permissions>
+            </model>
+        </models>
+    </group>
+
+    <group>
+        <name>emprestimo</name>
+        <app>systi</app>
+        <models>
+            <model>
+                <app>systi</app>
+                <name>emprestimo</name>
+                <permissions>
+                    <permission>add_compartimento</permission>
+                    <permission>change_compartimento</permission>
+                    <permission>delete_compartimento</permission>
+                </permissions>
+            </model>
+        </models>
+    </group>
+
+
+
+    <group>
+        <name>servicointerno</name>
+        <app>systi</app>
+        <models>
+            <model>
+                <app>systi</app>
+                <name>servicointerno</name>
+                <permissions>
+                    <permission>add_servicointerno</permission>
+                    <permission>change_servicointerno</permission>
+                    <permission>delete_servicointerno</permission>
+                </permissions>
+            </model>
+        </models>
+    </group>
+
+
+    <group>
+        <name>servicoexterno</name>
+        <app>systi</app>
+        <models>
+            <model>
+                <app>systi</app>
+                <name>servicoexterno</name>
+                <permissions>
+                    <permission>add_servicoexterno</permission>
+                    <permission>change_servicoexterno</permission>
+                    <permission>delete_servicoexterno</permission>
+                </permissions>
+            </model>
+        </models>
+    </group>
+
+
+
+</groups>

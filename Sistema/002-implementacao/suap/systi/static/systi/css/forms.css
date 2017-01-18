@@ -1,0 +1,628 @@
+/* CSS para formularios */
+
+fieldset {
+    border: 1px solid #eeeeee;
+    border-radius: 3px;
+    clear: both;
+}
+    .action-bar.search-and-filters form fieldset {
+        border: 0 none;
+    }
+form > div {
+    display: inline-block;
+    width: 100%;
+}
+form li {
+    list-style-type: none;
+    margin: 0 0 0 145px;
+}
+form td > ul > li {
+    list-style-type: square;
+    margin: 0;
+}
+form .integer-widget {
+    width: auto;
+}
+input {
+    outline: 0 none;
+}
+input[type="email"],
+input[type="file"],
+input[type="number"],
+input[type="password"],
+input[type="text"],
+input[type="url"] {
+    background: #fff;
+    border: 1px solid #ddd;
+    border-radius: 3px;
+    font-size: 95%;
+    height: 32px;
+    padding: 0 5px;
+    width: 200px;
+}
+input[type="file"] {
+    width: 300px;
+}
+input.big[type="text"] {
+    width: 60%;
+}
+input.md[type="text"],
+input[type="text"].hasDatepicker,
+input[type="text"].short-time-widget {
+    width: 100px;
+}
+input[type="password"].pq,
+input[type="text"].pq {
+    width: 50px;
+}
+input[type="text"].int {
+    width: 37px;
+}
+input[disabled="disabled"],
+input[readonly="readonly"], textarea[readonly="readonly"], select[readonly="readonly"] {
+    background: none repeat scroll 0 0 #CCCCCC;
+}
+input[type="email"]:focus,
+input[type="number"]:focus,
+input[type="password"]:focus,
+input[type="text"]:focus,
+select:focus,
+textarea:focus {
+    border: 1px solid #347B3E;
+    border-radius: 3px;
+}
+input[type="text"].disabled:focus {
+    border: 1px solid #DDDDDD;
+}
+label, form label.labelForm {
+    color: #444444;
+    float: left;
+    font-size: 100%;
+    margin: 5px 0;
+    padding: 0 !important;
+}
+label, form p.labelForm {
+    line-height: 15px;
+    text-align: right !important;
+    width: 150px;
+}
+form p.labelForm {
+    margin: 5px 0 5px 5px !important;
+}
+label span {
+    font-size: 90%;
+    font-weight: normal;
+}
+legend {
+	color: #666;
+    font-size: 110%;
+    font-weight: bold;
+    margin: 15px;
+    padding: 0 5px;
+}
+select {
+    background: #fff;
+    border: 1px solid #ddd;
+    border-radius: 3px;
+    height: 32px;
+    padding: 3px 0;
+}
+select[multiple="multiple"] {
+    height: auto;
+}
+select option {
+    padding: 3px 5px;
+}
+select + option.filled {
+    background: #D5F6DA !important;
+}
+select[multiple="multiple"] option {
+    padding: 5px;
+}
+textarea {
+    background: #FFFFFF;
+    border: 1px solid #DDDDDD;
+    border-radius: 3px;
+    font-family: "Lato", "Arial", sans-serif;
+    font-size: 100%;
+    height: 190px;
+    padding: 5px;
+    width: 60%;
+}
+textarea.big {
+    width: 510px;
+}
+textarea.pq {
+    height: 40px;
+}
+#changelist {
+    clear: both;
+}
+#li_usuarios_add {
+    clear: both;
+    display: inline-block;
+    margin: 0 0 0 145px;
+}
+#ui-datepicker-div {
+    font-family: "Lato", "Arial", sans-serif !important;
+    font-size: 100%;
+    z-index: 3 !important;
+}
+.form-options label {
+    margin: 0;
+}
+form.errors {
+    box-shadow: 1px 1px 5px #999999;
+}
+form fieldset > h2 {
+    background: #EEEEEE;
+    color: #555555;
+    float: none;
+    font-size: 120%;
+    margin: 0;
+    padding: 10px;
+}
+form fieldset.campos input[type="checkbox"],
+form fieldset.campos label {
+    margin: 0 0 10px;
+}
+form fieldset.module {
+    margin: 0 0 10px;
+}
+form fieldset .form-row {
+    background: #F9F9F9;
+    border-bottom: 1px solid #EEE;
+    border-left: 0 none;
+    border-right: 0 none;
+    border-top: 0 none;
+    font-size: 100%;
+    overflow: hidden;
+    padding: 5px 0;
+    width: 100%;
+}
+    .formQuiz form fieldset .form-row {
+        padding: 15px 0;
+    }
+    .action-bar.search-and-filters form fieldset .form-row {
+        background: transparent;
+        border: 0 none;
+        float: left;
+        width: auto;
+    }
+form fieldset .form-row.data {
+    text-align: left;
+}
+form fieldset .form-row.several-items input {
+    float: left;
+}
+form fieldset .form-row input[type="checkbox"] {
+    margin: 5px 5px 0 0;
+}
+form fieldset .form-row label {
+    font-size: 100%;
+    margin: 7px 10px 0 5px;
+    text-align: right;
+    width: 150px;
+}
+form fieldset .form-row label + span {
+    line-height: 25px;
+}
+form fieldset .form-row li label {
+    font-weight: normal !important;
+    width: auto;
+}
+form fieldset .form-row .help {
+    color: #666666;
+    line-height: 1.2em !important;
+    margin: 5px 0 0 165px !important;
+}
+    .action-bar.search-and-filters form fieldset .form-row .help {
+        margin: 0 !important;
+        width: 158px;
+    }
+form .aligned p.help_marginless {
+    color: #666666;
+    padding: 0;
+}
+form .submit-row {
+    background: none transparent;
+    border: 0 none;
+    margin: 10px 0 0;
+    padding: 0;
+    text-align: left;
+}
+    .action-bar.search-and-filters form .submit-row {
+        margin: 15px 0;
+    }
+form .submit-row input {
+    float: left;
+    margin: 0 5px 0 0;
+}
+fieldset .coluna {
+    float: left;
+    margin: 20px;
+}
+fieldset .coluna label {
+    float: none;
+}
+fieldset .field-box {
+    float: left;
+    margin: 0 30px 0 0;
+    min-width: 250px;
+}
+td label {
+    float: none;
+    width: auto;
+}
+#add_id_user_permissions,
+#add_id_groups {
+    float: left;
+    margin: 5px 0 0;
+}
+.add_programa_form label {
+    font-weight: bold;
+    margin: 0 0 2px;
+    text-align: left !important;
+}
+.add_programa_form .form-row {
+    margin: 4px 0;
+}
+#changelist-search {
+    float: left;
+}
+#changelist-search input[type="submit"] {
+    background: #eeeeee;
+    border: 1px solid #dddddd;
+    float: left;
+    font-size: 100%;
+    height: 32px;
+    margin: 0 0 0 2px;
+    padding: 0 10px;
+}
+#changelist-search input[type="submit"]:hover {
+    background: #fff;
+}
+#changelist-search input[type="text"] {
+    float: left;
+}
+.ac_input {
+    width: 500px !important;
+}
+.ac_input[readonly] {
+    color: #999;
+}
+.aligned .vCheckboxLabel {
+    float: left !important;
+}
+input.autocomplete {
+    background: #EFFBE7 !important;
+}
+.calendarbox,
+.clockbox {
+    background: #ffffff;
+    border: 1px solid #cccccc;
+    padding: 10px;
+}
+.change-list .filtered {
+    background: transparent !important;
+}
+.checkboxes {
+    clear: left;
+    margin: 0 0 0 142px;
+    overflow: hidden;
+}
+.checkboxes label {
+    text-align: left !important;
+    width: 300px !important;
+}
+.checkboxes li {
+    float: left;
+    margin: 0 5% 0 0;
+    width: 300px;
+}
+.checkboxes6 li {
+    margin: 0 30px 10px 0;
+}
+.checkbutton {
+    clear: both;
+    float: left;
+    margin: 15px 0 0 160px;
+}
+.clearable-file-input {
+    float: right;
+    margin: 0 50px 0 0;
+}
+input.filled,
+input.ac_filled_hidden {
+    background: #D5F6DA !important;
+}
+.empty-form {
+    display: none;
+}
+.filled {
+    background: #EEEEEE !important;
+}
+.filter select {
+    width: 158px;
+}
+.filter.filter-select-big label,
+.filter.filter-select-big select,
+select.filter-select-big {
+    width: 240px;
+}
+.form-options {
+    margin: -20px 0 0 150px;
+}
+.form-options li {
+    display: inline-block;
+    margin: 0 0 5px;
+    width: 100%;
+}
+.form-options li label {
+    margin: 0 !important;
+    width: auto !important;
+}
+.form-options li input[type="checkbox"] {
+    margin: 0 !important;
+}
+.formQuiz label {
+    margin: 5px 10px 0 !important;
+    text-align: left !important;
+    width: 100% !important;
+}
+.formQuiz label input[type="radio"] {
+    margin: 0 5px 0 0;
+}
+.formQuiz label + ul li {
+    display: inline-block;
+    margin: 5px 0;
+}
+.formQuiz li label {
+    margin: 5px 10px 0 0 !important;
+}
+.formQuiz .form-row p.help {
+    margin: 5px 0 0 10px !important;
+}
+.formQuiz textarea {
+    height: 200px;
+    margin: 10px;
+    width: 98%;
+    width: calc(100% - 20px);
+}
+.hiddenfields {
+    display: none;
+}
+.inline-deletelink {
+    float: right;
+    font-weight: normal;
+}
+.inline-group h2 {
+    padding: 10px 0 0;
+}
+.inline-related {
+    clear: both;
+}
+.inline-related h3 {
+    background: #eeeeee;
+    font-size: 100%;
+    font-weight: normal;
+    margin: 0;
+    padding: 10px 15px;
+}
+.inline-related table {
+    margin: 0.5%;
+    width: 99%;
+}
+.inline-related .datetime {
+    clear: both;
+    padding: 0 0 0 160px;
+}
+.inline-related .delete {
+    float: right;
+}
+.inline-related .delete label.inline {
+    margin: 0 5px 0 0;
+}
+.invalid {
+    background: #F2DEDE !important;
+    border: 1px solid #cc0000 !important;
+}
+.multiFileUploaderContainer {
+    margin: 0 0 0 160px;
+}
+.multiFileUploaderContainer li {
+    background: url("/static/comum/img/close_modal_box.png") no-repeat 98% 5px #eeeeee;
+    cursor: pointer;
+    float: left;
+    margin: 10px 10px 0 0;
+    min-height: 50px;
+    min-width: 250px;
+    padding: 10px 25px 10px 15px;
+}
+.multiFileUploaderContainer li:hover {
+    background-color: #ffffff;
+}
+.multiFileUploaderContainer li.error {
+    background-color: #F2DEDE;
+}
+.multiFileUploaderContainer ul {
+    padding: 0;
+}
+.multiFileUploaderContainer .progress {
+    height: 20px;
+    margin: 0 0 5px;
+}
+.multiFileUploaderContainer .progress p {
+    font-size: 95%;
+    height: 20px;
+    line-height: 20px !important;
+}
+.required label,
+label.required {
+    cursor: help;
+    font-weight: bold !important;
+}
+    label.required:after,
+    .required label:after {
+        color: #cc0000;
+        content: " *";
+    }
+.selector {
+    display: inline-block;
+    margin: 3px 20px 0 165px;
+    width: 60%;
+    width: calc(100% - 185px);
+}
+.selector h2 {
+    color: #666;
+    font-size: 110%;
+    margin: 10px 0 0;
+    text-transform: capitalize;
+}
+.selector h2 img.help {
+    margin: 0 !important;
+}
+.selector select {
+    font-size: 110%;
+    height: 160px;
+    width: 100%;
+}
+.selector-available {
+    background: #eee;
+    float: left;
+    padding: 20px;
+    width: 45%;
+}
+.selector-chosen .selector-filter img {
+    height: 14px;
+}
+.selector-chooser {
+    float: left;
+    margin: 120px 0 0;
+    padding: 0;
+    width: 10%;
+}
+.selector-chooser a {
+    margin: 2px 0;
+    padding: 2px 0;
+    text-align: center;
+    width: 100%;
+}
+.selector-chooser li {
+    margin: 0 10px;
+}
+.selector-chosen {
+    background: #eee;
+    float: right;
+    padding: 20px;
+    width: 45%;
+}
+.selector-filter {
+    clear: none;
+    float: right;
+    padding: 0 !important;
+}
+.selector-filter label {
+    width: auto !important;
+}
+.selector-chooseall,
+.selector-clearall {
+    display: block;
+    margin: 5px 0 0;
+}
+.several-items .btn {
+    margin: 0 0 0 5px;
+}
+.submit-row p.deletelink-box {
+    float: right !important;
+    padding: 4px 0 0;
+}
+.tree-container {
+    margin: 0 20px 0 160px !important;
+}
+.tree-container > ul {
+    background: #FFFFFF;
+    border-radius: 3px;
+}
+.form-row.width400 p.labelForm {
+    float: left;
+    width: 400px !important;
+}
+.form-row.width400 textarea {
+    float: left;
+    height: 80px;
+    margin: 10px 5px 0 10px;
+    width: 500px;
+}
+.form-row.width400 ul.checkboxes {
+    float: left;
+    margin: 7px 0 0 5px;
+}
+.ui-datepicker-calendar thead th {
+    padding: 1px 3px;
+}
+.ui-datepicker-calendar thead th span {
+    background: none;
+    border-radius: 0px;
+    box-shadow: 0px 0px 0px transparent;
+    float: none;
+    margin: 0;
+}
+.ui-state-active,
+.ui-widget-content .ui-state-active,
+.ui-widget-header .ui-state-active {
+    background: #D5F6DA !important;
+    border: 1px solid #AAAAAA !important;
+}
+.ui-state-default,
+.ui-widget-content .ui-state-default,
+.ui-widget-header .ui-state-default {
+    background: #EEEEEE;
+    border: 1px solid #DDDDDD;
+}
+.ui-widget-header {
+    background: #ccc;
+    border-radius: 0px !important;
+}
+ul.ajaxmultiselect_field {
+    padding: 0 0 5px 165px;
+}
+ul.ajaxmultiselect_field li {
+    background: #dff0d8;
+    color: #3c763d;
+    display: inline-block;
+    float: left;
+    list-style: none;
+    margin: 0 4px 4px 0;
+    padding: 4px 6px;
+}
+ul.ajaxmultiselect_field li:last-child {
+    background: #eee;
+    border: 1px solid #ddd;
+    border-radius: 3px;
+    clear: left;
+}
+ul.ajaxmultiselect_field li:only-child {
+    clear: none !important;
+}
+ul.ajaxmultiselect_field li#li_alunos_add {
+    display: table;
+}
+ul.ajaxmultiselect_field + .help {
+    display: inline-block;
+    width: 100%;
+}
+img.ajaxmultiselect_add,
+img.ajaxmultiselect_remove {
+    cursor: pointer;
+}
+input.ajaxmultiselect_add {
+    width: 380px;
+}
+
+/* Para iPhone */
+@media only screen and (max-device-width: 480px) {
+    form fieldset .form-row {
+        padding: 20px 0;
+    }
+}

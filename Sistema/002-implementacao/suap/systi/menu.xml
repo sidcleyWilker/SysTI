@@ -1,0 +1,84 @@
+<menu>
+	<itens>
+		<item>
+			<hierarchy>SysTI::Gerenciar Ativos::Ativos</hierarchy>
+			<url>/admin/systi/ativo/</url>
+			<permissions>
+				<permission>rh.eh_servidor</permission>
+			</permissions>
+		</item>
+
+		<item>
+			<hierarchy>SysTI::Gerenciar Ativos::Adicionar nova Categoria</hierarchy>
+			<url>/admin/systi/categoria/</url>
+			<permissions>
+				<permission>rh.eh_servidor</permission>
+			</permissions>
+		</item>
+
+		<item>
+			<hierarchy>SysTI::Materiais::Material</hierarchy>
+			<url>/admin/systi/material/</url>
+			<permissions>
+				<permission>rh.eh_servidor</permission>
+			</permissions>
+		</item>
+
+        <item>
+			<hierarchy>SysTI::Materiais::Compartimentos</hierarchy>
+			<url>/admin/systi/compartimento/</url>
+			<permissions>
+				<permission>rh.eh_servidor</permission>
+			</permissions>
+		</item>
+
+		<item>
+			<hierarchy>SysTI::Serviços::Interno</hierarchy>
+			<url>/admin/systi/servicointerno</url>
+			<permissions>
+				<permission>rh.eh_servidor</permission>
+			</permissions>
+		</item>
+
+		<item>
+			<hierarchy>SysTI::Serviços::Externo</hierarchy>
+			<url>/admin/systi/servicoexterno</url>
+			<permissions>
+				<permission>rh.eh_servidor</permission>
+			</permissions>
+		</item>
+
+		<item>
+			<hierarchy>SysTI::Acessos Biometricos</hierarchy>
+			<url>/admin/systi/acessobiometrico/</url>
+			<permissions>
+				<permission>rh.eh_servidor</permission>
+			</permissions>
+		</item>
+
+		<item>
+			<hierarchy>SysTI::Empréstimos</hierarchy>
+			<url>/admin/systi/emprestimo/</url>
+			<permissions>
+				<permission>rh.eh_servidor</permission>
+			</permissions>
+		</item>
+
+		<item>
+			<hierarchy>SysTI::Fornecedores</hierarchy>
+			<url>/admin/systi/fornecedor/</url>
+			<permissions>
+				<permission>rh.eh_servidor</permission>
+			</permissions>
+		</item>
+
+		<item>
+			<hierarchy>SysTI::Transferências</hierarchy>
+			<url>/admin/systi/transferencia/</url>
+			<permissions>
+				<permission>rh.eh_servidor</permission>
+			</permissions>
+		</item>
+
+	</itens>
+</menu>

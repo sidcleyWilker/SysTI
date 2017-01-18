@@ -1,0 +1,68 @@
+{% extends super_template %}
+{% load filters %}
+
+
+{% block content %}
+
+<div>
+    <h2>
+         Fornecedor nº  {{ forne.id }}
+    </h2>
+</div>
+
+{% box 'Dados do Fornecedor' %}
+
+<table class="info">
+    <tbody>
+        <tr>
+            <td>Nome</td>
+            <td> {{ forne.nome }}</td>
+        </tr>
+        <tr>
+            <td>CPF</td>
+            <td> {{ forne.cpf }}</td>
+        </tr>
+        <tr>
+            <td>CNPJ</td>
+            <td> {{ forne.cnpj }}</td>
+        </tr>
+        <tr>
+            <td>Telefone para Contato</td>
+            <td> {{ forne.telefone1 }}</td>
+        </tr>
+        <tr>
+            <td>Telefone para Contato Reserva</td>
+            <td> {{ forne.telefone2 }}</td>
+        </tr>
+         <tr>
+             <td>E-mail</td>
+             <td> {{ forne.email }}</td>
+        </tr>
+
+    </tbody>
+</table>
+
+
+{% box 'Ativos Fornecidos' %}
+<table class="info">
+    <tbody>
+    {% for ativo in ativos%}
+    <tr>
+        <td>Nome</td>
+        <td> {{ ativo.nome }}</td>
+    </tr>
+    <tr>
+        <td>Local onde Esta</td>
+        <td> {{ ativo.local_do_ativo }}</td>
+    </tr>
+    {% endfor %}
+    </tbody>
+</table>
+{% endbox %}
+
+{% box 'Materiais Fornecidos' %}
+{% endbox %}
+
+{% endbox %}
+
+{% endblock %}

@@ -1,0 +1,128 @@
+{% extends super_template %}
+{% load filters %}
+
+
+{% block content %}
+<div>
+    <h2> Ativo N° {{ ativo.id }}</h2>
+</div>
+
+
+{% box 'Dados do Ativo' %}
+<table class="info">
+    <tbody>
+        <tr>
+            <td>Nome</td>
+            <td> {{ ativo.nome }}</td>
+        </tr>
+        <tr>
+            <td>Tombamento</td>
+            <td> {{ ativo.tombamento }}</td>
+        </tr>
+        <tr>
+            <td>Número Da Etiqueta</td>
+            <td> {{ ativo.numero_etiqueta }}</td>
+        </tr>
+        <tr>
+            <td>Número de Serie</td>
+            <td> {{ ativo.numero_serie }}</td>
+        </tr>
+        <tr>
+            <td>Número do Produto</td>
+            <td> {{ ativo.numero_produto }}</td>
+        </tr>
+        <tr>
+            <td>Fornecedor</td>
+            <td> {{ ativo.fornecedor }}</td>
+        </tr>
+        <tr>
+            <td>Local Do Ativo</td>
+            <td> {{ ativo.local_do_ativo }}</td>
+        </tr>
+
+        {% if ativo.mais_atributo == 'Sim' %}
+            {% for atributo in atributos %}
+                <tr>
+                    <td>{{ atributo.nome_campo }}</td>
+                    <td> {{ atributo.valor }}</td>
+                </tr>
+            {% endfor %}
+        {% endif %}
+    </tbody>
+</table>
+{% endbox %}
+
+
+{% if hardware != None%}
+    {% box 'Dados da Categoria Hardware' %}
+        <table class="info">
+            <thead>
+                <title>Categoria Hardware</title>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>Fabricante</td>
+                    <td>{{ hardware.fabricante }}</td>
+                </tr>
+                <tr>
+                    <td>Fabricante</td>
+                    <td>{{ hardware.versao }}</td>
+                </tr>
+            </tbody>
+        </table>
+    {% endbox %}
+{% endif %}
+
+
+{% if software != None %}
+    {% box 'Dados da Categoria Software' %}
+        <table class="info">
+            <thead>
+                <title>Categoria Software</title>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>Nome do Software</td>
+                    <td>{{ software.nome_software}}</td>
+                </tr>
+                <tr>
+                    <td>Versão do Software</td>
+                    <td>{{ software.versao_software}}</td>
+                </tr>
+                <tr>
+                    <td>Software Pago</td>
+                    <td>{{ software.pago}}</td>
+                </tr>
+            </tbody>
+        </table>
+
+    {% endbox %}
+{% endif %}
+
+
+{% if rede != None %}
+    {% box 'Dados da Categoria Rede' %}
+        <table class="info">
+            <thead>
+                <title>Categoria Rede</title>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>Fabricante</td>
+                    <td>{{ rede.fabricante }}</td>
+                </tr>
+                <tr>
+                    <td>Fabricante</td>
+                    <td>{{ rede.versao }}</td>
+                </tr>
+                <tr>
+                    <td>N° de Portas</td>
+                    <td> {{ numero_portas }} </td>
+                </tr>
+            </tbody>
+        </table>
+    {% endbox %}
+{% endif %}
+
+
+{% endblock %}

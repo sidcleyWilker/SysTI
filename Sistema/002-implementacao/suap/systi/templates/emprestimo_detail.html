@@ -1,0 +1,108 @@
+{% extends super_template %}
+{% load filters %}
+
+
+{% block content %}
+
+<div>
+    <h2>
+         Empréstimo {{emprestimo.id}}
+    </h2>
+</div>
+
+<div>
+    <ul class="action-bar">
+
+            <li>
+                <a class="btn primary" href="/admin/systi/emprestimo/{{ emprestimo.pk }}">Editar</a>
+            </li>
+
+            <li>
+                <a class="btn warning" href="/systi/emprestimo/vigente/{{ emprestimo.pk }}">Vigente</a>
+            </li>
+
+            <li>
+                 <a class="btn success" href="/systi/emprestimo/devolver/{{ emprestimo.pk }}">Devolvido</a>
+            </li>
+
+
+    </ul>
+</div>
+
+
+
+{% box 'Dados do Empréstimo' %}
+
+<table class="info">
+    <tbody>
+        <tr>
+            <td>Motivo</td>
+            <td> {{emprestimo.motivo}}</td>
+        </tr>
+
+        <tr>
+            <td>Data do Emprestimo</td>
+            <td> {{emprestimo.data_emprestimo}}</td>
+        </tr>
+
+        <tr>
+            <td>Data Prevista de Devolução</td>
+            <td> {{emprestimo.data_devolucao}}</td>
+        </tr>
+
+        <tr>
+            <td>Estado do Emprestimo</td>
+            <td>{{emprestimo.estado}}</td>
+        </tr>
+
+        <tr>
+            <td>Setor Origem</td>
+            <td>{{emprestimo.setor_origem}}</td>
+        </tr>
+
+        <tr>
+            <td>Setor Destino</td>
+            <td>{{emprestimo.setor_destino}}</td>
+        </tr>
+
+    </tbody>
+
+</table>
+
+{% box 'Dados do Ativo' %}
+
+<table class="info">
+    <tbody>
+        <tr>
+            <td>Nome</td>
+            <td>{{ativo.nome}}</td>
+        </tr>
+    </tbody>
+
+    <tbody>
+        <tr>
+            <td>Número de Tombamento</td>
+            <td>{{ativo.tombamento}}</td>
+        </tr>
+    </tbody>
+
+    <tbody>
+        <tr>
+            <td>Categoria do Ativo</td>
+            <td>{{ativo.categoria_do_ativo}}</td>
+        </tr>
+    </tbody>
+
+    <tbody>
+        <tr>
+            <td>Fornecido Por</td>
+            <td>{{ativo.fornecedor.nome}}</td>
+        </tr>
+    </tbody>
+
+</table>
+
+{% endbox %}
+
+{% endbox %}
+{% endblock %}
