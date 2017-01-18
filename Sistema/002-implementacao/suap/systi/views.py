@@ -123,13 +123,16 @@ def emprestimo_detail(request, id):
     return locals()
 
 @rtr()
-def servicosinternos_detail(request, id):
+def servicointerno_detail(request, id):
     try:
-        servicos_interno = ServicoInterno.objects.get(pk=id)
-    except servicos_interno.DoesNotExist:
-        raise Http404(u'Serviço Interno não Existe')
+        servico_interno = ServicoInterno.objects.get(pk=id)
+        equipamentos = servico_interno.equipamentos_enviados.all()
+        materiais = servico_interno.materiais.all()
 
+    except ServicoInterno.DoesNotExist:
+        raise Http404(u"Servico Interno não existe.")
     return locals()
+
 
 @rtr()
 def servicosexternos_detail(request, id):
@@ -139,3 +142,13 @@ def servicosexternos_detail(request, id):
         raise Http404(u'Serviço Externo não Existe')
 
     return locals()
+
+def emprestimovigente(request, id):
+    try:
+        emprestimo = Emprestimo.objects.get(pk=id)
+        emprestimo.estado = SysTIChoices.VIGENTE
+        Emprestimo.save()
+
+        return httprr('/systi/emprestimo/' + id + '/', u'Emprestimo Vigente.', 'success')
+    except Transferencia.DoesNoExist:
+        raise Http404(u"Emprestimo Não existe")

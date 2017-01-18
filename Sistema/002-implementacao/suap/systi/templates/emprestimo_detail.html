@@ -10,6 +10,27 @@
     </h2>
 </div>
 
+<div>
+    <ul class="action-bar">
+
+            <li>
+                <a class="btn primary" href="/admin/systi/emprestimo/{{ emprestimo.pk }}">Editar</a>
+            </li>
+
+            <li>
+                <a class="btn warning" href="/systi/emprestimo/vigente/{{ emprestimo.pk }}">Vigente</a>
+            </li>
+
+            <li>
+                 <a class="btn success" href="/systi/emprestimo/devolver/{{ emprestimo.pk }}">Devolvido</a>
+            </li>
+
+
+    </ul>
+</div>
+
+
+
 {% box 'Dados do Empréstimo' %}
 
 <table class="info">

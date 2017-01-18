@@ -130,4 +130,41 @@
         </models>
     </group>
 
+
+
+    <group>
+        <name>servicointerno</name>
+        <app>systi</app>
+        <models>
+            <model>
+                <app>systi</app>
+                <name>servicointerno</name>
+                <permissions>
+                    <permission>add_servicointerno</permission>
+                    <permission>change_servicointerno</permission>
+                    <permission>delete_servicointerno</permission>
+                </permissions>
+            </model>
+        </models>
+    </group>
+
+
+    <group>
+        <name>servicoexterno</name>
+        <app>systi</app>
+        <models>
+            <model>
+                <app>systi</app>
+                <name>servicoexterno</name>
+                <permissions>
+                    <permission>add_servicoexterno</permission>
+                    <permission>change_servicoexterno</permission>
+                    <permission>delete_servicoexterno</permission>
+                </permissions>
+            </model>
+        </models>
+    </group>
+
+
+
 </groups>
