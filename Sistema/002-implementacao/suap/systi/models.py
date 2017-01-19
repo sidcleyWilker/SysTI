@@ -283,7 +283,7 @@ class Servico(ModelPlus):
 
 
 class ServicoInterno(Servico):
-    procedimentos_realizados = models.TextField(verbose_name='Procedimentos a Serem Realizados', max_length=300,  null=True, blank=True)
+    procedimentos_realizados = models.TextField(verbose_name='Procedimentos a Serem Realizados', max_length=300, null=True, blank=True)
     materiais_utilizados = models.ManyToManyFieldPlus('systi.Material', verbose_name='Materiais Utilizados', blank=True, null=True)
     data_realizacao = models.DateFieldPlus(u'Data da Realização', null=True, blank=True)
     data_prevista_conclusao = models.DateFieldPlus(u'Data Prevista da Conclusão')

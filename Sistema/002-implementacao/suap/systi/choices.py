@@ -42,12 +42,12 @@ class SysTIChoices:
         TRANSFERIDA: u'Transferida(o)'
     }
 
-    AGUARDANDO_DIAGNOSTICO = u'Aguardando Diagnóstico',
-    RECOLHIDO = u'Recolhido',
-    DEVOLVIDO = u'Devolvido',
-    CANCELADO = u'Cacelado',
-    EM_EXECUCAO = u'Em Execução',
-    SUSPENSO = u'Suspenso',
+    AGUARDANDO_DIAGNOSTICO = u'Aguardando Diagnóstico'
+    RECOLHIDO = u'Recolhido'
+    DEVOLVIDO = u'Devolvido'
+    CANCELADO = u'Cacelado'
+    EM_EXECUCAO = u'Em Execução'
+    SUSPENSO = u'Suspenso'
 
     ESTADOS_SERVICO = {
         AGUARDANDO_DIAGNOSTICO: u'Aguardando Diagnóstico',
@@ -58,12 +58,12 @@ class SysTIChoices:
         SUSPENSO: u'Suspenso',
     }
 
-    EM_ABERTO = u'Em Aberto',
-    AGUARDANDO_TERMO = u'Aguardando Termo',
-    SOLICITADO = u'Solicitado',
-    DEVOLVIDO = u'Devolvido',
-    VIGENTE = u'Vigente',
-    PENDENTE = u'Pendente',
+    EM_ABERTO = u'Em Aberto'
+    AGUARDANDO_TERMO = u'Aguardando Termo'
+    SOLICITADO = u'Solicitado'
+    DEVOLVIDO = u'Devolvido'
+    VIGENTE = u'Vigente'
+    PENDENTE = u'Pendente'
 
     ESTADO_EMPRESTIMOS = {
         EM_ABERTO: u'Em Aberto',
