@@ -29,10 +29,14 @@ urlpatterns = patterns('systi.views',
 
     (r'^servicoexterno/(?P<id>\d+)/$', 'servicosexternos_detail'),
 
-    (r'^emprestimo/vigente/(?P<id>\d+)/$', 'emprestimovigente'),
-
 
     (r'^servicointerno/iniciarservico/(?P<id>\d+)/$', 'iniciar_servico'),
     (r'^servicointerno/registrardevolucao/(?P<id>\d+)/$', 'registrar_devolucao'),
+
+
+    (r'^emprestimo/vigente/(?P<id>\d+)/$', 'emprestimo_vigente'),
+
+    (r'^emprestimo/devolver/(?P<id>\d+)/$', 'emprestimo_devolver'),
+
 
 )

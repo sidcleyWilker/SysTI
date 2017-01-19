@@ -2,6 +2,7 @@
 
 
 from django.http import Http404
+from docutils.nodes import emphasis
 
 from systi.models import ServicoExterno
 from .models import Fornecedor, Ativo, AcessoBiometrico, Atributo, Categoria, Transferencia, Emprestimo, Compartimento, Material, ServicoInterno
@@ -143,16 +144,17 @@ def servicosexternos_detail(request, id):
 
     return locals()
 
-def emprestimovigente(request, id):
+
+def emprestimo_vigente(request, id):
     try:
         emprestimo = Emprestimo.objects.get(pk=id)
         emprestimo.estado = SysTIChoices.VIGENTE
-        Emprestimo.save()
+        emprestimo.save()
 
         return httprr('/systi/emprestimo/' + id + '/', u'Emprestimo Vigente.', 'success')
-    except Transferencia.DoesNoExist:
-
+    except Emprestimo.DoesNoExist:
         raise Http404(u"Emprestimo Não existe")
+
 
 def iniciar_servico(request, id):
     try:
@@ -171,5 +173,17 @@ def registrar_devolucao(request, id):
         return httprr('/systi/servicointerno/' + id + '/', u'Serviço Interno Alterado.', 'success')
     except ServicoInterno.DoesNotExist:
         raise Http404(u"Servico Interno não existe.")
+
+
+def emprestimo_devolver(request, id):
+    try:
+        emprestimo = Emprestimo.objects.get(pk=id)
+        emprestimo.estado = SysTIChoices.DEVOLVIDO
+        emprestimo.save()
+
+        return httprr('/systi/emprestimo/' + id + '/', u'Emprestimo Devolvido.', 'success')
+    except Emprestimo.DoesNoExist:
+        raise Http404(u"Emprestimo Não existe")
+
 
 
