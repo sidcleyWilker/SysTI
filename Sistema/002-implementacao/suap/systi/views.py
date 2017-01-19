@@ -151,4 +151,25 @@ def emprestimovigente(request, id):
 
         return httprr('/systi/emprestimo/' + id + '/', u'Emprestimo Vigente.', 'success')
     except Transferencia.DoesNoExist:
+
         raise Http404(u"Emprestimo Não existe")
+
+def iniciar_servico(request, id):
+    try:
+        servico_interno = ServicoInterno.objects.get(pk=id)
+        servico_interno.data_realizacao = timezone.now()
+        servico_interno.save()
+        return httprr('/systi/servicointerno/' + id + '/', u'Serviço Interno Alterado.', 'success')
+    except ServicoInterno.DoesNotExist:
+        raise Http404(u"Servico Interno não existe.")
+
+def registrar_devolucao(request, id):
+    try:
+        servico_interno = ServicoInterno.objects.get(pk=id)
+        servico_interno.data_devolucao = timezone.now()
+        servico_interno.save()
+        return httprr('/systi/servicointerno/' + id + '/', u'Serviço Interno Alterado.', 'success')
+    except ServicoInterno.DoesNotExist:
+        raise Http404(u"Servico Interno não existe.")
+
+
