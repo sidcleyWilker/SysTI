@@ -12,7 +12,7 @@
 <div>
     <ul class="action-bar">
 
-        {% if servico_interno.data_devolucao == None %}
+        {% if servico_interno.data_conclusao == None %}
             <li>
                 <a class="btn primary" href="/admin/systi/servicointerno/{{ servico_interno.pk }}">Editar</a>
             </li>
@@ -98,16 +98,16 @@
 
              <tr>
                 <td>Data Prevista para Devolução</td>
-                <td>{{ servico_interno.data_prevista_devolucao }}</td>
+                <td>{{ servico_interno.data_prevista_conclusao }}</td>
             </tr>
 
             <tr>
                 <td>Data de Devolução</td>
                 <td>
-                    {% if servico_interno.data_devolucao == None %}
+                    {% if servico_interno.data_conclusao == None %}
                         <span class="msg info">Aguardando</span>
                     {% else %}
-                        {{ servico_interno.data_devolucao }}
+                        {{ servico_interno.data_conclusao }}
                     {% endif %}
                 </td>
             </tr>

@@ -127,7 +127,7 @@ def servicointerno_detail(request, id):
     try:
         servico_interno = ServicoInterno.objects.get(pk=id)
         equipamentos = servico_interno.equipamentos_enviados.all()
-        materiais = servico_interno.materiais.all()
+        materiais = servico_interno.materiais_utilizados.all()
 
     except ServicoInterno.DoesNotExist:
         raise Http404(u"Servico Interno não existe.")
@@ -166,7 +166,7 @@ def iniciar_servico(request, id):
 def registrar_devolucao(request, id):
     try:
         servico_interno = ServicoInterno.objects.get(pk=id)
-        servico_interno.data_devolucao = timezone.now()
+        servico_interno.data_conclusao = timezone.now()
         servico_interno.save()
         return httprr('/systi/servicointerno/' + id + '/', u'Serviço Interno Alterado.', 'success')
     except ServicoInterno.DoesNotExist:
