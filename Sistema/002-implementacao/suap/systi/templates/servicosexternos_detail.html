@@ -17,17 +17,17 @@
 
         {% if servico_externo.data_conclusao == None %}
             <li>
-                <a class="btn primary" href="/admin/systi/servicointerno/{{ servico_interno.pk }}">Editar</a>
+                <a class="btn primary" href="/admin/systi/servicoexterno/{{ servico_interno.pk }}">Editar</a>
             </li>
 
             {% if servico_externo.data_realizacao == None %}
                 <li>
-                    <a class="btn warning" href="/systi/servicointerno/iniciarservico/{{ servico_interno.pk }}">Iniciar Serviço</a>
+                    <a class="btn warning" href="/systi/servicoexterno/iniciarservico/{{ servico_interno.pk }}">Iniciar Serviço</a>
                 </li>
 
             {% else %}
                 <li>
-                    <a class="btn success" href="/systi/servicointerno/registrardevolucao/{{ servico_interno.pk }}">Registrar Devolução</a>
+                    <a class="btn success" href="/systi/servicoexterno/registrardevolucao/{{ servico_interno.pk }}">Registrar Devolução</a>
                 </li>
             {% endif %}
         {% endif %}
