@@ -139,6 +139,7 @@ def servicointerno_detail(request, id):
 def servicosexternos_detail(request, id):
     try:
         servico_externo = ServicoExterno.objects.get(pk=id)
+        equipamento = servico_externo.equipamentos_enviados.all()
     except servico_externo.DoesNotExist:
         raise Http404(u'Serviço Externo não Existe')
 
@@ -173,6 +174,26 @@ def registrar_devolucao(request, id):
         return httprr('/systi/servicointerno/' + id + '/', u'Serviço Interno Alterado.', 'success')
     except ServicoInterno.DoesNotExist:
         raise Http404(u"Servico Interno não existe.")
+
+
+def iniciar_servico_externo(request, id):
+    try:
+        servico_externo = ServicoExterno.objects.get(pk=id)
+        servico_externo.data_realizacao = timezone.now()
+        servico_externo.save()
+        return httprr('/systi/servicoexterno/' + id + '/', u'Serviço Externo Alterado.', 'success')
+    except ServicoInterno.DoesNotExist:
+        raise Http404(u"Servico Externo não existe.")
+
+def registrar_devolucao_externo(request, id):
+    try:
+        servico_externo = ServicoExterno.objects.get(pk=id)
+        servico_externo.data_conclusao = timezone.now()
+        servico_externo.save()
+        return httprr('/systi/servicoexterno/' + id + '/', u'Serviço Externo Alterado.', 'success')
+    except ServicoInterno.DoesNotExist:
+        raise Http404(u"Servico Externo não existe.")
+
 
 
 def emprestimo_devolver(request, id):

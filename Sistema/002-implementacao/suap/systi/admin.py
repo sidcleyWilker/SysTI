@@ -208,12 +208,37 @@ class ServicosInternosAdmin(ModelAdminPlus):
     form = ServicoInternoForm
 
 class ServicosExternosAdmin(ModelAdminPlus):
-    search_fields = ['ordem_servico', 'estado_servico',]
-    list_filter = ['tipo_servico','estado_servico',]
-    list_display = ['diagnostico', 'tipo_servico', 'estado_servico',]
+    search_fields = ['diagnostico', 'data_diagnostico', 'tipo_servico', 'estado_servico',]
+    list_filter = ['diagnostico', 'data_diagnostico', 'tipo_servico', 'estado_servico']
+    list_display = ['diagnostico', 'data_diagnostico', 'tipo_servico', 'estado_servico',
+                    'data_do_envio', 'data_prevista_devolucao']
     list_display_icons = True
 
+    fieldsets = (
+        (None, {
+            'fields': ('motivo_servico', 'anexo_motivo', 'chamado',
+                       'data_diagnostico', 'diagnostico', 'tipo_servico',
+                       'estado_servico', 'motivo_cancel_ou_suspen',
+                       'ordem_servico', 'equipamentos_enviados',)
+        }),
+    )
 
+    def show_list_display_icons(self, obj):
+        out = [u'<ul class="list-display-icons">']
+        icons_html = [view_object_icon(obj)]
+        # Não exibe botão de editar
+        # if self.has_change_permission(self.request, obj):
+        #    icons_html.append(edit_object_icon(obj))
+        for icon_html in icons_html:
+            if icon_html:
+                out.append(u'<li>%s</li>' % icon_html)
+        out.append(u'</ul>')
+        return u''.join(out)
+
+    show_list_display_icons.allow_tags = True
+    show_list_display_icons.short_description = u'#'
+
+    form = ServicoExternoForm
 
 admin.site.register(Transferencia, TransferenciaAdmin)
 admin.site.register(Categoria, CategoriaAdmin)

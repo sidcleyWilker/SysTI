@@ -265,7 +265,7 @@ class Servico(ModelPlus):
     class Meta:
         abstract = True
 
-    motivo_servico= models.CharFieldPlus(
+    motivo_servico = models.CharFieldPlus(
         verbose_name=u'Motivo do Serviço',
         max_length=30,
         choices=SysTIChoices.TIPOS_SOLICITACAO.items(),
@@ -307,6 +307,7 @@ class ServicoExterno(Servico):
     anexo_termo = models.FileField(upload_to='systi/anexoTermosServico/', verbose_name='Anexar Termo', blank=True, null=True)
     prestador = models.ForeignKeyPlus('systi.Fornecedor', verbose_name='Selecionar Prestador', blank=True, null=True)
     parecer = models.CharFieldPlus(verbose_name='Parecer', blank=True, null=True)
+    data_devolucao = models.DateFieldPlus(u'Data de Devolução', blank=True, null=True)
 
     class Meta:
         verbose_name = u'Serviço Externo'

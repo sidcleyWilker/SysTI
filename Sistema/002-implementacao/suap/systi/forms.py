@@ -141,3 +141,13 @@ class ServicoInternoForm(forms.ModelFormPlus):
     class Media:
         js = ('/static/systi/js/servico_interno_externo.js',)
 
+class ServicoExternoForm(forms.ModelFormPlus):
+
+    class Meta:
+        model = ServicoExterno
+        exclude = []
+
+    class Media:
+        js = ('/static/systi/js/servico_interno_externo.js',)
+
+

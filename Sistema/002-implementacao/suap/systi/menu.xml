@@ -33,7 +33,7 @@
 		</item>
 
 		<item>
-			<hierarchy>SysTI::Serviços::Interno</hierarchy>
+			<hierarchy>SysTI::Serviços::Realizados Internamente</hierarchy>
 			<url>/admin/systi/servicointerno</url>
 			<permissions>
 				<permission>rh.eh_servidor</permission>
@@ -41,7 +41,7 @@
 		</item>
 
 		<item>
-			<hierarchy>SysTI::Serviços::Externo</hierarchy>
+			<hierarchy>SysTI::Serviços::Realizados por Terceiros</hierarchy>
 			<url>/admin/systi/servicoexterno</url>
 			<permissions>
 				<permission>rh.eh_servidor</permission>

@@ -17,70 +17,120 @@
 
         {% if servico_externo.data_conclusao == None %}
             <li>
-                <a class="btn primary" href="/admin/systi/servicoexterno/{{ servico_interno.pk }}">Editar</a>
+                <a class="btn primary" href="/admin/systi/servicoexterno/{{ servico_externo.pk }}">Editar</a>
             </li>
 
             {% if servico_externo.data_realizacao == None %}
                 <li>
-                    <a class="btn warning" href="/systi/servicoexterno/iniciarservico/{{ servico_interno.pk }}">Iniciar Serviço</a>
+                    <a class="btn warning" href="/systi/servicoexterno/iniciarservicoexterno/{{ servico_externo.pk }}">Iniciar Serviço</a>
                 </li>
 
             {% else %}
                 <li>
-                    <a class="btn success" href="/systi/servicoexterno/registrardevolucao/{{ servico_interno.pk }}">Registrar Devolução</a>
+                    <a class="btn success" href="/systi/servicoexterno/registrardevolucao/{{ servico_externo.pk }}">Registrar Devolução</a>
                 </li>
             {% endif %}
         {% endif %}
     </ul>
 </div>
 
+{% box 'Dados do Serviço Prestados por Terceiros' %}
 
-{% box 'Dados do Serviço' %}
+    <table class="info">
+        <tbody>
+            <tr>
+                <td>Motivo do Serviço</td>
+                <td> {{ servico_externo.motivo_cancel_ou_suspen }} </td>
+            </tr>
 
-<table class="info">
-    <tbody>
-        <tr>
-            <td>Data do Diagnóstico</td>
-            <td> {{servico_externo.data_diagnostico}}</td>
-        </tr>
-    </tbody>
+            <tr>
+                {% if servico_interno.motivo_cancel_ou_suspen == 'Chamado' %}
+                    <td>Chamado</td>
+                    <td> {{ servico_interno.chamado }}</td>
 
-    <tbody>
-        <tr>
-            <td>Diagnóstico</td>
-            <td> {{servico_externo.diagnostico}}</td>
-        </tr>
-    </tbody>
+                {% else %}
+                    <td>
+                        <a title="Visualizar" href="{{ MEDIA_URL }}{{ servico_externo.anexo_motivo }}"
+                       class="icon icon-search" target="_blank"></a>
+                    </td>
+                    <td>Anexo do Motivo</td>
+                {% endif %}
+            </tr>
 
-    <tbody>
-        <tr>
-            <td>Defeitos Apresentados</td>
-            <td> {{servico_externo.defeitos_apresentados}}</td>
-        </tr>
-    </tbody>
+            <tr>
+                <td>Data do Diagnostico</td>
+                <td>{{ servico_externo.data_diagnostico }}</td>
+            </tr>
 
-    <tbody>
-        <tr>
-            <td>Tipo Serviço</td>
-            <td> {{servico_externo.tipo_servico}}</td>
-        </tr>
-    </tbody>
+            <tr>
+                <td>Diagnostico</td>
+                <td>{{ servico_externo.diagnostico }}</td>
+            </tr>
 
-    <tbody>
-        <tr>
-            <td>Estado do Serviço</td>
-            <td> {{servico_externo.estado_servico}}</td>
-        </tr>
-    </tbody>
+            <tr>
+                <td>Tipo do Serviço</td>
+                <td> {{ servico_externo.tipo_servico }}</td>
+            </tr>
 
-    <tbody>
-        <tr>
-            <td>Ordem do Serviço</td>
-            <td> {{servico_externo.ordem_servico}}</td>
-        </tr>
-    </tbody>
+            <tr>
+                <td>Estado do Serviço</td>
+                <td> {{ servico_externo.estado_servico }}</td>
+            </tr>
 
-</table>
+            <tr>
+                <td>Oredem do Serviço</td>
+                <td> {{ servico_externo.ordem_servico }}</td>
+            </tr>
+            <tr>
+                <td>Data de início do Serviço</td>
+                <td>
+                    {% if servico_externo.data_do_envio == None %}
+                        <span class="msg info">Aguardando</span>
+                    {% else %}
+                        {{ servico_externo.data_do_envio }}
+                    {% endif %}
+
+                </td>
+            </tr>
+
+             <tr>
+                <td>Data Prevista para Devolução</td>
+                <td>{{ servico_externo.data_prevista_devolucao }}</td>
+            </tr>
+
+            <tr>
+                <td>Data de Devolução</td>
+                <td>
+                    {% if servico_externo.data_devolucao == None %}
+                        <span class="msg info">Aguardando</span>
+                    {% else %}
+                        {{ servico_externo.data_devolucao }}
+                    {% endif %}
+                </td>
+            </tr>
+    </table>
+
+
+{% box 'Equipamentos' %}
+    {% for equipamento in equipamentos%}
+        <table>
+            <thead>
+                <tr>
+                    <th>Nome do Equipamento</th>
+                     <th>Numero do Tombamento</th>
+                    <th>Local de Origem</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>{{ equipamento.nome }}</td>
+                    <td>{{ equipamento.tombamento }}</td>
+                    <td>{{ equipamento.local_do_ativo }}</td>
+                </tr>
+            </tbody>
+        </table>
+    {% endfor %}
+{% endbox %}
 
 {% box 'Dados Adicionais' %}
 
