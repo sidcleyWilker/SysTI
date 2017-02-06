@@ -179,7 +179,7 @@ def registrar_devolucao(request, id):
 def iniciar_servico_externo(request, id):
     try:
         servico_externo = ServicoExterno.objects.get(pk=id)
-        servico_externo.data_realizacao = timezone.now()
+        servico_externo.data_do_envio = timezone.now()
         servico_externo.save()
         return httprr('/systi/servicoexterno/' + id + '/', u'Serviço Externo Alterado.', 'success')
     except ServicoInterno.DoesNotExist:
@@ -188,7 +188,7 @@ def iniciar_servico_externo(request, id):
 def registrar_devolucao_externo(request, id):
     try:
         servico_externo = ServicoExterno.objects.get(pk=id)
-        servico_externo.data_conclusao = timezone.now()
+        servico_externo.data_devolucao = timezone.now()
         servico_externo.save()
         return httprr('/systi/servicoexterno/' + id + '/', u'Serviço Externo Alterado.', 'success')
     except ServicoInterno.DoesNotExist:
