@@ -11,16 +11,15 @@
 </div>
 
 
-
 <div>
     <ul class="action-bar">
 
-        {% if servico_externo.data_conclusao == None %}
+        {% if servico_externo.data_devolucao == None %}
             <li>
                 <a class="btn primary" href="/admin/systi/servicoexterno/{{ servico_externo.pk }}">Editar</a>
             </li>
 
-            {% if servico_externo.data_realizacao == None %}
+            {% if servico_externo.data_devolucao == None %}
                 <li>
                     <a class="btn warning" href="/systi/servicoexterno/iniciarservicoexterno/{{ servico_externo.pk }}">Iniciar Serviço</a>
                 </li>

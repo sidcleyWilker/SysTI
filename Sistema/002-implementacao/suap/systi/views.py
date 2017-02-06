@@ -181,7 +181,7 @@ def iniciar_servico_externo(request, id):
         servico_externo = ServicoExterno.objects.get(pk=id)
         servico_externo.data_do_envio = timezone.now()
         servico_externo.save()
-        return httprr('/systi/servicoexterno/' + id + '/', u'Serviço Externo Alterado.', 'success')
+        return httprr('/systi/servicoexterno/' + id + '/', u'Serviço Externo Iniciado.', 'success')
     except ServicoInterno.DoesNotExist:
         raise Http404(u"Servico Externo não existe.")
 
@@ -190,7 +190,7 @@ def registrar_devolucao_externo(request, id):
         servico_externo = ServicoExterno.objects.get(pk=id)
         servico_externo.data_devolucao = timezone.now()
         servico_externo.save()
-        return httprr('/systi/servicoexterno/' + id + '/', u'Serviço Externo Alterado.', 'success')
+        return httprr('/systi/servicoexterno/' + id + '/', u'Registro de Devolução Realizado.', 'success')
     except ServicoInterno.DoesNotExist:
         raise Http404(u"Servico Externo não existe.")
 
