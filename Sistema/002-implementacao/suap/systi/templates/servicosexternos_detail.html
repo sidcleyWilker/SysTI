@@ -19,7 +19,7 @@
                 <a class="btn primary" href="/admin/systi/servicoexterno/{{ servico_externo.pk }}">Editar</a>
             </li>
 
-            {% if servico_externo.data_devolucao == None %}
+            {% if servico_externo.data_do_envio == None %}
                 <li>
                     <a class="btn warning" href="/systi/servicoexterno/iniciarservicoexterno/{{ servico_externo.pk }}">Iniciar Serviço</a>
                 </li>

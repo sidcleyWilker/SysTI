@@ -13,18 +13,25 @@
 <div>
     <ul class="action-bar">
 
+     {% if emprestimo.estado != 'Devolvido' %}
             <li>
                 <a class="btn primary" href="/admin/systi/emprestimo/{{ emprestimo.pk }}">Editar</a>
             </li>
+
+        {% if emprestimo.estado != 'Vigente' %}
 
             <li>
                 <a class="btn warning" href="/systi/emprestimo/vigente/{{ emprestimo.pk }}">Vigente</a>
             </li>
 
+        {% else %}
+
             <li>
                  <a class="btn success" href="/systi/emprestimo/devolver/{{ emprestimo.pk }}">Devolvido</a>
             </li>
 
+        {% endif %}
+    {% endif %}
 
     </ul>
 </div>

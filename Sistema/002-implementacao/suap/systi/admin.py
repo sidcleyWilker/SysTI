@@ -219,7 +219,7 @@ class ServicosExternosAdmin(ModelAdminPlus):
             'fields': ('motivo_servico', 'anexo_motivo', 'chamado',
                        'data_diagnostico', 'diagnostico', 'tipo_servico',
                        'estado_servico', 'motivo_cancel_ou_suspen',
-                       'ordem_servico', 'equipamentos_enviados',)
+                       'ordem_servico', 'equipamentos_enviados','data_prevista_devolucao',)
         }),
     )
 
