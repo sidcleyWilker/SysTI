@@ -207,4 +207,12 @@ def emprestimo_devolver(request, id):
         raise Http404(u"Emprestimo Não existe")
 
 
+@rtr()
+def categoria_detail(request, id):
+    try:
+        atributo = Categoria.objects.get(pk=id)
+        atributos = Atributo.objects.filter(categoria_instancia_id=atributo.pk)
+    except atributo.DoesNotExist:
+        raise Http404(u'Categoria não Existe')
 
+    return locals()

@@ -49,7 +49,7 @@
 		</item>
 
 		<item>
-			<hierarchy>SysTI::Acessos Biometricos</hierarchy>
+			<hierarchy>SysTI::Acessos Biométricos</hierarchy>
 			<url>/admin/systi/acessobiometrico/</url>
 			<permissions>
 				<permission>rh.eh_servidor</permission>

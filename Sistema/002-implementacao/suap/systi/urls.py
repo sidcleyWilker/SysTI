@@ -41,5 +41,7 @@ urlpatterns = patterns('systi.views',
 
     (r'^emprestimo/devolver/(?P<id>\d+)/$', 'emprestimo_devolver'),
 
+    (r'^categoria/(?P<id>\d+)/$', 'categoria_detail'),
+
 
 )

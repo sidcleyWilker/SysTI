@@ -1,0 +1,83 @@
+{% extends super_template %}
+{% load filters %}
+
+
+{% block content %}
+
+<div>
+    <h2>
+         Atributo {{ atributo.id }}
+    </h2>
+</div>
+
+{% box 'Dados da Categoria' %}
+
+<table class="info">
+    <tbody>
+        <tr>
+            <td>Nome</td>
+            <td> {{ atributo.nome }}</td>
+        </tr>
+
+        <tr>
+             <td>Descrição</td>
+             <td> {{ atributo.descricao }}</td>
+        </tr>
+
+    </tbody>
+</table>
+{% endbox %}
+
+{% box 'Atributos da Categoria' %}
+
+
+   <table>
+        <thead>
+                <th>
+                    Nome
+                </th>
+
+                <th>
+                    Tipo do Campo
+                </th>
+
+                <th>
+                    Obrigatório
+                </th>
+
+                <th>
+                    Único
+                </th>
+
+            </thead>
+        {% for at in atributos %}
+
+                    <tbody>
+                        <tr>
+                            <td>
+                               {{at.nome_campo}}
+                            </td>
+                            <td>
+                                {{at.tipo_campo}}
+                            </td>
+
+                            <td>
+                                {{at.obrigatorio}}
+                            </td>
+
+                            <td>
+                                {{at.unico}}
+                            </td>
+
+                        </tr>
+
+                    </tbody>
+
+
+        {%endfor%}
+
+        </table>
+
+{% endbox %}
+
+{% endblock %}

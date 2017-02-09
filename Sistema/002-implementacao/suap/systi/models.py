@@ -108,7 +108,6 @@ class Atributo(ModelPlus):
     )
     obrigatorio = models.BooleanField(verbose_name=u'Obrigatorio', default=False)
     unico = models.BooleanField(verbose_name=u'È unico', default=False)
-    valor = models.CharField(verbose_name=u'Valor', max_length=50)
     categoria_instancia = models.ForeignKey('systi.Categoria', verbose_name=u'Instancia')
 
     class Meta:
