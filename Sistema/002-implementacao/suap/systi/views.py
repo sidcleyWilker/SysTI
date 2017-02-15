@@ -140,6 +140,7 @@ def servicosexternos_detail(request, id):
     try:
         servico_externo = ServicoExterno.objects.get(pk=id)
         equipamento = servico_externo.equipamentos_enviados.all()
+
     except servico_externo.DoesNotExist:
         raise Http404(u'Serviço Externo não Existe')
 

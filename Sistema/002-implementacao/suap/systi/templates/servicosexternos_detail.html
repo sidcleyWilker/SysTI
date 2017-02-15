@@ -103,10 +103,11 @@
                 </td>
             </tr>
     </table>
+{% endbox %}
 
 
 {% box 'Equipamentos' %}
-    {% for equipamento in equipamentos%}
+    {% for equip in equipamento%}
         <table>
             <thead>
                 <tr>
@@ -117,14 +118,15 @@
             </thead>
             <tbody>
                 <tr>
-                    <td>{{ equipamento.nome }}</td>
-                    <td>{{ equipamento.tombamento }}</td>
-                    <td>{{ equipamento.local_do_ativo }}</td>
+                    <td>{{ equip.nome }}</td>
+                    <td>{{ equip.tombamento }}</td>
+                    <td>{{ equip.local_do_ativo }}</td>
                 </tr>
             </tbody>
         </table>
     {% endfor %}
 {% endbox %}
+
 
 {% box 'Dados Adicionais' %}
 
@@ -145,6 +147,5 @@
 
 </table>
 
-{% endbox %}
 {% endbox %}
 {% endblock %}
