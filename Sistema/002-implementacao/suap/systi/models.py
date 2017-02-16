@@ -214,6 +214,7 @@ class Material(ModelPlus):
     unidade_de_medida = models.CharFieldPlus(verbose_name=u'Unidade de Medida', max_length=25, choices=UNIDADE_MEDIDA.items(), default=UNIDADE_MEDIDA.get('Und'))
     quantidade = models.CharFieldPlus(verbose_name=u'Quantidade', max_length=30)
     fornecedor = models.ForeignKeyPlus('systi.Fornecedor', verbose_name='Fornecedor')
+    data_registro = models.DateFieldPlus(verbose_name=u'Data do Registro', blank=True, null=True)
 
     class Meta:
         verbose_name = u'Material'
@@ -227,7 +228,7 @@ class Material(ModelPlus):
 
 class Compartimento(ModelPlus):
     codigo_compartimento = models.CharFieldPlus(verbose_name=u'Código', max_length=30)
-    nome = models.CharFieldPlus(verbose_name=u'Nome', max_length=30)
+    descricao = models.CharFieldPlus(verbose_name=u'Nome', max_length=30)
     pai = models.ForeignKeyPlus('systi.Compartimento', verbose_name='Compartimento Pai', help_text='Ex.: Este compartimento está dentro que qual outro compartimento?', blank=True, null=True)
 
     class Meta:

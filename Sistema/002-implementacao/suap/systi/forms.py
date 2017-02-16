@@ -95,6 +95,8 @@ class MaterialForm(forms.ModelFormPlus):
         unidade_de_medida = self.cleaned_data.get("unidade_de_medida")
         quantidade = self.cleaned_data.get("quantidade")
         fornecedor = self.cleaned_data.get("fornecedor")
+        self.cleaned_data['data_registro'] = timezone.now()
+
 
         if nome_material==None or tipo_material==None or local_guardado==None or descricao==None or unidade_de_medida==None or quantidade==None or fornecedor==None:
             raise forms.ValidationError('Os Campos Devem ser Preenchidos Corretamente')

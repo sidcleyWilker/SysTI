@@ -58,7 +58,6 @@ class Migration(migrations.Migration):
                 ('tipo_campo', djtools.dbfields.CharFieldPlus(default=b'Texto', max_length=30, verbose_name='Tipo do campo', choices=[(b'Float', b'Float'), (b'Data', b'Data'), (b'Texto', b'Texto'), (b'Inteiro', b'Inteiro')])),
                 ('obrigatorio', models.BooleanField(default=False, verbose_name='Obrigatorio')),
                 ('unico', models.BooleanField(default=False, verbose_name='\xc8 unico')),
-                ('valor', models.CharField(max_length=50, verbose_name='Valor')),
             ],
             options={
                 'verbose_name': 'Campo Adicional',
@@ -84,7 +83,7 @@ class Migration(migrations.Migration):
             fields=[
                 ('id', models.AutoField(verbose_name='ID', serialize=False, auto_created=True, primary_key=True)),
                 ('codigo_compartimento', djtools.dbfields.CharFieldPlus(max_length=30, verbose_name='C\xf3digo')),
-                ('nome', djtools.dbfields.CharFieldPlus(max_length=30, verbose_name='Nome')),
+                ('descricao', djtools.dbfields.CharFieldPlus(max_length=30, verbose_name='Nome')),
                 ('pai', djtools.dbfields.ForeignKeyPlus(blank=True, to='systi.Compartimento', help_text=b'Ex.: Este compartimento est\xc3\xa1 dentro que qual outro compartimento?', null=True, verbose_name=b'Compartimento Pai')),
             ],
             options={
@@ -137,6 +136,7 @@ class Migration(migrations.Migration):
                 ('descricao', models.TextField(max_length=30, verbose_name='Descri\xe7\xe3o')),
                 ('unidade_de_medida', djtools.dbfields.CharFieldPlus(default=b'Unidade', max_length=25, verbose_name='Unidade de Medida', choices=[(b'Cm', b'Centimetro'), (b'Pc', b'Pacote'), (b'Mt', b'Metro'), (b'Lt', b'Litro'), (b'Cx', b'Caixa'), (b'Und', b'Unidade')])),
                 ('quantidade', djtools.dbfields.CharFieldPlus(max_length=30, verbose_name='Quantidade')),
+                ('data_registro', djtools.dbfields.DateFieldPlus(max_length=255, null=True, verbose_name='Data do Registro', blank=True)),
                 ('fornecedor', djtools.dbfields.ForeignKeyPlus(verbose_name=b'Fornecedor', to='systi.Fornecedor')),
                 ('local_guardado', djtools.dbfields.ForeignKeyPlus(verbose_name=b'Local Guardado', to='systi.Compartimento')),
             ],

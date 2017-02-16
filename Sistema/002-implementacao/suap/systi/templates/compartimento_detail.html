@@ -9,21 +9,93 @@
     </h2>
 </div>
 
+<div>
+    <ul class="action-bar">
+        <li>
+            <a class="btn primary" href="/admin/systi/compartimento/{{ compartimento.pk }}">Editar</a>
+        </li>
+
+    </ul>
+</div>
+
+
 {% box 'Dados do Compartimento' %}
 
 <table class="info">
     <tbody>
         <tr>
-            <td>Nome</td>
-            <td> {{compartimento.nome}}</td>
+            <td>Código</td>
+            <td> {{ compartimento.codigo_compartimento }}</td>
         </tr>
+
         <tr>
             <td>Descrição</td>
-            <td> {{compartimento.descricao}}</td>
+            <td>{{ compartimento.descricao }}</td>
         </tr>
-    </tbody>
 
+    </tbody>
 </table>
 
 {% endbox %}
+
+
+{% box 'Hierarquia de Compartimentos' %}
+
+{% if  compartimento.pai != None %}
+    <table>
+
+        <thead>
+          <tr>
+             <th>
+                <div class="text hint--top" data-hint="Código do compartimento Pai">Código</div>
+             </th>
+              <th>
+                <div class="text hint--top" data-hint="Código do compartimento Pai">Informações</div>
+             </th>
+          </tr>
+        </thead>
+
+        <tbody>
+          <tr>
+             <td>{{ compartimento.pai.codigo_compartimento }}</td>
+             <td><a class="btn default" href="/systi/compartimento/{{ compartimento.pai.pk }}/"> Informações do Compartimento </a></td>
+          </tr>
+        </tbody>
+    </table>
+    {% else %}
+        <div class="msg info">
+            <strong>Atenção:</strong> Esse compartimento não possui Pai(O mesmo não se encontra dentro de outro compartimento).
+        </div>
+    {% endif %}
+
+{% endbox %}
+
+{% box 'Materiais Adicionados ao Compartimento' %}
+
+<ul class="timeline">
+
+    {% for mov in movimetacoes %}
+        {% if mov.local_guardado.codigo_compartimento == compartimento.codigo_compartimento %}
+
+            <li class="success" >
+                <div class="timeline-date">{{ mov.data_registro }}</div>
+                <div class="timeline-icon"></div>
+                <div class="timeline-content">
+                    <dl>
+                        <dt>Nome:</dt>
+                        <dd>{{mov.nome_material}}</dd>
+                        <dt>Descrição:</dt>
+                        <dd>{{mov.descricao}}</dd>
+                    </dl>
+                </div>
+            </li>
+
+        {% endif %}
+    {% endfor %}
+
+</ul>
+
+{% endbox %}
+
+
 {% endblock %}

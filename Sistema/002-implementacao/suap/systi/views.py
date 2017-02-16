@@ -98,6 +98,7 @@ def material_detail(request, id):
 
     try:
         material = Material.objects.get(pk=id)
+        material.data_registro = timezone.now()
         fornecedor = material.fornecedor
     except material.DoesNoExist:
         raise Http404(u"Material Não existe")
@@ -108,7 +109,7 @@ def material_detail(request, id):
 def compartimento_detail(request, id):
     try:
         compartimento = Compartimento.objects.get(pk=id)
-
+        movimetacoes = Material.objects.all()
     except Compartimento.DoesNotExist:
         raise Http404(u"Compartimento não existe.")
     return locals()

@@ -94,14 +94,14 @@ class MaterialAdmin(ModelAdminPlus):
     form = MaterialForm
 
 class CompartimentoAdmin(ModelAdminPlus):
-    search_fields = ['codigo_compartimento', 'nome',]
-    list_filter = ['codigo_compartimento','nome',]
-    list_display = ['codigo_compartimento', 'nome', 'pai',]
+    search_fields = ['codigo_compartimento', 'descricao',]
+    list_filter = ['codigo_compartimento','descricao',]
+    list_display = ['codigo_compartimento', 'descricao', 'pai',]
     list_display_icons = True
 
     fieldsets = (
         (None, {
-            'fields': ('codigo_compartimento', 'nome', 'pai',)
+            'fields': ('codigo_compartimento', 'descricao', 'pai',)
         }),
     )
 
