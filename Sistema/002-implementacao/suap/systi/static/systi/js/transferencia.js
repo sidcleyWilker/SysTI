@@ -1,14 +1,24 @@
 $(document).ready(function() {
 
-//      function dataFormatada() {
-//      var data = new Date(),
-//        dia = data.getDate(),
-//        mes = data.getMonth() + 1,
-//        ano = data.getFullYear();
-//      return [dia, mes, ano].join('/');
-//    }
-//
-//    $("#id_data_solicitacao").val(dataFormatada);
-//    $("#id_data_solicitacao").attr('disabled', 'disabled');
+    $("#id_motivo_transferencia").change(function(){
+
+        show_hide_chamado_anexo();
+    });
+
+    var show_hide_chamado_anexo = function() {
+
+        item = $('#id_motivo_transferencia option:selected').text();
+
+        if(item === "Chamado") {
+            $(".field-chamado").show(100);
+            $(".field-anexo_motivo").hide(100);
+
+        } else {
+            $(".field-chamado").hide(100);
+            $(".field-anexo_motivo").show(100);
+        }
+    }
+
+    show_hide_chamado_anexo();
 
 });

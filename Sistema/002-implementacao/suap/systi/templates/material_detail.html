@@ -1,14 +1,25 @@
 {% extends super_template %}
 {% load filters %}
 
+{% block extrahead %}
+    <script>jQuery.getScript('/static/edu/js/tabs.js');</script>
+{% endblock %}
 
 {% block content %}
 
-<div>
-    <h2>
+<div class="tab" data-title="Material">
+
+    <div>
+        <h2>
          Material {{material.nome_material}}
-    </h2>
-</div>
+        </h2>
+    </div>
+
+
+    <ul class="action-bar">
+        <a class="btn primary" href="/admin/systi/material/{{ material.pk }}">Editar</a>
+        <a class="btn danger" href="/admin/systi/material/{{ material.pk }}/delete/"> Remover </a>
+    </ul>
 
 {% box 'Dados do Material' %}
 
@@ -91,6 +102,131 @@
 </table>
 
 {% endbox %}
+{% endbox %}
+
+</div>
+
+<div class="tab" data-title="Entradas">
+
+{% box '' %}
+<div>
+
+    <div class="form-row" >
+        <label for="teste1"> Quantidade </label>
+        <input type="text" id="teste1"/>
+    </div>
+
+    <div class="form-row">
+        <label for="textarea">Observações </label>
+        <textarea name="textarea" id="textarea"></textarea>
+    </div>
+
+    <div class="form-row" >
+        <ul class="action-bar">
+            <a class="btn success"> Adicionar </a>
+        </ul>
+    </div>
+
+</div>
+
+    {% endbox %}
+
+
+    {% box 'Histórico de Entradas' %}
+
+    <table>
+    <thead>
+      <tr>
+         <th>#</th>
+         <th>
+            <div class="text hint--top" data-hint="Lorem Ipsum dolor sit">Usuário</div>
+         </th>
+         <th>Data e Hora</th>
+         <th>Quantidade</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+         <td>1</td>
+         <td>Fulano</td>
+         <td>12/12/2016 14:33</td>
+         <td>5896</td>
+      </tr>
+      <tr>
+         <td>2</td>
+         <td>Sicrano</td>
+         <td>25/01/2017 09:51</td>
+         <td>478</td>
+      </tr>
+    </tbody>
+    </table>
+{% endbox %}
+
+
+</div>
+
+<div class="tab" data-title="Saídas">
+
+
+    {% box '' %}
+<div>
+
+    <div class="form-row" >
+        <label for="teste2"> Quantidade </label>
+        <input type="text" id="teste2"/>
+    </div>
+
+    <div class="form-row">
+        <label for="textarea1">Observações </label>
+        <textarea name="textarea" id="textarea1"></textarea>
+    </div>
+
+    <div class="form-row" >
+        <ul class="action-bar">
+            <a class="btn danger"> Retirar </a>
+        </ul>
+    </div>
+
+</div>
+
+    {% endbox %}
+
+
+    {% box 'Histórico de Saídas' %}
+
+    <table>
+    <thead>
+      <tr>
+         <th>#</th>
+         <th>
+            <div class="text hint--top" data-hint="Lorem Ipsum dolor sit">Usuário</div>
+         </th>
+         <th>Data e Hora</th>
+         <th>Quantidade</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+         <td>1</td>
+         <td>Fulano</td>
+         <td>12/12/2016 14:33</td>
+         <td>5896</td>
+      </tr>
+      <tr>
+         <td>2</td>
+         <td>Sicrano</td>
+         <td>25/01/2017 09:51</td>
+         <td>478</td>
+      </tr>
+    </tbody>
+    </table>
+
 
 {% endbox %}
+
+</div>
+
+
+
 {% endblock %}
+

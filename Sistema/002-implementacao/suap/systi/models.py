@@ -165,6 +165,7 @@ class Transferencia(ModelPlus):
         default=SysTIChoices.CHAMADO
     )
     anexo_motivo = models.FileField(upload_to='systi/anexosMotivos/', verbose_name=u'Anexo do Motivo')
+    chamado = models.ForeignKeyPlus('centralservicos.Chamado', verbose_name=u'Chamado' ,blank=True, null=True)
     descricao = models.TextField(verbose_name=u'Descrição', max_length=225)
     setor_origem = models.ForeignKeyPlus('comum.Sala', verbose_name=u'Setor de Origem', related_name='sala_origem', blank=True, null=True)
     setor_destino = models.ForeignKeyPlus('comum.Sala', verbose_name=u'Setor de Destino', related_name='sala_destino')
@@ -212,7 +213,7 @@ class Material(ModelPlus):
     local_guardado = models.ForeignKeyPlus('systi.Compartimento', verbose_name='Local Guardado')
     descricao = models.TextField(verbose_name=u'Descrição', max_length=30)
     unidade_de_medida = models.CharFieldPlus(verbose_name=u'Unidade de Medida', max_length=25, choices=UNIDADE_MEDIDA.items(), default=UNIDADE_MEDIDA.get('Und'))
-    quantidade = models.CharFieldPlus(verbose_name=u'Quantidade', max_length=30)
+    quantidade = models.CharFieldPlus(verbose_name=u'Quantidade', max_length=30, blank=True, null=True)
     fornecedor = models.ForeignKeyPlus('systi.Fornecedor', verbose_name='Fornecedor')
     data_registro = models.DateFieldPlus(verbose_name=u'Data do Registro', blank=True, null=True)
 
@@ -228,7 +229,7 @@ class Material(ModelPlus):
 
 class Compartimento(ModelPlus):
     codigo_compartimento = models.CharFieldPlus(verbose_name=u'Código', max_length=30)
-    descricao = models.CharFieldPlus(verbose_name=u'Nome', max_length=30)
+    descricao = models.CharFieldPlus(verbose_name=u'Descrição', max_length=30)
     pai = models.ForeignKeyPlus('systi.Compartimento', verbose_name='Compartimento Pai', help_text='Ex.: Este compartimento está dentro que qual outro compartimento?', blank=True, null=True)
 
     class Meta:

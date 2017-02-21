@@ -1,0 +1,11 @@
+.local_esq {
+	float:left;
+}
+.local_dir {
+	float:right;
+}
+.local_bottom {
+	display:inline;
+	list-style-type:none;
+	clear:both;
+}

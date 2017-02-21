@@ -36,37 +36,14 @@
     </tbody>
 </table>
 
-{% endbox %}
-
 
 {% box 'Hierarquia de Compartimentos' %}
 
-{% if  compartimento.pai != None %}
-    <table>
+<div id="formbox">
 
-        <thead>
-          <tr>
-             <th>
-                <div class="text hint--top" data-hint="Código do compartimento Pai">Código</div>
-             </th>
-              <th>
-                <div class="text hint--top" data-hint="Código do compartimento Pai">Informações</div>
-             </th>
-          </tr>
-        </thead>
+        {% render_form form %}
 
-        <tbody>
-          <tr>
-             <td>{{ compartimento.pai.codigo_compartimento }}</td>
-             <td><a class="btn default" href="/systi/compartimento/{{ compartimento.pai.pk }}/"> Informações do Compartimento </a></td>
-          </tr>
-        </tbody>
-    </table>
-    {% else %}
-        <div class="msg info">
-            <strong>Atenção:</strong> Esse compartimento não possui Pai(O mesmo não se encontra dentro de outro compartimento).
-        </div>
-    {% endif %}
+</div>
 
 {% endbox %}
 
@@ -98,4 +75,7 @@
 {% endbox %}
 
 
+{% endbox %}
 {% endblock %}
+
+

@@ -2,6 +2,8 @@
 
 from django.contrib import admin
 from django import forms
+
+from comum.utils import get_uo
 from djtools.adminutils import ModelAdminPlus
 from .models import *
 from .forms import *
@@ -80,17 +82,45 @@ class CategoriaAdmin(ModelAdminPlus):
 
 class MaterialAdmin(ModelAdminPlus):
     search_fields = ['nome_material', 'tipo_material',]
-    list_filter = ['nome_material','tipo_material',]
-    list_display = ['nome_material','tipo_material','local_guardado']
+    list_filter = ['tipo_material', 'local_guardado',]
+    list_display = ['nome_material','tipo_material','local_guardado', 'quantidade']
     list_display_icons = True
+    list_per_page = 10
+    export_to_xls = True
 
     fieldsets = (
         (None, {
             'fields': ('nome_material', 'tipo_material','local_guardado',
-                       'descricao', 'unidade_de_medida', 'quantidade',
-                       'fornecedor',)
+                       'descricao', 'unidade_de_medida', 'fornecedor',)
         }),
     )
+
+    def show_list_display_icons(self, obj):
+        out = [u'<ul class="list-display-icons">']
+        icons_html = [view_object_icon(obj)]
+        # Não exibe botão de editar
+        # if self.has_change_permission(self.request, obj):
+        #    icons_html.append(edit_object_icon(obj))
+        for icon_html in icons_html:
+            if icon_html:
+                out.append(u'<li>%s</li>' % icon_html)
+        out.append(u'</ul>')
+        return u''.join(out)
+
+    show_list_display_icons.allow_tags = True
+    show_list_display_icons.short_description = u'#'
+
+    #Exibir apenas icone de editar
+    #def show_list_display_icons(self, obj):
+    #    out = [u'<ul class="list-display-icons">']
+    #    out.append(u'<li><a class="icon-edit" href="/systi/material/%d/" title="Editar"> Editar </a></li>' % obj.id)
+    #    out.append(u'</ul>')
+
+    #    return u''.join(out)
+
+    #show_list_display_icons.allow_tags = True
+    #show_list_display_icons.short_description = u'#'
+
     form = MaterialForm
 
 class CompartimentoAdmin(ModelAdminPlus):
@@ -114,7 +144,7 @@ class TransferenciaAdmin(ModelAdminPlus):
 
     fieldsets = (
         (u'Motivos da Transferencia', {
-            'fields': ('motivo_transferencia', 'anexo_motivo', 'descricao',)
+            'fields': ('motivo_transferencia', 'anexo_motivo', 'chamado', 'descricao',)
         }),
         (u'Ativos a serem transferidos', {
             'fields': ('ativos_transferidos', 'setor_destino',)

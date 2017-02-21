@@ -4,6 +4,7 @@
 from django.http import Http404
 from docutils.nodes import emphasis
 
+from systi.forms import CompartimentoForms
 from systi.models import ServicoExterno
 from .models import Fornecedor, Ativo, AcessoBiometrico, Atributo, Categoria, Transferencia, Emprestimo, Compartimento, Material, ServicoInterno
 from djtools.utils import rtr, httprr
@@ -107,9 +108,13 @@ def material_detail(request, id):
 
 @rtr()
 def compartimento_detail(request, id):
+
+    form = CompartimentoForms(data=request.GET or None)
+
     try:
         compartimento = Compartimento.objects.get(pk=id)
         movimetacoes = Material.objects.all()
+        compartimentosFilhos = Compartimento.objects.all()
     except Compartimento.DoesNotExist:
         raise Http404(u"Compartimento não existe.")
     return locals()

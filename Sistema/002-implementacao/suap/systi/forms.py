@@ -3,7 +3,8 @@
 from djtools import forms
 from django.utils import timezone
 from .models import *
-
+from rh.models import Setor
+from djtools.formwidgets import TreeWidget
 
 class AtivoForm(forms.ModelFormPlus):
     class Meta:
@@ -152,4 +153,12 @@ class ServicoExternoForm(forms.ModelFormPlus):
     class Media:
         js = ('/static/systi/js/servico_interno_externo.js',)
 
+
+
+class CompartimentoForms(forms.ModelFormPlus):
+
+    class Meta:
+        model = Compartimento
+
+    setor_suap = forms.ModelChoiceField(Setor.objects, label=u'Hierarquia do Compartimento', widget=TreeWidget(), required=False, help_text=u'Local onde o Compartimento está')
 
