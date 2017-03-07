@@ -44,4 +44,7 @@ urlpatterns = patterns('systi.views',
     (r'^categoria/(?P<id>\d+)/$', 'categoria_detail'),
 
 
+    (r'^teste1/(?P<id>\d+)/$', 'material_detail'),
+
+
 )

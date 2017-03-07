@@ -3,6 +3,7 @@ from __future__ import unicode_literals
 
 from django.db import models, migrations
 import djtools.dbfields
+from django.conf import settings
 
 
 class Migration(migrations.Migration):
@@ -11,6 +12,7 @@ class Migration(migrations.Migration):
         ('comum', '0003_auto_20160122_0804'),
         ('centralservicos', '0026_auto_20150727_1704'),
         ('edu', '0036_auto_20161120_1500'),
+        migrations.swappable_dependency(settings.AUTH_USER_MODEL),
         ('rh', '0020_auto_20151017_1559'),
     ]
 
@@ -83,7 +85,7 @@ class Migration(migrations.Migration):
             fields=[
                 ('id', models.AutoField(verbose_name='ID', serialize=False, auto_created=True, primary_key=True)),
                 ('codigo_compartimento', djtools.dbfields.CharFieldPlus(max_length=30, verbose_name='C\xf3digo')),
-                ('descricao', djtools.dbfields.CharFieldPlus(max_length=30, verbose_name='Nome')),
+                ('descricao', djtools.dbfields.CharFieldPlus(max_length=30, verbose_name='Descri\xe7\xe3o')),
                 ('pai', djtools.dbfields.ForeignKeyPlus(blank=True, to='systi.Compartimento', help_text=b'Ex.: Este compartimento est\xc3\xa1 dentro que qual outro compartimento?', null=True, verbose_name=b'Compartimento Pai')),
             ],
             options={
@@ -111,6 +113,21 @@ class Migration(migrations.Migration):
             bases=(models.Model,),
         ),
         migrations.CreateModel(
+            name='Entrada_Material',
+            fields=[
+                ('id', models.AutoField(verbose_name='ID', serialize=False, auto_created=True, primary_key=True)),
+                ('quantidade', djtools.dbfields.CharFieldPlus(max_length=30, verbose_name='Quantidade')),
+                ('nota_fornecimento', models.FileField(upload_to=b'systi/notasFornecimento/', verbose_name='Nota de Fornecimento')),
+                ('observacoes', models.TextField(max_length=30, null=True, verbose_name='Observa\xe7\xf5es', blank=True)),
+                ('data_registro', djtools.dbfields.DateFieldPlus(max_length=255, null=True, verbose_name='Data do Registro', blank=True)),
+            ],
+            options={
+                'verbose_name': 'Entrada',
+                'verbose_name_plural': 'Entradas',
+            },
+            bases=(models.Model,),
+        ),
+        migrations.CreateModel(
             name='Fornecedor',
             fields=[
                 ('id', models.AutoField(verbose_name='ID', serialize=False, auto_created=True, primary_key=True)),
@@ -120,6 +137,7 @@ class Migration(migrations.Migration):
                 ('telefone1', djtools.dbfields.BrTelefoneField(max_length=14, verbose_name='Telefone para Contato')),
                 ('telefone2', djtools.dbfields.BrTelefoneField(max_length=14, null=True, verbose_name='Telefone para Contato Reserva', blank=True)),
                 ('email', models.EmailField(max_length=75, verbose_name='E-mail para Contato')),
+                ('tipo', djtools.dbfields.CharFieldPlus(default='Pessoa Jur\xeddica', max_length=255, verbose_name='Tipo de Fornecedor', choices=[('Pessoa F\xedsica', 'Pessoa F\xedsica'), ('Pessoa Jur\xeddica', 'Pessoa Jur\xeddica')])),
             ],
             options={
                 'verbose_name': 'Fornecedor',
@@ -135,10 +153,11 @@ class Migration(migrations.Migration):
                 ('tipo_material', djtools.dbfields.CharFieldPlus(max_length=20, verbose_name='Tipo do Material')),
                 ('descricao', models.TextField(max_length=30, verbose_name='Descri\xe7\xe3o')),
                 ('unidade_de_medida', djtools.dbfields.CharFieldPlus(default=b'Unidade', max_length=25, verbose_name='Unidade de Medida', choices=[(b'Cm', b'Centimetro'), (b'Pc', b'Pacote'), (b'Mt', b'Metro'), (b'Lt', b'Litro'), (b'Cx', b'Caixa'), (b'Und', b'Unidade')])),
-                ('quantidade', djtools.dbfields.CharFieldPlus(max_length=30, verbose_name='Quantidade')),
+                ('quantidade', djtools.dbfields.CharFieldPlus(max_length=30, null=True, verbose_name='Quantidade', blank=True)),
                 ('data_registro', djtools.dbfields.DateFieldPlus(max_length=255, null=True, verbose_name='Data do Registro', blank=True)),
+                ('estoque_minimo', djtools.dbfields.CharFieldPlus(max_length=30, null=True, verbose_name='Estoque M\xednimo', blank=True)),
                 ('fornecedor', djtools.dbfields.ForeignKeyPlus(verbose_name=b'Fornecedor', to='systi.Fornecedor')),
-                ('local_guardado', djtools.dbfields.ForeignKeyPlus(verbose_name=b'Local Guardado', to='systi.Compartimento')),
+                ('local_guardado', djtools.dbfields.ForeignKeyPlus(verbose_name=b'Compartimento', to='systi.Compartimento')),
             ],
             options={
                 'verbose_name': 'Material',
@@ -214,6 +233,7 @@ class Migration(migrations.Migration):
                 ('data_altorizada', djtools.dbfields.DateFieldPlus(max_length=255, null=True, verbose_name='Data que foi Altorizada', blank=True)),
                 ('data_transferencia', djtools.dbfields.DateFieldPlus(max_length=255, null=True, verbose_name='Data da Transferencia', blank=True)),
                 ('ativos_transferidos', djtools.dbfields.ManyToManyFieldPlus(to='systi.Ativo', verbose_name='Ativos a Serem Transferidos')),
+                ('chamado', djtools.dbfields.ForeignKeyPlus(verbose_name='Chamado', blank=True, to='centralservicos.Chamado', null=True)),
                 ('setor_destino', djtools.dbfields.ForeignKeyPlus(related_name='sala_destino', verbose_name='Setor de Destino', to='comum.Sala')),
                 ('setor_origem', djtools.dbfields.ForeignKeyPlus(related_name='sala_origem', verbose_name='Setor de Origem', blank=True, to='comum.Sala', null=True)),
             ],
@@ -222,6 +242,18 @@ class Migration(migrations.Migration):
                 'verbose_name_plural': 'Transfer\xeancias',
             },
             bases=(models.Model,),
+        ),
+        migrations.AddField(
+            model_name='entrada_material',
+            name='material',
+            field=djtools.dbfields.ForeignKeyPlus(verbose_name=b'Material', to='systi.Material'),
+            preserve_default=True,
+        ),
+        migrations.AddField(
+            model_name='entrada_material',
+            name='usuario',
+            field=djtools.dbfields.ForeignKeyPlus(verbose_name='Usu\xe1rio', to=settings.AUTH_USER_MODEL, max_length=30),
+            preserve_default=True,
         ),
         migrations.AddField(
             model_name='atributo',

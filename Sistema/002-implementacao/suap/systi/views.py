@@ -1,11 +1,11 @@
 # -*- coding: utf-8 -*-
-
+from datetime import datetime
 
 from django.http import Http404
 from docutils.nodes import emphasis
 
-from systi.forms import CompartimentoForms
-from systi.models import ServicoExterno
+from systi.forms import CompartimentoForms, Entrada_MaterialForm
+from systi.models import ServicoExterno, Entrada_Material
 from .models import Fornecedor, Ativo, AcessoBiometrico, Atributo, Categoria, Transferencia, Emprestimo, Compartimento, Material, ServicoInterno
 from djtools.utils import rtr, httprr
 from django.utils import timezone
@@ -94,12 +94,34 @@ def transferencia_transferir(request, id):
     except Transferencia.DoesNoExist:
         raise Http404(u"Transferencia Não existe")
 
+
 @rtr()
 def material_detail(request, id):
 
+    entrada_form = Entrada_MaterialForm(request.POST)
+    material = Material.objects.get(pk=id)
+
+    if request.method == 'POST':
+        if entrada_form.is_valid():
+            quantForm = entrada_form.cleaned_data['quantidade']
+
+            if material.quantidade == None:
+                material.quantidade = 0
+
+            material.quantidade = int(material.quantidade) + int(quantForm)
+            material.save()
+            entrada = entrada_form.save()
+            entrada.material = material
+            entrada.usuario = request.user
+            entrada.data_registro = datetime.now()
+            entrada.save()
+
+    context = {
+        'entrada_form': entrada_form
+    }
+
     try:
-        material = Material.objects.get(pk=id)
-        material.data_registro = timezone.now()
+        entradasCadastradas = Entrada_Material.objects.all()
         fornecedor = material.fornecedor
     except material.DoesNoExist:
         raise Http404(u"Material Não existe")

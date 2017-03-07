@@ -39,12 +39,53 @@
 
 {% box 'Hierarquia de Compartimentos' %}
 
+<!--
+
 <div id="formbox">
 
         {% render_form form %}
 
 </div>
+-->
 
+{% for a in compartimentosFilhos %}
+
+    {% if a.pai == compartimento %}
+
+            <p><a>.    </a></p>
+            <p><a>      </a></p>
+            <p>
+        <li>
+            <a> |-----+ </a><a class="btn sucess" href="/systi/compartimento/{{ a.pk }}" >{{ a.codigo_compartimento }}</a>
+        </li>
+            </p>
+    {% endif %}
+
+    {% if a.pai.pai != None and a.pai.pai == compartimento %}
+
+                    <p><a>.    </a></p>
+                    <p><a>      </a></p>
+                    <p>
+                <li>
+                    <a> |----- |-----+ </a><a class="btn sucess" href="/systi/compartimento/{{ a.pk }}" >{{ a.codigo_compartimento }}</a>
+                </li>
+                    </p>
+
+    {% endif %}
+
+    {% if a.pai.pai.pai != None and a.pai.pai.pai == compartimento %}
+
+                    <p><a>.    </a></p>
+                    <p><a>      </a></p>
+                    <p>
+                <li>
+                    <a> |----- |----- |-----+</a><a class="btn sucess" href="/systi/compartimento/{{ a.pk }}" >{{ a.codigo_compartimento }}</a>
+                </li>
+                    </p>
+
+    {% endif %}
+
+{% endfor %}
 {% endbox %}
 
 {% box 'Materiais Adicionados ao Compartimento' %}
@@ -73,8 +114,6 @@
 </ul>
 
 {% endbox %}
-
-
 {% endbox %}
 {% endblock %}
 

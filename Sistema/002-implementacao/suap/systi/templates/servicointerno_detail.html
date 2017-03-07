@@ -110,7 +110,7 @@
 {% endbox %}
 
 {% box 'Equipamentos' %}
-    {% for equipamento in equipamentos%}
+
         <table>
             <thead>
                 <tr>
@@ -119,6 +119,8 @@
                     <th>Local de Origem</th>
                 </tr>
             </thead>
+
+        {% for equipamento in equipamentos%}
             <tbody>
                 <tr>
                     <td>{{ equipamento.nome }}</td>
@@ -127,7 +129,7 @@
                 </tr>
             </tbody>
         </table>
-    {% endfor %}
+        {% endfor %}
 {% endbox %}
 
 {% box 'Materiais' %}

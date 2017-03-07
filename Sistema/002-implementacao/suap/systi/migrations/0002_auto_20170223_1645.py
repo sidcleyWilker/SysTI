@@ -2,20 +2,19 @@
 from __future__ import unicode_literals
 
 from django.db import models, migrations
-import djtools.dbfields
 
 
 class Migration(migrations.Migration):
 
     dependencies = [
-        ('systi', '0002_auto_20170217_1526'),
+        ('systi', '0001_initial'),
     ]
 
     operations = [
         migrations.AlterField(
-            model_name='material',
-            name='quantidade',
-            field=djtools.dbfields.CharFieldPlus(max_length=30, null=True, verbose_name='Quantidade', blank=True),
+            model_name='entrada_material',
+            name='nota_fornecimento',
+            field=models.FileField(upload_to=b'systi/notasFornecimento/', null=True, verbose_name='Nota de Fornecimento', blank=True),
             preserve_default=True,
         ),
     ]

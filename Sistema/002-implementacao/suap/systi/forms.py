@@ -5,11 +5,32 @@ from django.utils import timezone
 from .models import *
 from rh.models import Setor
 from djtools.formwidgets import TreeWidget
+from mptt.forms import *
 
 class AtivoForm(forms.ModelFormPlus):
     class Meta:
         model = Ativo
         exclude = []
+
+
+class FornecedorForm(forms.ModelFormPlus):
+
+    class Meta:
+        model = Fornecedor
+        exclude = []
+
+    class Media:
+        js = ('/static/systi/js/fornecedor.js',)
+
+    def clean(self):
+
+        cpf = self.cleaned_data['cpf']
+        cnpj = self.cleaned_data['cnpj']
+
+        if (cpf == None and cnpj == None):
+            raise forms.ValidationError('Preencha os campos corretamente')
+        return self.cleaned_data
+
 
 
 class AcessoBiometricoForm(forms.ModelFormPlus):
@@ -84,25 +105,11 @@ class TransferenciaForm(forms.ModelFormPlus):
 
 class MaterialForm(forms.ModelFormPlus):
 
+
+
     class Meta:
         model = Material
         exclude = []
-
-    def clean(self):
-        nome_material = self.cleaned_data.get("nome_material")
-        tipo_material = self.cleaned_data.get("tipo_material")
-        local_guardado = self.cleaned_data.get("local_guardado")
-        descricao = self.cleaned_data.get("descricao")
-        unidade_de_medida = self.cleaned_data.get("unidade_de_medida")
-        quantidade = self.cleaned_data.get("quantidade")
-        fornecedor = self.cleaned_data.get("fornecedor")
-        self.cleaned_data['data_registro'] = timezone.now()
-
-
-        if nome_material==None or tipo_material==None or local_guardado==None or descricao==None or unidade_de_medida==None or quantidade==None or fornecedor==None:
-            raise forms.ValidationError('Os Campos Devem ser Preenchidos Corretamente')
-
-        return self.cleaned_data
 
 class EmprestimoForm(forms.ModelFormPlus):
 
@@ -159,6 +166,17 @@ class CompartimentoForms(forms.ModelFormPlus):
 
     class Meta:
         model = Compartimento
+        exclude = []
 
-    setor_suap = forms.ModelChoiceField(Setor.objects, label=u'Hierarquia do Compartimento', widget=TreeWidget(), required=False, help_text=u'Local onde o Compartimento está')
+    #categorias = TreeNodeChoiceField(queryset=Categoria.objects.all(), level_indicator=u'+--')
+
+    #setor_suap = forms.ModelChoiceField(Setor.objects, label=u'Hierarquia do Compartimento', widget=TreeWidget(), required=False, help_text=u'Local onde o Compartimento está')
+
+
+class Entrada_MaterialForm(forms.ModelFormPlus):
+
+    class Meta:
+        model = Entrada_Material
+        exclude = []
+        fields = ('quantidade', 'nota_fornecimento', 'observacoes',)
 

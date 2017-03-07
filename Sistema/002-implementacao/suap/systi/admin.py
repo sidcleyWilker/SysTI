@@ -36,12 +36,14 @@ class FornecedorAdmin(ModelAdminPlus):
 
     fieldsets = (
         (None, {
-            'fields': ('nome', 'cpf', 'cnpj')
+            'fields': ('nome', 'tipo', 'cpf', 'cnpj')
         }),
         (u'Informações de Contato', {
             'fields': (('telefone1', 'telefone2'), 'email')
         }),
     )
+
+    form = FornecedorForm
 
 class AcessoBiometricoAdmin(ModelAdminPlus):
     search_fields = ['id_usuario_fechadura', 'data_registro', 'tipo_do_usuario']
@@ -91,7 +93,7 @@ class MaterialAdmin(ModelAdminPlus):
     fieldsets = (
         (None, {
             'fields': ('nome_material', 'tipo_material','local_guardado',
-                       'descricao', 'unidade_de_medida', 'fornecedor',)
+                       'descricao', 'unidade_de_medida', 'fornecedor', 'estoque_minimo',)
         }),
     )
 
@@ -134,6 +136,22 @@ class CompartimentoAdmin(ModelAdminPlus):
             'fields': ('codigo_compartimento', 'descricao', 'pai',)
         }),
     )
+
+    def show_list_display_icons(self, obj):
+        out = [u'<ul class="list-display-icons">']
+        icons_html = [view_object_icon(obj)]
+        # Não exibe botão de editar
+        # if self.has_change_permission(self.request, obj):
+        #    icons_html.append(edit_object_icon(obj))
+        for icon_html in icons_html:
+            if icon_html:
+                out.append(u'<li>%s</li>' % icon_html)
+        out.append(u'</ul>')
+        return u''.join(out)
+
+
+    show_list_display_icons.allow_tags = True
+    show_list_display_icons.short_description = u'#'
 
 class TransferenciaAdmin(ModelAdminPlus):
     search_fields = ['motivo_transferencia']
@@ -246,10 +264,10 @@ class ServicosExternosAdmin(ModelAdminPlus):
 
     fieldsets = (
         (None, {
-            'fields': ('motivo_servico', 'anexo_motivo', 'chamado',
-                       'data_diagnostico', 'diagnostico', 'tipo_servico',
+            'fields': ('motivo_servico', 'anexo_motivo', 'chamado', 'equipamentos_enviados',
+                    'diagnostico', 'data_diagnostico', 'tipo_servico',
                        'estado_servico', 'motivo_cancel_ou_suspen',
-                       'ordem_servico', 'equipamentos_enviados','data_prevista_devolucao',)
+                       'ordem_servico', 'prestador', 'data_prevista_devolucao',)
         }),
     )
 
@@ -280,3 +298,5 @@ admin.site.register(Compartimento, CompartimentoAdmin)
 admin.site.register(Emprestimo, EmprestimoAdmin)
 admin.site.register(ServicoInterno, ServicosInternosAdmin)
 admin.site.register(ServicoExterno, ServicosExternosAdmin)
+
+admin.site.register(Entrada_Material)

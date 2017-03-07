@@ -73,3 +73,11 @@ class SysTIChoices:
         VIGENTE: u'Vigente',
         PENDENTE: u'Pendente',
     }
+
+    PESSOA_FISICA = u'Pessoa Física'
+    PESSOA_JURIDICA = u'Pessoa Jurídica'
+
+    TIPO_FORNECEDOR = {
+        PESSOA_FISICA: u'Pessoa Física',
+        PESSOA_JURIDICA: u'Pessoa Jurídica',
+    }

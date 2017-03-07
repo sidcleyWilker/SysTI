@@ -1,6 +1,8 @@
 {% extends super_template %}
 {% load filters %}
 
+{% load static %}
+
 {% block extrahead %}
     <script>jQuery.getScript('/static/edu/js/tabs.js');</script>
 {% endblock %}
@@ -28,41 +30,58 @@
         <tr>
             <td>Nome</td>
             <td> {{material.nome_material}}</td>
+                <td>Fornecido por </td>
+                <td>{{material.fornecedor.nome}}</td>
         </tr>
 
         <tr>
             <td>Descrição</td>
             <td>{{material.descricao}}</td>
+                <td>Guardado em </td>
+                <td>{{material.local_guardado.codigo_compartimento}}</td>
         </tr>
 
         <tr>
             <td>Tipo do Material</td>
             <td>{{material.tipo_material}}</td>
+                <td>Data de Cadastro</td>
+                <td>{{material.data_registro}}</td>
         </tr>
 
         <tr>
             <td>Unidade de Medida</td>
             <td>{{material.unidade_de_medida}}</td>
+
+            <td>Situção do Estoque</td>
+
+                {% if material.estoque_minimo == material.quantidade %}
+                    <td>
+                        <span class="status-alert">Estoque Mínimo</span>
+                    </td>
+                {% elif material.estoque_minimo > material.quantidade %}
+                    <td>
+                        <span class="status-baixado">Quantidade Abaixo do Indicado</span>
+                    </td>
+                {% else %}
+                    <td>
+                        <span class="status-aceito">Quantidade Aceitável</span>
+                    </td>
+                {% endif %}
         </tr>
 
         <tr>
             <td>Quantidade</td>
-            <td>{{material.quantidade}}</td>
-        </tr>
-
-        <tr>
-            <td>Guardado em </td>
-            <td>{{material.local_guardado.codigo_compartimento}}</td>
-        </tr>
-
-        <tr>
-            <td>Fornecido por </td>
-            <td>{{material.fornecedor.nome}}</td>
-        </tr>
-
-        <tr>
-            <td>Data de Cadastro</td>
-            <td>{{material.data_registro}}</td>
+            {% if material.quantidade == None %}
+                <td>0</td>
+            {% else %}
+                <td>{{material.quantidade}}</td>
+            {% endif %}
+            <td>Estoque Mínimo</td>
+            {% if material.estoque_minimo == None %}
+                <td>0</td>
+            {% else %}
+                <td>{{material.estoque_minimo}}</td>
+            {% endif %}
         </tr>
 
     </tbody>
@@ -75,27 +94,22 @@
         <tr>
             <td>Nome</td>
             <td>{{fornecedor.nome}}</td>
-        </tr>
-    </tbody>
-
-    <tbody>
-        <tr>
-            <td>CPF</td>
-            <td>{{fornecedor.cpf}}</td>
-        </tr>
-    </tbody>
-
-    <tbody>
-        <tr>
-            <td>CNPJ</td>
-            <td>{{fornecedor.cnpj}}</td>
-        </tr>
-    </tbody>
-
-    <tbody>
-        <tr>
-            <td>Telefone Para Contato</td>
+            <td>Contato</td>
             <td>{{fornecedor.telefone1}}</td>
+        </tr>
+    </tbody>
+
+    <tbody>
+        <tr>
+        {% if fornecedor.tipo == 'Pessoa Física' %}
+                <td>CPF</td>
+                <td>{{fornecedor.cpf}}</td>
+        {% else %}
+                <td>CNPJ</td>
+                <td>{{fornecedor.cnpj}}</td>
+        {% endif %}
+                <td>E-Mail</td>
+                <td>{{fornecedor.email}}</td>
         </tr>
     </tbody>
 
@@ -108,125 +122,80 @@
 
 <div class="tab" data-title="Entradas">
 
-{% box '' %}
-<div>
-
-    <div class="form-row" >
-        <label for="teste1"> Quantidade </label>
-        <input type="text" id="teste1"/>
+    <div class="msg info">
+        <strong>Atenção:</strong> Todas as entradas de Materiais devem ser registradas a quantidade e deve-se adicionar opcinalmente uma observação(Descrição breve).
     </div>
 
-    <div class="form-row">
-        <label for="textarea">Observações </label>
-        <textarea name="textarea" id="textarea"></textarea>
-    </div>
 
-    <div class="form-row" >
+
+<form class="pure-form pure-form-aligned" method="post">
+    {% csrf_token %}
+
+    <fieldset>
+        {% for field in entrada_form %}
+            <div class="pure-control-group">
+                {{ field.label_tag }}
+                {{ field }}
+
+                {% if field.errors %}
+                    <ul class="errorlist">
+                        {% for error in field.errors %}
+                            <li>{{ error }}</li>
+                        {% endfor %}
+                    </ul>
+                {% endif %}
+            </div>
+        {% endfor %}
+
+    </fieldset>
+
+    <div>
         <ul class="action-bar">
-            <a class="btn success"> Adicionar </a>
+
+            <li>
+
+                <input class="btn success" type="submit" value="Adicionar" href="/systi/teste1/{{material.id}}/" >
+
+            </li>
+
         </ul>
     </div>
 
-</div>
 
-    {% endbox %}
+</form>
 
 
     {% box 'Histórico de Entradas' %}
 
-    <table>
-    <thead>
-      <tr>
-         <th>#</th>
-         <th>
-            <div class="text hint--top" data-hint="Lorem Ipsum dolor sit">Usuário</div>
-         </th>
-         <th>Data e Hora</th>
-         <th>Quantidade</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-         <td>1</td>
-         <td>Fulano</td>
-         <td>12/12/2016 14:33</td>
-         <td>5896</td>
-      </tr>
-      <tr>
-         <td>2</td>
-         <td>Sicrano</td>
-         <td>25/01/2017 09:51</td>
-         <td>478</td>
-      </tr>
-    </tbody>
-    </table>
-{% endbox %}
+{% if entradasCadastradas != None %}
 
+        <table>
+            <thead>
+                <tr>
+                    <td>#</td>
+                    <th>Usuário</th>
+                     <th>Data e Hora</th>
+                    <th>Quantidade</th>
+                </tr>
+            </thead>
 
-</div>
+        {% for entrada in entradasCadastradas%}
+            {% if entrada.material.id == material.id %}
+                <tbody>
+                    <tr>
+                        <td>{{ entrada.id }}</td>
+                        <td>{{ entrada.usuario }}</td>
+                        <td>{{ entrada.data_registro  }}</td>
+                        <td>{{ entrada.quantidade }}</td>
+                    </tr>
+                </tbody>
+            {% endif %}
+    {% endfor %}
+            </table>
 
-<div class="tab" data-title="Saídas">
-
-
-    {% box '' %}
-<div>
-
-    <div class="form-row" >
-        <label for="teste2"> Quantidade </label>
-        <input type="text" id="teste2"/>
-    </div>
-
-    <div class="form-row">
-        <label for="textarea1">Observações </label>
-        <textarea name="textarea" id="textarea1"></textarea>
-    </div>
-
-    <div class="form-row" >
-        <ul class="action-bar">
-            <a class="btn danger"> Retirar </a>
-        </ul>
-    </div>
-
-</div>
-
-    {% endbox %}
-
-
-    {% box 'Histórico de Saídas' %}
-
-    <table>
-    <thead>
-      <tr>
-         <th>#</th>
-         <th>
-            <div class="text hint--top" data-hint="Lorem Ipsum dolor sit">Usuário</div>
-         </th>
-         <th>Data e Hora</th>
-         <th>Quantidade</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-         <td>1</td>
-         <td>Fulano</td>
-         <td>12/12/2016 14:33</td>
-         <td>5896</td>
-      </tr>
-      <tr>
-         <td>2</td>
-         <td>Sicrano</td>
-         <td>25/01/2017 09:51</td>
-         <td>478</td>
-      </tr>
-    </tbody>
-    </table>
+{% endif %}
 
 
 {% endbox %}
-
-</div>
-
-
 
 {% endblock %}
-

@@ -1,6 +1,10 @@
 # -*- coding: utf-8 -*-
 
 import os
+
+from django.http import request
+from django.utils import timezone
+
 from djtools.db import models
 from djtools.models import ModelPlus
 from .choices import SysTIChoices
@@ -63,6 +67,7 @@ class Fornecedor(ModelPlus):
     telefone1 = models.BrTelefoneField(verbose_name=u'Telefone para Contato')
     telefone2 = models.BrTelefoneField(verbose_name=u'Telefone para Contato Reserva', blank=True, null=True)
     email = models.EmailField(verbose_name=u'E-mail para Contato')
+    tipo = models.CharFieldPlus(verbose_name=u'Tipo de Fornecedor', choices=SysTIChoices.TIPO_FORNECEDOR.items(), default=SysTIChoices.PESSOA_JURIDICA)
 
     class Meta:
         verbose_name = u'Fornecedor'
@@ -207,15 +212,33 @@ class Transferencia(ModelPlus):
         return '/systi/transferencia/{}/'.format(self.id)
 
 
+class Entrada_Material(ModelPlus):
+    usuario = models.ForeignKeyPlus('comum.user', verbose_name=u'Usuário', max_length=30, blank=True, null=True)
+    quantidade = models.CharFieldPlus(verbose_name=u'Quantidade', max_length=30, blank=True, null=True)
+    nota_fornecimento = models.FileField(upload_to='systi/notasFornecimento/', verbose_name=u'Nota de Fornecimento', blank=True, null=True)
+    observacoes = models.TextField(verbose_name=u'Observações', max_length=30, blank=True, null=True)
+    data_registro = models.DateFieldPlus(verbose_name=u'Data do Registro', blank=True, null=True)
+    material = models.ForeignKeyPlus('systi.Material', verbose_name='Material', blank=True, null=True)
+
+    class Meta:
+        verbose_name = u'Entrada'
+        verbose_name_plural = u'Entradas'
+
+
 class Material(ModelPlus):
     nome_material = models.CharFieldPlus(verbose_name=u'Nome do Material', max_length=30)
     tipo_material = models.CharFieldPlus(verbose_name=u'Tipo do Material', max_length=20)
-    local_guardado = models.ForeignKeyPlus('systi.Compartimento', verbose_name='Local Guardado')
+    local_guardado = models.ForeignKeyPlus('systi.Compartimento', verbose_name='Compartimento')
     descricao = models.TextField(verbose_name=u'Descrição', max_length=30)
     unidade_de_medida = models.CharFieldPlus(verbose_name=u'Unidade de Medida', max_length=25, choices=UNIDADE_MEDIDA.items(), default=UNIDADE_MEDIDA.get('Und'))
     quantidade = models.CharFieldPlus(verbose_name=u'Quantidade', max_length=30, blank=True, null=True)
     fornecedor = models.ForeignKeyPlus('systi.Fornecedor', verbose_name='Fornecedor')
     data_registro = models.DateFieldPlus(verbose_name=u'Data do Registro', blank=True, null=True)
+    estoque_minimo = models.CharFieldPlus(verbose_name=u'Estoque Mínimo', max_length=30, blank=True, null=True)
+
+    def save(self, *args, **kwargs):
+        self.data_registro = timezone.now()
+        super(Material, self).save(*args, **kwargs)
 
     class Meta:
         verbose_name = u'Material'
@@ -226,6 +249,7 @@ class Material(ModelPlus):
 
     def __str__(self):
         return self.nome_material
+
 
 class Compartimento(ModelPlus):
     codigo_compartimento = models.CharFieldPlus(verbose_name=u'Código', max_length=30)
@@ -309,6 +333,7 @@ class ServicoExterno(Servico):
     prestador = models.ForeignKeyPlus('systi.Fornecedor', verbose_name='Selecionar Prestador', blank=True, null=True)
     parecer = models.CharFieldPlus(verbose_name='Parecer', blank=True, null=True)
     data_devolucao = models.DateFieldPlus(u'Data de Devolução', blank=True, null=True)
+
 
     class Meta:
         verbose_name = u'Serviço Externo'
